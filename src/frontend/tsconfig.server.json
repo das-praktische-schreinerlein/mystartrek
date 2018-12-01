@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "sourceMap": false,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "outDir": "../../dist/out-tsc/frontend-server",
+    "module": "commonjs",
+    "baseUrl": "./",
+    "paths": {
+      "@angular/*": ["../../node_modules/@angular/*"],
+      "rxjs/*": ["../../node_modules/rxjs/*"],
+      "*": [ "../../node_modules/@types/*", "*"]
+    }
+  },
+  // Add "angularCompilerOptions" with the AppServerModule you wrote
+  // set as the "entryModule".
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule"
+  },
+  "exclude": [
+    "node_modules",
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

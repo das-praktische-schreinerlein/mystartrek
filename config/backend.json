@@ -1,0 +1,12 @@
+{
+    "filePathPDocJson": "config/pdocs.json",
+    "filePathThemeFilterJson": "config/themeFilterConfig.json",
+    "mapperConfig": {
+        "allowedKeywordPatterns": ["KW_.*", "Harry", "Booga", "Buddy", "Micha"],
+        "replaceKeywordPatterns": []
+    },
+    "cacheConfig": {
+    },
+    "port": 4100,
+    "corsOrigin": true
+}
