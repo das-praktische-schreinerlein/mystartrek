@@ -1,0 +1,6 @@
+{
+    "port": 4002,
+    "cacheFolder": "cache/",
+    "redirectFileJson": "config/redirects.json",
+    "redirectOnlyCached": false
+}
