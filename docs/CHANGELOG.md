@@ -1,4 +1,4 @@
-# Changelog of MySimpleHomePage
+# Changelog of MyGeoManager
  
 # Versions
  

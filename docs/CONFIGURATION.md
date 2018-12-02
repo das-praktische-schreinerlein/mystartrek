@@ -1,4 +1,4 @@
-# Configure MySimpleHomePage
+# Configure MyGeoManager
 
 ## Backend
 
@@ -59,14 +59,14 @@ Configure the content of the static section-pages.
  "pdocs": [
   {
    "id": "start",
-   "descMd": "Willkommen bei MySHP.",
+   "descMd": "Willkommen bei MyGeoM.",
    "flgShowTopTen": true,
    "flgShowNews": true,
    "flgShowSearch": true,
-   "heading": "Thats MySHP",
+   "heading": "Thats MyGeoM",
    "name": "Start",
    "subSectionIds": "schwerpunkt",
-   "teaser": "Willkommen bei MySHP",
+   "teaser": "Willkommen bei MyGeoM",
    "type": "SectionOverviewPage"
   }
   ]
@@ -122,17 +122,17 @@ export const environment = {
 - brandname and descriptions
 ```json
 {
-    "nav.brand.appName": "MySimpleHomePage",
-    "meta.title.prefix.errorPage": "MySimpleHomePage - Oje ein Fehler",
-    "meta.title.prefix.sectionPage": "MySimpleHomePage - {{title}}",
-    "meta.title.prefix.cdocSearchPage": "MySimpleHomePage - Suche",
-    "meta.title.prefix.cdocShowPage": "MySimpleHomePage - {{cdoc}}",
-    "meta.title.prefix.cdocSectionSearchPage": "MySimpleHomePage - {{title}} - Suche",
-    "meta.title.prefix.cdocSectionShowPage": "MySimpleHomePage - {{title}} - {{cdoc}}",
-    "meta.desc.prefix.errorPage": "MySimpleHomePage - Oje ein Fehler ist aufgetreten",
-    "meta.desc.prefix.sectionPage": "MySimpleHomePage - {{title}} - {{teaser}}",
-    "meta.desc.prefix.cdocSearchPage": "MySimpleHomePage - Touren/Berichte/Regionen/Bilder/Infos",
-    "meta.desc.prefix.cdocShowPage": "MySimpleHomePage - Infos für {{cdoc}}",
-    "meta.desc.prefix.cdocSectionSearchPage": "MySimpleHomePage - Touren/Berichte/Regionen/Bilder/Infos zum Thema {{title}} - {{teaser}}",
-    "meta.desc.prefix.cdocSectionShowPage": "MySimpleHomePage - {{title}} - Infos für {{cdoc}}",
+    "nav.brand.appName": "MyGeoManager",
+    "meta.title.prefix.errorPage": "MyGeoManager - Oje ein Fehler",
+    "meta.title.prefix.sectionPage": "MyGeoManager - {{title}}",
+    "meta.title.prefix.cdocSearchPage": "MyGeoManager - Suche",
+    "meta.title.prefix.cdocShowPage": "MyGeoManager - {{cdoc}}",
+    "meta.title.prefix.cdocSectionSearchPage": "MyGeoManager - {{title}} - Suche",
+    "meta.title.prefix.cdocSectionShowPage": "MyGeoManager - {{title}} - {{cdoc}}",
+    "meta.desc.prefix.errorPage": "MyGeoManager - Oje ein Fehler ist aufgetreten",
+    "meta.desc.prefix.sectionPage": "MyGeoManager - {{title}} - {{teaser}}",
+    "meta.desc.prefix.cdocSearchPage": "MyGeoManager - Touren/Berichte/Regionen/Bilder/Infos",
+    "meta.desc.prefix.cdocShowPage": "MyGeoManager - Infos für {{cdoc}}",
+    "meta.desc.prefix.cdocSectionSearchPage": "MyGeoManager - Touren/Berichte/Regionen/Bilder/Infos zum Thema {{title}} - {{teaser}}",
+    "meta.desc.prefix.cdocSectionShowPage": "MyGeoManager - {{title}} - Infos für {{cdoc}}",
 ```

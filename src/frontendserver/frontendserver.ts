@@ -64,7 +64,7 @@ ConfigureServerModule.configureDefaultErrorHandler(app);
 
 // Start up the Node server
 app.listen(serverConfig.frontendConfig.port, function () {
-    console.log('MySHP app listening on port ' + serverConfig.frontendConfig.port);
+    console.log('MyGeoM app listening on port ' + serverConfig.frontendConfig.port);
 
     // disable debug-logging
     if (!debug) {

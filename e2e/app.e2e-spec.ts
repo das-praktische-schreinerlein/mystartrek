@@ -1,10 +1,10 @@
-import { MySimpleHomePagePage } from './app.po';
+import { MyGeoManagerPage } from './app.po';
 
 describe('image-import-editor-app App', function() {
-  let page: MySimpleHomePagePage;
+  let page: MyGeoManagerPage;
 
   beforeEach(() => {
-    page = new MySimpleHomePagePage();
+    page = new MyGeoManagerPage();
   });
 
   it('should display message saying app works', () => {

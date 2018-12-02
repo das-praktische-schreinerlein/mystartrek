@@ -25,7 +25,7 @@ ServerModuleLoader.loadModules(app, serverConfig);
 
 // start server
 app.listen(serverConfig.backendConfig['port'], function () {
-    console.log('MySHP app listening on port ' + serverConfig.backendConfig['port']);
+    console.log('MyGeoM app listening on port ' + serverConfig.backendConfig['port']);
     if (!debug) {
         console.trace = function() {};
         console.debug = function() {};

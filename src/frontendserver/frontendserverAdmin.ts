@@ -24,7 +24,7 @@ const distProfile = 'DIST_PROFILE';
 const distServerProfile = 'DIST_SERVER_PROFILE';
 
 const filePathConfigJson = argv['frontend'] || 'config/frontend.json';
-const siteMapBaseUrl = argv['sitemapbase'] || 'https://www.myshp.de/myshp/de/';
+const siteMapBaseUrl = argv['sitemapbase'] || 'https://www.mygeom.de/mygeom/de/';
 
 export interface ServerConfig {
     frontendConfig: {
@@ -49,7 +49,7 @@ const app = express();
 const port = Math.floor(Math.random() * 10000 + 50000);
 AngularUniversalFrontendServerModule.configureDefaultServer(app, frontendConfig);
 app.listen(port, function () {
-    console.log('MySHP app listening on random port ' + port);
+    console.log('MyGeoM app listening on random port ' + port);
 });
 
 const siteBaseUrl = 'http://localhost:' + port + '/' + distProfile;

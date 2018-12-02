@@ -18,7 +18,7 @@ source installer/db/mysql/musikdb/step2_create-user.sql
 - configure ```src/frontend/environments/environment.ts``` to use this as backend-url 
 
 ### beta
-- configure a second ```backend.beta.json``` with another port and Solr with ```http://localhost:8983/solr/myshpdev``` as backend
+- configure a second ```backend.beta.json``` with another port and Solr with ```http://localhost:8983/solr/mygeomdev``` as backend
 - configure ```src/frontend/environments/environment.beta.ts``` to use this as backend-url 
 
 

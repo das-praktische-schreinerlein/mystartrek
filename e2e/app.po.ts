@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class MySimpleHomePagePage {
+export class MyGeoManagerPage {
   navigateTo() {
     return browser.get('/');
   }

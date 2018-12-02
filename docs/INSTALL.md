@@ -1,4 +1,4 @@
-# Install MySimpleHomePage
+# Install MyGeoManager
 
 ## prepare-dev
 
@@ -38,11 +38,11 @@ Run `npm build-prod-de` or `npm build-prod-en` for the prod-versions in `dist/`.
 ## Deploy prod
 Stop backend via startscript
 ```
-/etc/init.d/myshp start
-/etc/init.d/myshp-frontend start
+/etc/init.d/mygeom start
+/etc/init.d/mygeom-frontend start
 ```
 
-Copy startscript `installer/linux/init.d/myshp*` to `/etc/init.d/` and change paths.
+Copy startscript `installer/linux/init.d/mygeom*` to `/etc/init.d/` and change paths.
 
 Copy files to server
 ```
@@ -78,8 +78,8 @@ Set permissions and rights für `$APPDIR`
 
 Start backend via startscript
 ```
-/etc/init.d/myshp start
-/etc/init.d/myshp start-frontend
+/etc/init.d/mygeom start
+/etc/init.d/mygeom start-frontend
 ```
 
 - clear redis-cache [seen on](https://stackoverflow.com/questions/4006324/how-to-atomically-delete-keys-matching-a-pattern-using-redis)

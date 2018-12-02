@@ -1,9 +1,9 @@
-# credits for used libraries of MySimpleHomePage
+# credits for used libraries of MyGeoManager
 
-MySimpleHomePage is programmed in typescript and bases on angular5 on frontend-side and and express on server-site.
+MyGeoManager is programmed in typescript and bases on angular5 on frontend-side and and express on server-site.
 As datastore it supports Solr, MySql and Sqlite.
 
-MySimpleHomePage uses a bunch of libraries and tools. Many thanx to the people behind these projects. 
+MyGeoManager uses a bunch of libraries and tools. Many thanx to the people behind these projects. 
 
 ## frontend
 - web-framework

@@ -1,6 +1,6 @@
-# MySimpleHomePage
+# MyGeoManager
 
-MySimpleHomePage is a simple starter for your application.
+MyGeoManager is a simple starter for your application.
 
 For more information take a look at documentation:
 - [portalinfo](docs/INFO.md)
@@ -10,6 +10,6 @@ For more information take a look at documentation:
 - [usage instructions](docs/DATAIMPORT.md)
 - [credits for used libraries](docs/CREDITS.md)
 
-MySimpleHomePage bases on mytourbook-2.0.0.
+MyGeoManager bases on mytourbook-2.0.0.
 
-![Thats MySimpleHomePage)](docs/images/showpage-x400.png)
+![Thats MyGeoManager)](docs/images/showpage-x400.png)

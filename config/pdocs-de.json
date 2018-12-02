@@ -17,10 +17,10 @@
    "flgShowTopTen": false,
    "flgShowNews": false,
    "flgShowSearch": false,
-   "heading": "Thats MySimpleHomePage",
+   "heading": "Thats MyGeoManager",
    "name": "Willkommen",
    "subSectionIds": "skills,me",
-   "teaser": "Willkommen bei MySimpleHomePage",
+   "teaser": "Willkommen bei MyGeoManager",
    "type": "SectionOverviewPage"
   },
   {
