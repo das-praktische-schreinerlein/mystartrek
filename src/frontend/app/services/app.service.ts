@@ -7,6 +7,9 @@ import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
+import {GeoDocHttpAdapter} from "../../shared/gdoc-commons/services/gdoc-http.adapter";
+import {GeoDocDataStore} from "../../shared/gdoc-commons/services/gdoc-data.store";
+import {GeoDocDataService} from "../../shared/gdoc-commons/services/gdoc-data.service";
 
 @Injectable()
 export class AppService extends GenericAppService {
@@ -18,7 +21,8 @@ export class AppService extends GenericAppService {
         services: {}
     };
 
-    constructor(private pdocDataService: PDocDataService, @Inject(LOCALE_ID) private locale: string,
+    constructor(private gdocDataService: GeoDocDataService, private gdocDataStore: GeoDocDataStore,
+                private pdocDataService: PDocDataService, @Inject(LOCALE_ID) private locale: string,
                 private http: HttpClient, private commonRoutingService: CommonRoutingService,
                 private backendHttpClient: MinimalHttpBackendClient, private platformService: PlatformService) {
         super();
@@ -82,7 +86,12 @@ export class AppService extends GenericAppService {
                 return me.backendHttpClient.makeHttpRequest(httpConfig);
             }
         };
+        const gdocAdapter = new GeoDocHttpAdapter(options);
+
+        this.gdocDataStore.setAdapter('http', undefined, '', {});
         this.pdocDataService.clearLocalStore();
+        this.gdocDataService.clearLocalStore();
+        this.gdocDataStore.setAdapter('http', gdocAdapter, '', {});
 
         return new Promise<boolean>((resolve, reject) => {
             me.backendHttpClient.makeHttpRequest({ method: 'get', url: options.basePath + 'pdoc/', withCredentials: true })

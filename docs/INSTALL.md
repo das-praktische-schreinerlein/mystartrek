@@ -6,9 +6,19 @@
 - add symlinks
     - on windows in admin-console
 ```
-cd src\frontend\ && mklink /D shared ..\shared && cd ..\backend\ && mklink /D shared ..\shared  && cd ..\frontendserver\ && mklink /D shared ..\shared
+cd src\frontend\ && mklink /D shared ..\shared && cd ..\backend\ && mklink /D shared ..\shared  && mklink /D shared-node ..\shared-node && cd ..\frontendserver\ && mklink /D shared ..\shared && mklink /D shared-node ..\shared-node
 ```
 - run `npm install`
+- fix mytourbook/node_modules/@types/vis/index.d.ts
+```
+export class Graph3d {
+  constructor(container: HTMLElement,
+              items: any,
+              options?: any);
+
+  setCameraPosition(pos);
+}
+```
 - fix mytourbook/node_modules/js-data/dist/js-data.js defineMapper 
 ```
     descriptor.configurable = true;

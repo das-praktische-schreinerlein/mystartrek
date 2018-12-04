@@ -6,6 +6,9 @@ import {FirewallModule} from '@dps/mycms-server-commons/dist/server-commons/fire
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
 import {PDocDataServiceModule} from './modules/pdoc-dataservice.module';
 import {CacheConfig, DataCacheModule} from '@dps/mycms-server-commons/dist/server-commons/datacache.module';
+import {GeoDocDataServiceModule} from "./modules/gdoc-dataservice.module";
+import {GeoDocDataService} from "shared/gdoc-commons/services/gdoc-data.service";
+import {GeoDocServerModule} from "./modules/gdoc-server.module";
 
 export interface ServerConfig {
     apiDataPrefix: string;
@@ -27,6 +30,8 @@ export class ServerModuleLoader {
         DnsBLModule.configureDnsBL(app, serverConfig.firewallConfig, serverConfig.filePathErrorDocs);
 
         // configure dataservices
+        const gdocDataService: GeoDocDataService = GeoDocDataServiceModule.getDataService('gdocSolr',
+            serverConfig.backendConfig);
         const pdocDataServiceDE: PDocDataService = PDocDataServiceModule.getDataService('pdocSolrDE',
             serverConfig.backendConfig, 'de');
         const pdocDataServiceEN: PDocDataService = PDocDataServiceModule.getDataService('pdocSolrEN',
@@ -34,6 +39,8 @@ export class ServerModuleLoader {
         const cache: DataCacheModule = new DataCacheModule(serverConfig.backendConfig.cacheConfig);
 
         // add routes
+        const gdocServerModule = GeoDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, gdocDataService, cache,
+            serverConfig.backendConfig);
         PDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, pdocDataServiceDE, 'de');
         PDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, pdocDataServiceEN, 'en');
 

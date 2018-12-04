@@ -33,6 +33,16 @@ import {DynamicComponentService} from '@dps/mycms-frontend-commons/dist/angular-
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {CookieLawModule} from 'angular2-cookie-law';
 import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
+import {GeoDocModule} from "./gdoc/gdoc.module";
+import {GeoDocDynamicComponentService} from "./shared-gdoc/services/gdoc-dynamic-components.service";
+import {GeoDocDataService} from "../shared/gdoc-commons/services/gdoc-data.service";
+import {GeoDocDataStore, GeoDocTeamFilterConfig} from "../shared/gdoc-commons/services/gdoc-data.store";
+import {GeoDocAlbumService} from "./shared-gdoc/services/gdoc-album.service";
+import {GeoDocDataCacheService} from "./shared-gdoc/services/gdoc-datacache.service";
+import {GeoDocPlaylistService} from "./shared-gdoc/services/gdoc-playlist.service";
+import {GeoDocActionTagService} from "./shared-gdoc/services/gdoc-actiontag.service";
+import {GeoDocRoutingService} from "../shared/gdoc-commons/services/gdoc-routing.service";
+import {GeoDocActionTagsComponent} from "./shared-gdoc/components/gdoc-actiontags/gdoc-actiontags.component";
 
 registerLocaleData(localeDe);
 
@@ -53,7 +63,7 @@ export function getAngulartics2Providers(): any {
         NavbarComponent,
         ErrorPageComponent
     ],
-    entryComponents: [],
+    entryComponents: [GeoDocActionTagsComponent],
     imports: [
         HttpClientModule,
         NgbModule.forRoot(),
@@ -68,6 +78,7 @@ export function getAngulartics2Providers(): any {
         }),
         Angulartics2Module.forRoot(getAngulartics2Providers()),
         AngularCommonsModule,
+        GeoDocModule,
         SectionsModule,
         AppRoutingModule,
         CookieLawModule
@@ -77,8 +88,14 @@ export function getAngulartics2Providers(): any {
         CommonRoutingService,
         { provide: GenericAppService, useClass: AppService },
         DynamicComponentService,
+        GeoDocDynamicComponentService,
+        GeoDocTeamFilterConfig,
+        GeoDocDataStore,
+        GeoDocDataService,
         PDocDataStore,
+        GeoDocAlbumService,
         PDocDataService,
+        GeoDocDataCacheService,
         SearchFormUtils,
         { provide: GenericTrackingService, useClass: TrackingService },
         AngularHtmlService,
@@ -86,6 +103,9 @@ export function getAngulartics2Providers(): any {
         PageUtils,
         { provide: PlatformService, useClass: PlatformService},
         LayoutService,
+        GeoDocActionTagService,
+        GeoDocPlaylistService,
+        GeoDocRoutingService,
         CommonDocRoutingService
     ],
     bootstrap: [AppComponent]

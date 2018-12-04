@@ -14,6 +14,7 @@ export const environment: AppEnvironment = {
     emptyDefaultSearchTypes: '',
     useAssetStoreUrls: false,
     allowAutoPlay: false,
+    gdocMaxItemsPerAlbum: 2000,
     backendApiBaseUrl: 'http://localhost:4100/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [Angulartics2Piwik]

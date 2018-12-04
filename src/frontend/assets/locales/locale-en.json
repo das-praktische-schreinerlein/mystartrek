@@ -178,7 +178,7 @@
     "hrt_in": "in",
     "hrt_initial": "initial",
     "hrt_nearby": "nearby",
-    "hrt_actiontype": "with actions:",
+    "hrt_subtype": "with actions:",
     "hrt_when": "at time:",
     "hrt_keyword": "with keywords:",
     "hrt_fulltext": "contains:",

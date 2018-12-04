@@ -1,0 +1,103 @@
+<div *ngIf="listItem.currentRecord !== undefined" class="row gdoc-list-item-thin" [ngClass]="listItem.styleClassFor">
+    <a [name]="listItem.currentRecord.id"></a>
+    <ng-container *ngIf="layoutSize >= LayoutSize.BIG">
+        <!--- BIG -->
+        <div class="col-2 layout-big">
+            <div class="multiaction-checkbox" *ngIf="isMultiActionTagSelected()">
+                <input type="checkbox" [disabled]="isMultiActionAvailableForRecord()"
+                       [checked]="isMultiActionSelectedForRecord()"
+                       (click)="onChangeMultiActionForRecord($event)">
+            </div>
+            <ng-container *ngIf="listItem.currentRecord.geoDistance > 0"><app-gdoc-distance [record]="listItem.currentRecord"></app-gdoc-distance><br /></ng-container>
+            <ng-container [ngSwitch]="listItem.currentRecord.type">
+                <ng-container *ngSwitchCase="'IMAGE'">
+                    <ng-container *ngIf="listItem.image">
+                        <img class="picture-thumbnail" width="50px"
+                             [src]="listItem.thumbnailUrl"
+                             (click)="submitShowImage(listItem.currentRecord)"
+                             alt="{{listItem.image.name}}">
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngSwitchDefault="">
+                    {{listItem.currentRecord.type | translate }}<br />
+                    {{listItem.currentRecord.subtype | translate }}
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="col-6 layout-big">
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+        </div>
+        <div class="col-2 layout-big">
+            <app-gdoc-keywords [record]="listItem.currentRecord"></app-gdoc-keywords>
+        </div>
+        <div class="col-2 layout-big">
+            <app-gdoc-datatech [record]="listItem.currentRecord"></app-gdoc-datatech >
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="layoutSize === LayoutSize.SMALL">
+        <!--- SMALL -->
+        <div class="col-4 layout-small">
+            <div class="multiaction-checkbox" *ngIf="isMultiActionTagSelected()">
+                <input type="checkbox" [disabled]="isMultiActionAvailableForRecord()"
+                       [checked]="isMultiActionSelectedForRecord()"
+                       (click)="onChangeMultiActionForRecord($event)">
+            </div>
+            <ng-container *ngIf="listItem.currentRecord.geoDistance > 0"><app-gdoc-distance [record]="listItem.currentRecord"></app-gdoc-distance><br /></ng-container>
+            <ng-container [ngSwitch]="listItem.currentRecord.type">
+                <ng-container *ngSwitchCase="'IMAGE'">
+                    <ng-container *ngIf="listItem.image">
+                        <img class="picture-thumbnail" width="50px"
+                             [src]="listItem.thumbnailUrl"
+                             (click)="submitShowImage(listItem.currentRecord)"
+                             alt="{{listItem.image.name}}">
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngSwitchDefault="">
+                    {{listItem.currentRecord.type | translate }}<br />
+                    {{listItem.currentRecord.subtype | translate }}
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="col-4 layout-small">
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+            <app-gdoc-keywords [record]="listItem.currentRecord"></app-gdoc-keywords>
+        </div>
+        <div class="col-4 layout-small">
+            <app-gdoc-datatech [record]="listItem.currentRecord"></app-gdoc-datatech >
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="layoutSize <= LayoutSize.VERYSMALL">
+        <!--- VERYSMALL -->
+        <div class="col-4 layout-verysmall">
+            <div class="multiaction-checkbox" *ngIf="isMultiActionTagSelected()">
+                <input type="checkbox" [disabled]="isMultiActionAvailableForRecord()"
+                       [checked]="isMultiActionSelectedForRecord()"
+                       (click)="onChangeMultiActionForRecord($event)">
+            </div>
+            <ng-container *ngIf="listItem.currentRecord.geoDistance > 0"><app-gdoc-distance [record]="listItem.currentRecord"></app-gdoc-distance><br /></ng-container>
+            <ng-container [ngSwitch]="listItem.currentRecord.type">
+                <ng-container *ngSwitchCase="'IMAGE'">
+                    <ng-container *ngIf="listItem.image">
+                        <img class="picture-thumbnail" width="50px"
+                             [src]="listItem.thumbnailUrl"
+                             (click)="submitShowImage(listItem.currentRecord)"
+                             alt="{{listItem.image.name}}">
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngSwitchDefault="">
+                    {{listItem.currentRecord.type | translate }}<br />
+                    {{listItem.currentRecord.subtype | translate }}
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="col-4 layout-verysmall">
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+            <app-gdoc-keywords [record]="listItem.currentRecord"></app-gdoc-keywords>
+        </div>
+        <div class="col-4 layout-verysmall">
+            <app-gdoc-datatech [record]="listItem.currentRecord"></app-gdoc-datatech >
+        </div>
+    </ng-container>
+</div>
