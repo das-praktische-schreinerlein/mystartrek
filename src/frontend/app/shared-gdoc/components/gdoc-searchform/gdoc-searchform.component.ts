@@ -238,7 +238,7 @@ export class GeoDocSearchformComponent extends CommonDocSearchformComponent<GeoD
     }
 
     protected updateAvailabilityFlags(gdocSearchSearchResult: GeoDocSearchResult) {
-        this.showWhereAvailable = (this.optionsSelectWhere.length > 0);
+        this.showWhereAvailable = true || (this.optionsSelectWhere.length > 0);
         this.showWhenAvailable = (this.optionsSelectWhen.length > 0 || this.optionsSelectTechDataDuration.length > 0);
         this.showDetailsAvailable = (this.optionsSelectWhat.length > 0 ||
             this.optionsSelectTechDataDistance.length > 0 || this.optionsSelectTechDataAltitudeMax.length > 0 ||
