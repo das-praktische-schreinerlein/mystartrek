@@ -33,16 +33,16 @@ import {DynamicComponentService} from '@dps/mycms-frontend-commons/dist/angular-
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {CookieLawModule} from 'angular2-cookie-law';
 import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
-import {GeoDocModule} from "./gdoc/gdoc.module";
-import {GeoDocDynamicComponentService} from "./shared-gdoc/services/gdoc-dynamic-components.service";
-import {GeoDocDataService} from "../shared/gdoc-commons/services/gdoc-data.service";
-import {GeoDocDataStore, GeoDocTeamFilterConfig} from "../shared/gdoc-commons/services/gdoc-data.store";
-import {GeoDocAlbumService} from "./shared-gdoc/services/gdoc-album.service";
-import {GeoDocDataCacheService} from "./shared-gdoc/services/gdoc-datacache.service";
-import {GeoDocPlaylistService} from "./shared-gdoc/services/gdoc-playlist.service";
-import {GeoDocActionTagService} from "./shared-gdoc/services/gdoc-actiontag.service";
-import {GeoDocRoutingService} from "../shared/gdoc-commons/services/gdoc-routing.service";
-import {GeoDocActionTagsComponent} from "./shared-gdoc/components/gdoc-actiontags/gdoc-actiontags.component";
+import {StarDocModule} from "./sdoc/sdoc.module";
+import {StarDocDynamicComponentService} from "./shared-sdoc/services/sdoc-dynamic-components.service";
+import {StarDocDataService} from "../shared/sdoc-commons/services/sdoc-data.service";
+import {StarDocDataStore, StarDocTeamFilterConfig} from "../shared/sdoc-commons/services/sdoc-data.store";
+import {StarDocAlbumService} from "./shared-sdoc/services/sdoc-album.service";
+import {StarDocDataCacheService} from "./shared-sdoc/services/sdoc-datacache.service";
+import {StarDocPlaylistService} from "./shared-sdoc/services/sdoc-playlist.service";
+import {StarDocActionTagService} from "./shared-sdoc/services/sdoc-actiontag.service";
+import {StarDocRoutingService} from "../shared/sdoc-commons/services/sdoc-routing.service";
+import {StarDocActionTagsComponent} from "./shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component";
 
 registerLocaleData(localeDe);
 
@@ -63,7 +63,7 @@ export function getAngulartics2Providers(): any {
         NavbarComponent,
         ErrorPageComponent
     ],
-    entryComponents: [GeoDocActionTagsComponent],
+    entryComponents: [StarDocActionTagsComponent],
     imports: [
         HttpClientModule,
         NgbModule.forRoot(),
@@ -78,7 +78,7 @@ export function getAngulartics2Providers(): any {
         }),
         Angulartics2Module.forRoot(getAngulartics2Providers()),
         AngularCommonsModule,
-        GeoDocModule,
+        StarDocModule,
         SectionsModule,
         AppRoutingModule,
         CookieLawModule
@@ -88,14 +88,14 @@ export function getAngulartics2Providers(): any {
         CommonRoutingService,
         { provide: GenericAppService, useClass: AppService },
         DynamicComponentService,
-        GeoDocDynamicComponentService,
-        GeoDocTeamFilterConfig,
-        GeoDocDataStore,
-        GeoDocDataService,
+        StarDocDynamicComponentService,
+        StarDocTeamFilterConfig,
+        StarDocDataStore,
+        StarDocDataService,
         PDocDataStore,
-        GeoDocAlbumService,
+        StarDocAlbumService,
         PDocDataService,
-        GeoDocDataCacheService,
+        StarDocDataCacheService,
         SearchFormUtils,
         { provide: GenericTrackingService, useClass: TrackingService },
         AngularHtmlService,
@@ -103,9 +103,9 @@ export function getAngulartics2Providers(): any {
         PageUtils,
         { provide: PlatformService, useClass: PlatformService},
         LayoutService,
-        GeoDocActionTagService,
-        GeoDocPlaylistService,
-        GeoDocRoutingService,
+        StarDocActionTagService,
+        StarDocPlaylistService,
+        StarDocRoutingService,
         CommonDocRoutingService
     ],
     bootstrap: [AppComponent]

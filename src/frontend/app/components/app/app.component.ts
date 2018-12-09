@@ -20,7 +20,7 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable()
 export class AppComponent {
     showLoadingSpinner = true;
-    title = 'MyGeoManager';
+    title = 'MyStarTrek';
     showLaw = false;
     cookieLawSeenName = environment.cookieLawSeenName;
 

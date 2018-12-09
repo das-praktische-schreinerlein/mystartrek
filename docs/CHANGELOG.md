@@ -1,4 +1,4 @@
-# Changelog of MyGeoManager
+# Changelog of MyStarTrek
  
 # Versions
  

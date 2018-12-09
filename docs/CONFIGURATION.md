@@ -1,4 +1,4 @@
-# Configure MyGeoManager
+# Configure MyStarTrek
 
 ## Backend
 
@@ -59,14 +59,14 @@ Configure the content of the static section-pages.
  "pdocs": [
   {
    "id": "start",
-   "descMd": "Willkommen bei MyGeoM.",
+   "descMd": "Willkommen bei MyStarTrek.",
    "flgShowTopTen": true,
    "flgShowNews": true,
    "flgShowSearch": true,
-   "heading": "Thats MyGeoM",
+   "heading": "Thats MyStarTrek",
    "name": "Start",
    "subSectionIds": "schwerpunkt",
-   "teaser": "Willkommen bei MyGeoM",
+   "teaser": "Willkommen bei MyStarTrek",
    "type": "SectionOverviewPage"
   }
   ]
@@ -122,17 +122,17 @@ export const environment = {
 - brandname and descriptions
 ```json
 {
-    "nav.brand.appName": "MyGeoManager",
-    "meta.title.prefix.errorPage": "MyGeoManager - Oje ein Fehler",
-    "meta.title.prefix.sectionPage": "MyGeoManager - {{title}}",
-    "meta.title.prefix.cdocSearchPage": "MyGeoManager - Suche",
-    "meta.title.prefix.cdocShowPage": "MyGeoManager - {{cdoc}}",
-    "meta.title.prefix.cdocSectionSearchPage": "MyGeoManager - {{title}} - Suche",
-    "meta.title.prefix.cdocSectionShowPage": "MyGeoManager - {{title}} - {{cdoc}}",
-    "meta.desc.prefix.errorPage": "MyGeoManager - Oje ein Fehler ist aufgetreten",
-    "meta.desc.prefix.sectionPage": "MyGeoManager - {{title}} - {{teaser}}",
-    "meta.desc.prefix.cdocSearchPage": "MyGeoManager - Touren/Berichte/Regionen/Bilder/Infos",
-    "meta.desc.prefix.cdocShowPage": "MyGeoManager - Infos für {{cdoc}}",
-    "meta.desc.prefix.cdocSectionSearchPage": "MyGeoManager - Touren/Berichte/Regionen/Bilder/Infos zum Thema {{title}} - {{teaser}}",
-    "meta.desc.prefix.cdocSectionShowPage": "MyGeoManager - {{title}} - Infos für {{cdoc}}",
+    "nav.brand.appName": "MyStarTrek",
+    "meta.title.prefix.errorPage": "MyStarTrek - Oje ein Fehler",
+    "meta.title.prefix.sectionPage": "MyStarTrek - {{title}}",
+    "meta.title.prefix.cdocSearchPage": "MyStarTrek - Suche",
+    "meta.title.prefix.cdocShowPage": "MyStarTrek - {{cdoc}}",
+    "meta.title.prefix.cdocSectionSearchPage": "MyStarTrek - {{title}} - Suche",
+    "meta.title.prefix.cdocSectionShowPage": "MyStarTrek - {{title}} - {{cdoc}}",
+    "meta.desc.prefix.errorPage": "MyStarTrek - Oje ein Fehler ist aufgetreten",
+    "meta.desc.prefix.sectionPage": "MyStarTrek - {{title}} - {{teaser}}",
+    "meta.desc.prefix.cdocSearchPage": "MyStarTrek - Touren/Berichte/Regionen/Bilder/Infos",
+    "meta.desc.prefix.cdocShowPage": "MyStarTrek - Infos für {{cdoc}}",
+    "meta.desc.prefix.cdocSectionSearchPage": "MyStarTrek - Touren/Berichte/Regionen/Bilder/Infos zum Thema {{title}} - {{teaser}}",
+    "meta.desc.prefix.cdocSectionShowPage": "MyStarTrek - {{title}} - Infos für {{cdoc}}",
 ```

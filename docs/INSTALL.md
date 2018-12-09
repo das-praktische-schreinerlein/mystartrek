@@ -1,34 +1,9 @@
-# Install MyGeoManager
+# Install MyStarTrek
 
 ## prepare-dev
 
 ### prepare src-directory
-- add symlinks
-    - on windows in admin-console
-```
-cd src\frontend\ && mklink /D shared ..\shared && cd ..\backend\ && mklink /D shared ..\shared  && mklink /D shared-node ..\shared-node && cd ..\frontendserver\ && mklink /D shared ..\shared && mklink /D shared-node ..\shared-node
-```
-- run `npm install`
-- fix mytourbook/node_modules/@types/vis/index.d.ts
-```
-export class Graph3d {
-  constructor(container: HTMLElement,
-              items: any,
-              options?: any);
-
-  setCameraPosition(pos);
-}
-```
-- fix mytourbook/node_modules/js-data/dist/js-data.js defineMapper 
-```
-    descriptor.configurable = true;
-    Object.defineProperty(mapper.recordClass.prototype, localField, descriptor);
-```
-- node_modules\@angular\cli\models\webpack-configs\common.js for tests: resolve .js before .ts
-```
-            extensions: ['.js', '.ts'],
-``` 
-
+- run `npm prune && npm install`
 
 ## Development server
 Run `npm backend-build-serve` to build and start the backend. Navigate to `http://localhost:4100/api/v1/de/pdoc/` to get the pdocs.
@@ -48,11 +23,11 @@ Run `npm build-prod-de` or `npm build-prod-en` for the prod-versions in `dist/`.
 ## Deploy prod
 Stop backend via startscript
 ```
-/etc/init.d/mygeom start
-/etc/init.d/mygeom-frontend start
+/etc/init.d/mystarm start
+/etc/init.d/mystarm-frontend start
 ```
 
-Copy startscript `installer/linux/init.d/mygeom*` to `/etc/init.d/` and change paths.
+Copy startscript `installer/linux/init.d/mystarm*` to `/etc/init.d/` and change paths.
 
 Copy files to server
 ```
@@ -88,8 +63,8 @@ Set permissions and rights für `$APPDIR`
 
 Start backend via startscript
 ```
-/etc/init.d/mygeom start
-/etc/init.d/mygeom start-frontend
+/etc/init.d/mystarm start
+/etc/init.d/mystarm start-frontend
 ```
 
 - clear redis-cache [seen on](https://stackoverflow.com/questions/4006324/how-to-atomically-delete-keys-matching-a-pattern-using-redis)

@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
     "version": "1.0.0-beta.28.3",
-    "name": "mygeom"
+    "name": "mystarm"
   },
   "apps": [
     {
@@ -41,7 +41,9 @@
         "print.css",
         "print-overrides.css"
       ],
-      "scripts": [],
+      "scripts": ["../../node_modules/d3-celestial/lib/d3.min.js",
+                  "../../node_modules/d3-celestial/lib/d3.geo.zoom.js",
+                  "../../node_modules/d3-celestial/lib/d3.geo.projection.js"],
       "serviceWorker": "true",
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -85,7 +87,7 @@
         "print.css",
         "print-overrides.css"
       ],
-      "scripts": [],
+      "scripts": ["../../node_modules/d3-celestial/lib/d3.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "beta": "environments/environment.beta.ts",

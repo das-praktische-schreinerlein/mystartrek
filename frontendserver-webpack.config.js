@@ -18,20 +18,20 @@ let replacements = [];
 let distPath = '';
 if (profile === 'prod-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mygeom/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mygeom-server/de/'}
+        {search: 'DIST_PROFILE', replace: 'mystarm/de/'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarm-server/de/'}
     ];
     distPath = 'dist/frontendserver-de/';
 } else if (profile === 'beta-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mygeombeta/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mygeombeta-server/de/'}
+        {search: 'DIST_PROFILE', replace: 'mystarmbeta/de/'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmbeta-server/de/'}
     ];
     distPath = 'dist/frontendserver-beta-de/';
 } else if (profile === 'dev-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mygeomdev/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mygeomdev-server/de/'}
+        {search: 'DIST_PROFILE', replace: 'mystarmdev/de/'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmdev-server/de/'}
     ];
     distPath = 'dist/frontendserver-dev-de/';
 } else {

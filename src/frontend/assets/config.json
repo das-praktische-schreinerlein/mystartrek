@@ -1,6 +1,6 @@
 {
     "components": {
-        "gdoc-keywords": {
+        "sdoc-keywords": {
             "editPrefix": "",
             "possiblePrefixes": [""],
             "structuredKeywords": [
@@ -18,7 +18,7 @@
             ],
             "blacklist": ["OFFEN", "Mom", "Pa", "Micha"]
         },
-        "gdoc-actions": {
+        "sdoc-actions": {
             "actionTags": [
                 {
                     "key": "local_album_current",
@@ -44,7 +44,7 @@
                     ],
                     "configAvailability": [
                         {
-                            "property": "gdocMaxItemsPerAlbum",
+                            "property": "sdocMaxItemsPerAlbum",
                             "command": "GE",
                             "expectedValues": [10]
                         }
@@ -53,7 +53,7 @@
 
             ]
         },
-        "gdoc-multiactionheader": {
+        "sdoc-multiactionheader": {
             "actionTags": [
                 {
                     "key": "local_album_current",
@@ -82,7 +82,7 @@
                     ],
                     "configAvailability": [
                         {
-                            "property": "gdocMaxItemsPerAlbum",
+                            "property": "sdocMaxItemsPerAlbum",
                             "command": "GE",
                             "expectedValues": [10]
                         }
@@ -110,7 +110,7 @@
                     ],
                     "configAvailability": [
                         {
-                            "property": "gdocMaxItemsPerAlbum",
+                            "property": "sdocMaxItemsPerAlbum",
                             "command": "GE",
                             "expectedValues": [10]
                         }
@@ -118,14 +118,14 @@
                 }
             ]
         },
-        "gdoc-showpage": {
+        "sdoc-showpage": {
             "showBigImages": false,
             "allowedQueryParams": [],
             "availableTabs": {
                 "POI": true
             }
         },
-        "gdoc-albumpage": {
+        "sdoc-albumpage": {
             "allowAutoplay": false,
             "m3uAvailable": true
         },
@@ -141,7 +141,7 @@
     },
     "services": {
         "seo": {
-            "gdocIndexableTypes": [
+            "sdocIndexableTypes": [
                 "POI"
             ]
         },

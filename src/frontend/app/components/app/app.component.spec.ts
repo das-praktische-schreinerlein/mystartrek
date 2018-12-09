@@ -50,9 +50,9 @@ describe('AppComponent', () => {
         expect(app).toBeTruthy();
     }));
 
-    it(`should have as title 'MyGeoManager'`, async(() => {
+    it(`should have as title 'MyStarTrek'`, async(() => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('MyGeoManager');
+        expect(app.title).toEqual('MyStarTrek');
     }));
 });

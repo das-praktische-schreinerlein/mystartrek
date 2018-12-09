@@ -12,13 +12,13 @@ import {LogUtils} from '@dps/mycms-commons/dist/commons/utils/log.utils';
 
 export class AngularUniversalFrontendServerModule extends SimpleFrontendServerModule {
     public static configureDefaultServer(app: express.Application, config: ServerModuleConfig) {
-        const mygeomAngularModule = new AngularUniversalFrontendServerModule(app, config);
+        const mystarmAngularModule = new AngularUniversalFrontendServerModule(app, config);
         if (config.cacheMode === CacheModeType.USE_CACHE) {
-            mygeomAngularModule.configureGlobals();
-            mygeomAngularModule.configureViewEngine();
+            mystarmAngularModule.configureGlobals();
+            mystarmAngularModule.configureViewEngine();
         }
-        mygeomAngularModule.configureStaticFileRoutes();
-        mygeomAngularModule.configureServerRoutes();
+        mystarmAngularModule.configureStaticFileRoutes();
+        mystarmAngularModule.configureServerRoutes();
     }
 
     public constructor(protected app: express.Application, protected config: ServerModuleConfig) {
@@ -32,7 +32,7 @@ export class AngularUniversalFrontendServerModule extends SimpleFrontendServerMo
         const domino = require('domino');
         const win = domino.createWindow(template);
         global['window'] = win;
-        Object.defineProperty(win.document, 'referrer', {get : function(){ return 'https://www.mygeom.de'; }});
+        Object.defineProperty(win.document, 'referrer', {get : function(){ return 'https://www.mystarm.de'; }});
         global['document'] = win.document;
         global['navigator'] = { userAgent: 'chrome', product: 'ReactNative', platform: 'Win'};
         global['window']['devicePixelRatio'] = 1;

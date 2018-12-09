@@ -6,9 +6,9 @@ import {FirewallModule} from '@dps/mycms-server-commons/dist/server-commons/fire
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
 import {PDocDataServiceModule} from './modules/pdoc-dataservice.module';
 import {CacheConfig, DataCacheModule} from '@dps/mycms-server-commons/dist/server-commons/datacache.module';
-import {GeoDocDataServiceModule} from "./modules/gdoc-dataservice.module";
-import {GeoDocDataService} from "shared/gdoc-commons/services/gdoc-data.service";
-import {GeoDocServerModule} from "./modules/gdoc-server.module";
+import {StarDocDataServiceModule} from "./modules/sdoc-dataservice.module";
+import {StarDocDataService} from "shared/sdoc-commons/services/sdoc-data.service";
+import {StarDocServerModule} from "./modules/sdoc-server.module";
 
 export interface ServerConfig {
     apiDataPrefix: string;
@@ -30,7 +30,7 @@ export class ServerModuleLoader {
         DnsBLModule.configureDnsBL(app, serverConfig.firewallConfig, serverConfig.filePathErrorDocs);
 
         // configure dataservices
-        const gdocDataService: GeoDocDataService = GeoDocDataServiceModule.getDataService('gdocSolr',
+        const sdocDataService: StarDocDataService = StarDocDataServiceModule.getDataService('sdocSolr',
             serverConfig.backendConfig);
         const pdocDataServiceDE: PDocDataService = PDocDataServiceModule.getDataService('pdocSolrDE',
             serverConfig.backendConfig, 'de');
@@ -39,7 +39,7 @@ export class ServerModuleLoader {
         const cache: DataCacheModule = new DataCacheModule(serverConfig.backendConfig.cacheConfig);
 
         // add routes
-        const gdocServerModule = GeoDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, gdocDataService, cache,
+        const sdocServerModule = StarDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, sdocDataService, cache,
             serverConfig.backendConfig);
         PDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, pdocDataServiceDE, 'de');
         PDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, pdocDataServiceEN, 'en');

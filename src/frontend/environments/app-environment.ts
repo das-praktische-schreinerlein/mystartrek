@@ -3,5 +3,5 @@ import {CommonEnvironment} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-
 export interface AppEnvironment extends CommonEnvironment {
     assetsPathVersionSnippet: string;
     assetsPathVersionSuffix: string;
-    gdocMaxItemsPerAlbum: number;
+    sdocMaxItemsPerAlbum: number;
 }

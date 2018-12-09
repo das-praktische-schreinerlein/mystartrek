@@ -1,9 +1,9 @@
-# credits for used libraries of MyGeoManager
+# credits for used libraries of MyStarTrek
 
-MyGeoManager is programmed in typescript and bases on angular5 on frontend-side and and express on server-site.
+MyStarTrek is programmed in typescript and bases on angular5 on frontend-side and and express on server-site.
 As datastore it supports Solr, MySql and Sqlite.
 
-MyGeoManager uses a bunch of libraries and tools. Many thanx to the people behind these projects. 
+MyStarTrek uses a bunch of libraries and tools. Many thanx to the people behind these projects. 
 
 ## frontend
 - web-framework

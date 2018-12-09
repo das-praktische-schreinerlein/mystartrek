@@ -7,9 +7,9 @@ import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
-import {GeoDocHttpAdapter} from "../../shared/gdoc-commons/services/gdoc-http.adapter";
-import {GeoDocDataStore} from "../../shared/gdoc-commons/services/gdoc-data.store";
-import {GeoDocDataService} from "../../shared/gdoc-commons/services/gdoc-data.service";
+import {StarDocHttpAdapter} from "../../shared/sdoc-commons/services/sdoc-http.adapter";
+import {StarDocDataStore} from "../../shared/sdoc-commons/services/sdoc-data.store";
+import {StarDocDataService} from "../../shared/sdoc-commons/services/sdoc-data.service";
 
 @Injectable()
 export class AppService extends GenericAppService {
@@ -21,7 +21,7 @@ export class AppService extends GenericAppService {
         services: {}
     };
 
-    constructor(private gdocDataService: GeoDocDataService, private gdocDataStore: GeoDocDataStore,
+    constructor(private sdocDataService: StarDocDataService, private sdocDataStore: StarDocDataStore,
                 private pdocDataService: PDocDataService, @Inject(LOCALE_ID) private locale: string,
                 private http: HttpClient, private commonRoutingService: CommonRoutingService,
                 private backendHttpClient: MinimalHttpBackendClient, private platformService: PlatformService) {
@@ -86,12 +86,12 @@ export class AppService extends GenericAppService {
                 return me.backendHttpClient.makeHttpRequest(httpConfig);
             }
         };
-        const gdocAdapter = new GeoDocHttpAdapter(options);
+        const sdocAdapter = new StarDocHttpAdapter(options);
 
-        this.gdocDataStore.setAdapter('http', undefined, '', {});
+        this.sdocDataStore.setAdapter('http', undefined, '', {});
         this.pdocDataService.clearLocalStore();
-        this.gdocDataService.clearLocalStore();
-        this.gdocDataStore.setAdapter('http', gdocAdapter, '', {});
+        this.sdocDataService.clearLocalStore();
+        this.sdocDataStore.setAdapter('http', sdocAdapter, '', {});
 
         return new Promise<boolean>((resolve, reject) => {
             me.backendHttpClient.makeHttpRequest({ method: 'get', url: options.basePath + 'pdoc/', withCredentials: true })

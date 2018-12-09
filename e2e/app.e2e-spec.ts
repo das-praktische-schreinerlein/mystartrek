@@ -1,10 +1,10 @@
-import { MyGeoManagerPage } from './app.po';
+import { MyStarTrekPage } from './app.po';
 
 describe('image-import-editor-app App', function() {
-  let page: MyGeoManagerPage;
+  let page: MyStarTrekPage;
 
   beforeEach(() => {
-    page = new MyGeoManagerPage();
+    page = new MyStarTrekPage();
   });
 
   it('should display message saying app works', () => {

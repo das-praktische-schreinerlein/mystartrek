@@ -1,15 +1,15 @@
 {
     "filePathPDocJson": "config/pdocs.json",
     "filePathThemeFilterJson": "config/themeFilterConfig.json",
-    "gdocDataStoreAdapter": "GeoDocSolrAdapter",
-    "gdocWritable": true,
-    "GeoDocItemsJsAdapter": {
-        "dataFile": "D:/tmp/test/mygeo.json"
+    "sdocDataStoreAdapter": "StarDocSolrAdapter",
+    "sdocWritable": true,
+    "StarDocItemsJsAdapter": {
+        "dataFile": "D:/tmp/test/mystartrek.json"
     },
-    "GeoDocSolrAdapter": {
-        "solrCoreGeoDoc": "http://localhost:8983/solr/mygeodev/",
-        "solrCoreGeoDocReadUsername": "mytbread",
-        "solrCoreGeoDocReadPassword": "SolrRocks"
+    "StarDocSolrAdapter": {
+        "solrCoreStarDoc": "http://localhost:8983/solr/mystartrekdev/",
+        "solrCoreStarDocReadUsername": "mytbread",
+        "solrCoreStarDocReadPassword": "SolrRocks"
     },
     "mapperConfig": {
         "allowedKeywordPatterns": [".*"],
