@@ -51,3 +51,4 @@ Thumbs.db
 /cache/
 /package-lock.json
 /docs/data2.ods
+!/package-lock.json
