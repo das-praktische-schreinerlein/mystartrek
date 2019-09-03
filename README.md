@@ -11,5 +11,3 @@ For more information take a look at documentation:
 - [credits for used libraries](docs/CREDITS.md)
 
 MyStarTrek bases on mytourbook-2.0.0.
-
-![Thats MyStarTrek)](docs/images/showpage-x400.png)
