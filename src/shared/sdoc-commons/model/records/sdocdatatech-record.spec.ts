@@ -7,8 +7,8 @@ describe('StarDocDataTechRecord', () => {
 
     it('should accept values in the constructor', () => {
         const sdoc = new StarDocDataTechRecord({
-            dist: 5.0
+            dur: 5.0
         });
-        expect(sdoc.dist).toEqual(5.0);
+        expect(sdoc.dur).toEqual(5.0);
     });
 });
