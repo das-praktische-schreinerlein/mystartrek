@@ -10,4 +10,4 @@ For more information take a look at documentation:
 - [usage instructions](docs/DATAIMPORT.md)
 - [credits for used libraries](docs/CREDITS.md)
 
-MyStarTrek bases on mytourbook-2.0.0.
+MyStarTrek bases on myshp-1.0.0.

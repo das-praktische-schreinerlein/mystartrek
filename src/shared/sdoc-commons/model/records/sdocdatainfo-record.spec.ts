@@ -7,8 +7,8 @@ describe('StarDocDataInfoRecord', () => {
 
     it('should accept values in the constructor', () => {
         const sdoc = new StarDocDataInfoRecord({
-            region: 'Dolomiten'
+            guides: 'Dolomiten'
         });
-        expect(sdoc.region).toEqual('Dolomiten');
+        expect(sdoc.guides).toEqual('Dolomiten');
     });
 });

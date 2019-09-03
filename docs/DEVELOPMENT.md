@@ -1,4 +1,4 @@
-# Develop MySimpleHomepage
+# Develop MyStartTreke
 
 ## Development server
 Run initially to copy overrides into project
