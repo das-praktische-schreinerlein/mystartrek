@@ -1,4 +1,4 @@
-# Develop MyStartTreke
+# Develop MyStartTrek
 
 ## prepare
 
@@ -8,7 +8,7 @@
 #!/usr/bin/env bash
 
 WORKSPACE="/cygdrive/f/Projekte/"
-MYCMSPROJECT="mysimplehomepage"
+MYCMSPROJECT="mystartrek"
 ```
 
 ## Development server

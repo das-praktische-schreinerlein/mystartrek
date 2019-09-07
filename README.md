@@ -1,6 +1,6 @@
 # MyStarTrek
 
-MyStarTrek is a simple starter for your application.
+MyStarTrek is a portal to visualize stars in a planetarium.
 
 For more information take a look at documentation:
 - [portalinfo](docs/INFO.md)
@@ -10,4 +10,6 @@ For more information take a look at documentation:
 - [usage instructions](docs/DATAIMPORT.md)
 - [credits for used libraries](docs/CREDITS.md)
 
-MyStarTrek bases on myshp-1.0.0.
+MyStarTrek bases on mysimplehomepage-1.0.0.
+
+![searchpage](images/searchpage-x400.png)

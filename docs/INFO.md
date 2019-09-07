@@ -1,6 +1,5 @@
 # What is MyStarTrek
 
-MyStarTrek is a portal with a bunch of different page types and features:
+MyStarTrek is a portal to visualize stars in a planetarium.
 
-- starting with sectionpage for different content-sections as Startpage .... ![startpage](images/startpage-x400.png)
-- sectionlists to order the sections and give an overview
+- starting with a searchpage to show as planetarium .... ![searchpage](images/searchpage-x400.png)
