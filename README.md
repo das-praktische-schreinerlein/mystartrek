@@ -12,4 +12,4 @@ For more information take a look at documentation:
 
 MyStarTrek bases on mysimplehomepage-1.0.0.
 
-![searchpage](images/searchpage-x400.png)
+![searchpage](docs/images/searchpage-x400.png)
