@@ -17,6 +17,22 @@
 - frontend: migrate to angular6
 
 
+## 1.1.0
+- improved build
+
+### new features
+- none
+ 
+### improvements
+- bumped up deps
+ 
+### bug fixes
+- fixed build-process
+ 
+### breaking changes
+- none
+
+
 ## 1.0.0
 - initial version based on mytourbook-2.0.0
 
