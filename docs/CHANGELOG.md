@@ -18,14 +18,15 @@
 
 
 ## 1.1.0
-- improved build
+- improved build-process - activated tests+coverage
 
 ### new features
 - none
  
 ### improvements
 - bumped up deps
- 
+- development: improved build-process - activated tests+coverage
+
 ### bug fixes
 - fixed build-process
  
