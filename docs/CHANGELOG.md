@@ -19,6 +19,7 @@
 
 ## 1.1.0
 - improved build-process - activated tests+coverage
+- bumped up deps
 
 ### new features
 - none
