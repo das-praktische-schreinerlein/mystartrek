@@ -17,6 +17,22 @@
 - frontend: migrate to angular6
 
 
+## 1.2.0
+- none
+
+### new features
+- none
+ 
+### improvements
+- none
+
+### bug fixes
+- none
+ 
+### breaking changes
+- none
+
+
 ## 1.1.0
 - improved build-process - activated tests+coverage
 - bumped up deps
