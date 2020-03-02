@@ -4,8 +4,7 @@ import {StarDocDynamicComponentService} from '../../services/sdoc-dynamic-compon
 import {StarDocDataService} from '../../../../shared/sdoc-commons/services/sdoc-data.service';
 import {ToastrService} from 'ngx-toastr';
 import {
-    CommonDocActionsComponent,
-    CommonDocActionsComponentConfig
+    CommonDocActionsComponent
 } from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/components/cdoc-actions/cdoc-actions.component';
 import {StarDocSearchForm} from '../../../../shared/sdoc-commons/model/forms/sdoc-searchform';
 import {StarDocSearchResult} from '../../../../shared/sdoc-commons/model/container/sdoc-searchresult';
@@ -25,11 +24,4 @@ export class StarDocActionsComponent extends CommonDocActionsComponent<StarDocRe
                 protected actionTagService: StarDocActionTagService) {
         super(dynamicComponentService, toastr, cd, appService, actionTagService);
     }
-
-    protected getComponentConfig(config: {}): CommonDocActionsComponentConfig {
-        return {
-            baseEditPath: 'sdocadmin'
-        };
-    }
-
 }
