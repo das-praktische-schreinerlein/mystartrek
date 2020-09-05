@@ -27,6 +27,7 @@
  
 ### improvements
 - bumped up deps to the newest running versions
+- removed unused components
 
 ### bug fixes
 - frontend: IE now functional
