@@ -85,6 +85,7 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
         return {
             baseSearchUrl: ['sdoc'].join('/'),
             baseSearchUrlDefault: ['sdoc'].join('/'),
+            availableCreateActionTypes: [],
             maxAllowedM3UExportItems: BeanUtils.getValue(config, 'services.serverItemExport.maxAllowedM3UItems')
         };
     }

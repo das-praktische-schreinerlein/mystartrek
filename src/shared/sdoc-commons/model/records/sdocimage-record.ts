@@ -3,6 +3,7 @@ import {
     BaseImageRecordFactory,
     BaseImageRecordValidator
 } from '@dps/mycms-commons/dist/search-commons/model/records/baseimage-record';
+import {BaseEntityRecordRelationsType} from "@dps/mycms-commons/dist/search-commons/model/records/base-entity-record";
 
 export class StarDocImageRecord extends BaseImageRecord {
     sdoc_id: string;
@@ -39,13 +40,14 @@ export class StarDocImageRecordValidator extends BaseImageRecordValidator {
     public static instance = new StarDocImageRecordValidator();
 }
 
-export let StarDocImageRecordRelation: any = {
+export let StarDocImageRecordRelation: BaseEntityRecordRelationsType = {
     belongsTo: {
         sdoc: {
             // database column
             foreignKey: 'sdoc_id',
             // reference to related object in memory
-            localField: 'sdoc'
+            localField: 'sdoc',
+            mapperKey: 'sdoc'
         }
     }
 };

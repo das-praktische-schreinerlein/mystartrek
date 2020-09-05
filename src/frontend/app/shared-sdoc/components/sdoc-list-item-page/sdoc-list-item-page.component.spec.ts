@@ -14,7 +14,6 @@ import {RouterStub} from '@dps/mycms-frontend-commons/dist/angular-commons/testi
 import {StarDocDateFormatPipe} from '../../pipes/sdoc-dateformat.pipe';
 import {DatePipe} from '@angular/common';
 import {AngularHtmlService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/angular-html.service';
-import {MarkdownService} from 'angular2-markdown';
 import {AngularMarkdownService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/angular-markdown.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {HttpClientModule} from '@angular/common/http';
@@ -23,6 +22,7 @@ import {StarDocSearchFormConverter} from '../../services/sdoc-searchform-convert
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
+import {NgxMdModule, NgxMdService} from "ngx-md";
 
 describe('StarDocListItemPageComponent', () => {
     let component: StarDocListItemPageComponent;
@@ -41,7 +41,7 @@ describe('StarDocListItemPageComponent', () => {
                 CommonDocRoutingService,
                 SearchFormUtils,
                 StarDocContentUtils,
-                MarkdownService,
+                NgxMdService,
                 AngularMarkdownService,
                 AngularHtmlService,
                 DatePipe,
@@ -50,6 +50,7 @@ describe('StarDocListItemPageComponent', () => {
             schemas: [NO_ERRORS_SCHEMA],
             imports: [NgbModule.forRoot(),
                 TranslateModule.forRoot(),
+                NgxMdModule.forRoot(),
                 HttpClientModule]
         })
             .compileComponents();

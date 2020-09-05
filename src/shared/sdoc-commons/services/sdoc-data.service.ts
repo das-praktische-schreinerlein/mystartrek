@@ -4,10 +4,6 @@ import {StarDocSearchService} from './sdoc-search.service';
 import {StarDocImageRecord, StarDocImageRecordRelation} from '../model/records/sdocimage-record';
 import {StarDocImageRecordSchema} from '../model/schemas/sdocimage-record-schema';
 import {StarDocRecordSchema} from '../model/schemas/sdoc-record-schema';
-import {StarDocDataTechRecordSchema} from '../model/schemas/sdocdatatech-record-schema';
-import {StarDocDataTechRecord, StarDocDataTechRecordRelation} from '../model/records/sdocdatatech-record';
-import {StarDocDataInfoRecord, StarDocDataInfoRecordRelation} from '../model/records/sdocdatainfo-record';
-import {StarDocDataInfoRecordSchema} from '../model/schemas/sdocdatainfo-record-schema';
 import {StarDocAdapterResponseMapper} from './sdoc-adapter-response.mapper';
 import {ActionTagForm} from '@dps/mycms-commons/dist/commons/utils/actiontag.utils';
 import {StarDocSearchForm} from '../model/forms/sdoc-searchform';
@@ -31,8 +27,6 @@ export class StarDocDataService extends CommonDocDataService<StarDocRecord, Star
 
     protected defineDatastoreMapper(): void {
         this.dataStore.defineMapper('sdoc', StarDocRecord, StarDocRecordSchema, StarDocRecordRelation);
-        this.dataStore.defineMapper('sdocdatatech', StarDocDataTechRecord, StarDocDataTechRecordSchema, StarDocDataTechRecordRelation);
-        this.dataStore.defineMapper('sdocdatainfo', StarDocDataInfoRecord, StarDocDataInfoRecordSchema, StarDocDataInfoRecordRelation);
         this.dataStore.defineMapper('sdocimage', StarDocImageRecord, StarDocImageRecordSchema, StarDocImageRecordRelation);
     }
 

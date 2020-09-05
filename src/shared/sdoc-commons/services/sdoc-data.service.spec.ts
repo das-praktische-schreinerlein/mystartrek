@@ -1,10 +1,8 @@
 /* tslint:disable:no-unused-variable */
+import {forkJoin, from} from 'rxjs';
 import {StarDocRecord} from '../model/records/sdoc-record';
 import {StarDocDataService} from './sdoc-data.service';
-import {Observable} from 'rxjs/Observable';
 import {StarDocDataStore, StarDocTeamFilterConfig} from './sdoc-data.store';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/observable/forkJoin';
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 
 describe('StarDocDataService', () => {
@@ -29,7 +27,7 @@ describe('StarDocDataService', () => {
     describe('#getAll()', () => {
         it('should return an empty array by default', done => {
             // WHEN
-            Observable.fromPromise(service.getAll()).subscribe(
+            from(service.getAll()).subscribe(
                 sdocs => {
                     // THEN
                     expect(sdocs).toEqual([]);
@@ -47,7 +45,7 @@ describe('StarDocDataService', () => {
 
         it('should return all sdocs', done => {
             // GIVEN
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getAll()
             ).subscribe(
@@ -72,7 +70,7 @@ describe('StarDocDataService', () => {
 
         it('should automatically assign an incrementing id', done => {
             // GIVEN
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getById('1'),
                 service.getById('2')
@@ -100,7 +98,7 @@ describe('StarDocDataService', () => {
     describe('#deleteById(id)', () => {
 
         it('should remove record with the corresponding id', done => {
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getAll(),
                 service.deleteById('1'),
@@ -130,7 +128,7 @@ describe('StarDocDataService', () => {
         });
 
         it('should not removing anything if record with corresponding id is not found', done => {
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getAll(),
                 service.deleteById('3'),
@@ -159,7 +157,7 @@ describe('StarDocDataService', () => {
     describe('#updateById(id, values)', () => {
 
         it('should return record with the corresponding id and updated data', done => {
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getAll(),
                 service.updateById('1', {
@@ -187,7 +185,7 @@ describe('StarDocDataService', () => {
         });
 
         it('should return null if record is not found', done => {
-            Observable.forkJoin(
+            forkJoin(
                 service.addMany([sdoc1, sdoc2]),
                 service.getAll(),
                 service.updateById('26', {

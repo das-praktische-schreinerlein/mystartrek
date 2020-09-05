@@ -1,20 +1,16 @@
 import {
     BaseEntityRecord,
     BaseEntityRecordFieldConfig,
+    BaseEntityRecordRelationsType,
     BaseEntityRecordType
 } from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
 import {
-    DateValidationRule,
     DbIdValidationRule,
-    FilenameValidationRule,
     GenericValidatorDatatypes,
     GeoLocValidationRule,
-    GpsTrackValidationRule,
-    HierarchyValidationRule,
-    IdCsvValidationRule, NameValidationRule,
+    NameValidationRule,
     NumberValidationRule,
-    StringNumberValidationRule,
-    TextValidationRule
+    StringNumberValidationRule
 } from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
 import {isArray} from 'util';
 import {
@@ -22,8 +18,6 @@ import {
     CommonDocRecordFactory,
     CommonDocRecordValidator
 } from '@dps/mycms-commons/dist/search-commons/model/records/cdoc-entity-record';
-import {StarDocDataTechRecord, StarDocDataTechRecordFactory, StarDocDataTechRecordValidator} from './sdocdatatech-record';
-import {StarDocDataInfoRecord, StarDocDataInfoRecordFactory, StarDocDataInfoRecordValidator} from './sdocdatainfo-record';
 import {StarDocImageRecord, StarDocImageRecordFactory, StarDocImageRecordValidator} from './sdocimage-record';
 
 export interface StarDocRecordType extends BaseEntityRecordType {
@@ -42,9 +36,34 @@ export interface StarDocRecordType extends BaseEntityRecordType {
     dimension: string;
 }
 
+export let StarDocRecordRelation: BaseEntityRecordRelationsType = {
+    hasOne: {
+    },
+    hasMany: {
+        sdocimage: {
+            // database column
+            foreignKey: 'sdoc_id',
+            // reference to related objects in memory
+            localField: 'sdocimages',
+            mapperKey: 'sdocimage',
+            factory: StarDocImageRecordFactory.instance,
+            validator: StarDocImageRecordValidator.instance
+        }
+    }
+};
+
 export class StarDocRecord extends CommonDocRecord implements StarDocRecordType {
-    static sdocRelationNames = ['sdocdatatech', 'sdocdatainfo', 'sdocimages'];
-    static sdocValidationRelationNames = ['sdocdatatech', 'sdocdatainfo'];
+    static sdocRelationNames = []
+        .concat(StarDocRecordRelation.hasOne ? Object.keys(StarDocRecordRelation.hasOne).map(key => {
+            return StarDocRecordRelation.hasOne[key].localField;
+        }) : [])
+        .concat(StarDocRecordRelation.hasMany ? Object.keys(StarDocRecordRelation.hasMany).map(key => {
+            return StarDocRecordRelation.hasMany[key].localField;
+        }) : []);
+    static sdocValidationRelationNames = []
+        .concat(StarDocRecordRelation.hasOne ? Object.keys(StarDocRecordRelation.hasOne).map(key => {
+            return StarDocRecordRelation.hasOne[key].localField;
+        }) : []);
     static sdocFields = {
         locId: new BaseEntityRecordFieldConfig(GenericValidatorDatatypes.ID, new DbIdValidationRule(false)),
         locIdParent: new BaseEntityRecordFieldConfig(GenericValidatorDatatypes.ID, new DbIdValidationRule(false)),
@@ -118,31 +137,6 @@ export class StarDocRecord extends CommonDocRecord implements StarDocRecordType 
     }
 }
 
-export let StarDocRecordRelation: any = {
-    hasOne: {
-        sdocdatatech: {
-            // database column
-            foreignKey: 'sdoc_id',
-            // reference to related objects in memory
-            localField: 'sdocdatatech'
-        },
-        sdocdatainfo: {
-            // database column
-            foreignKey: 'sdoc_id',
-            // reference to related objects in memory
-            localField: 'sdocdatainfo'
-        }
-    },
-    hasMany: {
-        sdocimage: {
-            // database column
-            foreignKey: 'sdoc_id',
-            // reference to related objects in memory
-            localField: 'sdocimages'
-        }
-    }
-};
-
 export class StarDocRecordFactory extends CommonDocRecordFactory {
     public static instance = new StarDocRecordFactory();
 
@@ -164,10 +158,6 @@ export class StarDocRecordFactory extends CommonDocRecordFactory {
 
     getSanitizedRelationValues(relation: string, values: {}): {} {
         switch (relation) {
-            case 'sdocdatatech':
-                return StarDocDataTechRecordFactory.instance.getSanitizedValues(values, {});
-            case 'sdocdatainfo':
-                return StarDocDataInfoRecordFactory.instance.getSanitizedValues(values, {});
             case 'sdocimages':
                 return StarDocImageRecordFactory.instance.getSanitizedValues(values, {});
             default:
@@ -204,10 +194,6 @@ export class StarDocRecordValidator extends CommonDocRecordValidator {
 
     protected validateRelationDoc(relation: string, doc: BaseEntityRecord, errFieldPrefix?: string): string[] {
         switch (relation) {
-            case 'sdocdatatech':
-                return StarDocDataTechRecordValidator.instance.validate(<StarDocDataTechRecord>doc, errFieldPrefix);
-            case 'sdocdatainfo':
-                return StarDocDataInfoRecordValidator.instance.validate(<StarDocDataInfoRecord>doc, errFieldPrefix);
             case 'sdocimages':
                 return StarDocImageRecordValidator.instance.validate(<StarDocImageRecord>doc, errFieldPrefix);
             default:
@@ -217,10 +203,6 @@ export class StarDocRecordValidator extends CommonDocRecordValidator {
 
     protected validateValueRelationDoc(relation: string, values: {}, fieldPrefix?: string, errFieldPrefix?: string): string[] {
         switch (relation) {
-            case 'sdocdatatech':
-                return StarDocDataTechRecordValidator.instance.validateValues(values, fieldPrefix, errFieldPrefix);
-            case 'sdocdatainfo':
-                return StarDocDataInfoRecordValidator.instance.validateValues(values, fieldPrefix, errFieldPrefix);
             case 'sdocimages':
                 return StarDocImageRecordValidator.instance.validateValues(values, fieldPrefix, errFieldPrefix);
             default:

@@ -17,8 +17,6 @@ import {LightboxModule} from 'ngx-lightbox';
 import {StarDocProfileMapComponent} from './components/sdoc-profilemap/sdoc-profilemap.component';
 import {StarDocMapComponent} from './components/sdoc-map/sdoc-map.component';
 import {StarDocLinkedLocHierarchyComponent} from './components/sdoc-linked-loc-hierarchy/sdoc-linked-loc-hierarchy.component';
-import {StarDocDataTechComponent} from './components/sdoc-datatech/sdoc-datatech.component';
-import {StarDocDataInfoComponent} from './components/sdoc-datainfo/sdoc-datainfo.component';
 import {StarDocDistanceComponent} from './components/sdoc-distance/sdoc-distance.component';
 import {StarDocDateFormatPipe} from './pipes/sdoc-dateformat.pipe';
 import {DatePipe} from '@angular/common';
@@ -48,8 +46,6 @@ import {StarDocListItemThinComponent} from "./components/sdoc-list-item-thin/sdo
         StarDocProfileMapComponent,
         StarDocInlineSearchpageComponent,
         StarDocLinkedLocHierarchyComponent,
-        StarDocDataTechComponent,
-        StarDocDataInfoComponent,
         StarDocDataMetaComponent,
         StarDocDistanceComponent,
         StarDocDateFormatPipe,
@@ -90,8 +86,6 @@ import {StarDocListItemThinComponent} from "./components/sdoc-list-item-thin/sdo
         StarDocProfileMapComponent,
         StarDocInlineSearchpageComponent,
         StarDocLinkedLocHierarchyComponent,
-        StarDocDataTechComponent,
-        StarDocDataInfoComponent,
         StarDocDataMetaComponent,
         StarDocDistanceComponent,
         StarDocDateFormatPipe,

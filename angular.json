@@ -38,7 +38,11 @@
                             "src/frontend/print.css",
                             "src/frontend/print-overrides.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/d3-celestial/lib/d3.min.js",
+                            "node_modules/d3-celestial/lib/d3.geo.zoom.js",
+                            "node_modules/d3-celestial/lib/d3.geo.projection.js"
+                        ]
                     },
                     "configurations": {
                         "de": {
@@ -201,7 +205,11 @@
                         "karmaConfig": "./frontend-karma.conf.js",
                         "polyfills": "src/frontend/polyfills.ts",
                         "tsConfig": "src/frontend/tsconfig.spec.json",
-                        "scripts": [],
+                        "scripts": [
+                            "node_modules/d3-celestial/lib/d3.min.js",
+                            "node_modules/d3-celestial/lib/d3.geo.zoom.js",
+                            "node_modules/d3-celestial/lib/d3.geo.projection.js"
+                        ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/ngx-toastr/toastr.css",

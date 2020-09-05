@@ -27,11 +27,8 @@
         <div class="col-6 layout-big">
             <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
         </div>
-        <div class="col-2 layout-big">
+        <div class="col-4 layout-big">
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
-        </div>
-        <div class="col-2 layout-big">
-            <app-sdoc-datatech [record]="listItem.currentRecord"></app-sdoc-datatech >
         </div>
     </ng-container>
 
@@ -63,9 +60,6 @@
             <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
         </div>
-        <div class="col-4 layout-small">
-            <app-sdoc-datatech [record]="listItem.currentRecord"></app-sdoc-datatech >
-        </div>
     </ng-container>
 
     <ng-container *ngIf="layoutSize <= LayoutSize.VERYSMALL">
@@ -95,9 +89,6 @@
         <div class="col-4 layout-verysmall">
             <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
-        </div>
-        <div class="col-4 layout-verysmall">
-            <app-sdoc-datatech [record]="listItem.currentRecord"></app-sdoc-datatech >
         </div>
     </ng-container>
 </div>

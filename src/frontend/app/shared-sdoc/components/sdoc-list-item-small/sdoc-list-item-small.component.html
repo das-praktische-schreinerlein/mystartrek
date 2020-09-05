@@ -49,8 +49,6 @@
                 </div>
                 <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)"><h5 class="card-title">{{listItem.currentRecord.name}}</h5></a>
                 <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
-                <app-sdoc-datatech [record]="listItem.currentRecord"></app-sdoc-datatech >
-                <app-sdoc-datainfo [record]="listItem.currentRecord"></app-sdoc-datainfo >
                 <app-sdoc-datameta [record]="listItem.currentRecord"></app-sdoc-datameta>
             </div>
         </div>

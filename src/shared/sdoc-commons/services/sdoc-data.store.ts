@@ -1,7 +1,7 @@
 import {GenericDataStore} from '@dps/mycms-commons/dist/search-commons/services/generic-data.store';
 import {StarDocSearchResult} from '../model/container/sdoc-searchresult';
 import {StarDocSearchForm} from '../model/forms/sdoc-searchform';
-import {StarDocRecord} from '../model/records/sdoc-record';
+import {StarDocRecord, StarDocRecordRelation} from '../model/records/sdoc-record';
 import {Facets} from '@dps/mycms-commons/dist/search-commons/model/container/facets';
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 
@@ -19,7 +19,8 @@ export class StarDocTeamFilterConfig {
 
 export class StarDocDataStore extends GenericDataStore<StarDocRecord, StarDocSearchForm, StarDocSearchResult> {
 
-    static UPDATE_RELATION = ['sdocimage', 'sdocdatatech', 'sdocdatainfo'];
+    static UPDATE_RELATION = [].concat(StarDocRecordRelation.hasOne ? Object.keys(StarDocRecordRelation.hasOne) : [])
+        .concat(StarDocRecordRelation.hasMany ? Object.keys(StarDocRecordRelation.hasMany) : []);
     private validMoreNumberFilterNames = {
         id: true,
         loc_id_i: true,

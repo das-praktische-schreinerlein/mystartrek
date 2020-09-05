@@ -90,9 +90,7 @@
                 <ngb-accordion #acc="ngbAccordion" activeIds="">
                     <ngb-panel title="Details" i18n-title="title accordion details|Title for details accordion@@accordion.details.sdoc.title">
                         <ng-template ngbPanelContent>
-                            <app-sdoc-datatech [record]="listItem.currentRecord"></app-sdoc-datatech >
                             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
-                            <app-sdoc-datainfo [record]="listItem.currentRecord"></app-sdoc-datainfo >
                             <app-sdoc-datameta [record]="listItem.currentRecord"></app-sdoc-datameta>
                         </ng-template>
                     </ngb-panel>

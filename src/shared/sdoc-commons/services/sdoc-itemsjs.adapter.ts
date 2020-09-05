@@ -9,17 +9,10 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
     public static itemsJsConfig: ItemsJsConfig = {
         spatialField: 'geo_loc_p',
         spatialSortKey: 'distance',
-        searchableFields: ['id', 'image_id_i', 'video_id_i', 'loc_id_i', 'route_id_i', 'track_id_i', 'trip_id_i', 'news_id_i',
-            'dateshow_dt', 'datestart_dt', 'dateend_dt', 'desc_txt', 'desc_md_txt', 'desc_html_txt', 'geo_lon_s', 'geo_lat_s', 'geo_ele_s', 'geo_loc_p',
-            'data_tech_alt_asc_i', 'data_tech_alt_desc_i', 'data_tech_alt_min_i', 'data_tech_alt_max_i',
-            'data_tech_dist_f', 'data_tech_dur_f',
-            'data_info_guides_s', 'data_info_region_s', 'data_info_baseloc_s', 'data_info_destloc_s',
-            'rate_pers_ausdauer_i', 'rate_pers_bildung_i', 'rate_pers_gesamt_i', 'rate_pers_kraft_i', 'rate_pers_mental_i',
-            'rate_pers_motive_i', 'rate_pers_schwierigkeit_i', 'rate_pers_wichtigkeit_i',
-            'rate_tech_overall_s', 'rate_tech_ks_s', 'rate_tech_firn_s', 'rate_tech_gletscher_s', 'rate_tech_klettern_s',
-            'rate_tech_bergtour_s', 'rate_tech_schneeschuh_s',
+        searchableFields: ['id', 'image_id_i', 'loc_id_i',
+            'dateshow_dt', 'desc_txt', 'desc_md_txt', 'desc_html_txt', 'geo_lon_s', 'geo_lat_s', 'geo_ele_s', 'geo_loc_p',
             'designator_s', 'keywords_txt', 'bvcoloridx_s', 'dimension_s', 'name_s', 'type_s',
-            'playlists_txt', 'persons_txt',
+            'playlists_txt',
             'subtype_facet_ss', 'subtype_s', 'i_fav_url_txt'],
         aggregations: {
             'subtype_facet_ss': {
@@ -37,20 +30,10 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
             'month_is': {
             },
             'loc_lochirarchie_txt': {},
-            'persons_txt': {
-            },
             'playlists_txt': {
-            },
-            'rate_pers_gesamt_is': {
-            },
-            'rate_pers_schwierigkeit_is': {
-            },
-            'rate_tech_overall_ss': {
             },
             'type_txt': {},
             'id': {},
-            'track_id_i': {},
-            'track_id_is': {},
             'week_is': {
             }
         },
@@ -66,42 +49,6 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
             'distance': {
                 'sort': 'geodist()',
                 'order:': 'asc'
-            },
-            'dataTechDurDesc': {
-                'sort': 'data_tech_dur_f',
-                'order:': 'desc'
-            },
-            'dataTechAltDesc': {
-                'sort': 'data_tech_alt_asc_i',
-                'order:': 'desc'
-            },
-            'dataTechMaxDesc': {
-                'sort': 'data_tech_alt_max_i',
-                'order:': 'desc'
-            },
-            'dataTechDistDesc': {
-                'sort': 'data_tech_dist_f',
-                'order:': 'desc'
-            },
-            'dataTechDurAsc': {
-                'sort': 'data_tech_dur_f',
-                'order:': 'asc'
-            },
-            'dataTechAltAsc': {
-                'sort': 'data_tech_alt_asc_i',
-                'order:': 'asc'
-            },
-            'dataTechMaxAsc': {
-                'sort': 'data_tech_alt_max_i',
-                'order:': 'asc'
-            },
-            'dataTechDistAsc': {
-                'sort': 'data_tech_dist_f',
-                'order:': 'asc'
-            },
-            'ratePers': {
-                'sort': 'rate_pers_gesamt_i',
-                'order:': 'desc'
             },
             'location': {
                 'sort': 'bvcoloridx_s',
@@ -126,15 +73,8 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
         const values = {
             id: props.id,
             image_id_i: props.imageId,
-            video_id_i: props.videoId,
             loc_id_i: props.locId,
-            route_id_i: props.routeId,
-            track_id_i: props.trackId,
-            trip_id_i: props.tripId,
-            news_id_i: props.newsId,
             dateshow_dt: props.dateshow,
-            datestart_dt: props.datestart,
-            dateend_dt: props.dateend,
             desc_txt: props.descTxt,
             desc_md_txt: props.descMd,
             desc_html_txt: props.descHtml,
@@ -153,7 +93,6 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
                 .replace(/,/g, ',,')
                 .replace(/ /g, '_') : ''),
             name_s: props.name,
-            persons_txt: (props.persons ? props.persons.split(', ').join(',,') : ''),
             playlists_txt: (props.playlists ? props.playlists.split(', ').join(',,') : ''),
             type_s: props.type,
 

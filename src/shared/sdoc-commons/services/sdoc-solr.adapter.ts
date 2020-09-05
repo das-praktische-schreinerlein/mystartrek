@@ -14,8 +14,6 @@ export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDo
         spatialSortKey: 'distance',
         fieldList: ['id', 'image_id_i', 'loc_id_i',
             'dateshow_dt', 'desc_txt', 'desc_md_txt', 'desc_html_txt', 'geo_lon_s', 'geo_lat_s', 'geo_dele_s', 'geo_loc_p',
-            'data_tech_dur_f',
-            'data_info_guides_s',
             'designator_s', 'magnitude_s', 'keywords_txt', 'bvcoloridx_s', 'dimension_s', 'name_s', 'type_s',
             'subtype_s', 'i_fav_url_txt'],
         facetConfigs: {
@@ -126,8 +124,6 @@ export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDo
             designator_facet_ss: props.designator,
             bvcoloridx_facet_ss: props.bvcoloridx,
             dimension_facet_ss: props.dimension,
-
-            data_info_guides_s: BeanUtils.getValue(props, 'sdocdatainfo.guides')
         };
         values['html_txt'] = [values.desc_txt, values.name_s, values.keywords_txt, values.type_s].join(' ');
 

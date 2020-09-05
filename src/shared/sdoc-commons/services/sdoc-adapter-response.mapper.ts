@@ -1,11 +1,10 @@
 import {Mapper, Record} from 'js-data';
-import {StarDocRecord, StarDocRecordFactory} from '../model/records/sdoc-record';
+import {StarDocRecord, StarDocRecordFactory, StarDocRecordRelation} from '../model/records/sdoc-record';
 import {StarDocImageRecord, StarDocImageRecordFactory} from '../model/records/sdocimage-record';
 import {MapperUtils} from '@dps/mycms-commons/dist/search-commons/services/mapper.utils';
 import {GenericAdapterResponseMapper} from '@dps/mycms-commons/dist/search-commons/services/generic-adapter-response.mapper';
 import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
-import {StarDocDataTechRecordFactory} from '../model/records/sdocdatatech-record';
-import {StarDocDataInfoRecordFactory} from '../model/records/sdocdatainfo-record';
+import {ObjectUtils} from "@dps/mycms-commons/dist/commons/utils/object.utils";
 
 export class StarDocAdapterResponseMapper implements GenericAdapterResponseMapper {
     protected mapperUtils = new MapperUtils();
@@ -56,41 +55,18 @@ export class StarDocAdapterResponseMapper implements GenericAdapterResponseMappe
             values['i_fav_url_txt'] = image.fileName;
         }
 
-        values['data_tech_dur_f'] = BeanUtils.getValue(props, 'sdocdatatech.dur');
-
-        values['data_info_guides_s'] = BeanUtils.getValue(props, 'sdocdatainfo.guides');
-
         return values;
     }
 
     mapValuesToRecord(mapper: Mapper, values: {}): StarDocRecord {
         const record = StarDocRecordFactory.createSanitized(values);
 
-        for (const mapperKey of ['sdocdatatech', 'sdocdatainfo']) {
-            const subMapper = mapper['datastore']._mappers[mapperKey];
-            let subValues;
-            for (const key in values) {
-                if (key.startsWith(mapperKey + '.')) {
-                    const subKey = key.replace(mapperKey + '.', '');
-                    subValues = subValues || {};
-                    subValues[subKey] = values[key];
-                }
-            }
-
-            if (subValues) {
-                record.set(mapperKey, subMapper.createRecord(subValues));
-            } else {
-                record.set(mapperKey, undefined);
-            }
-        }
+        this.mapperUtils.mapValuesToSubRecords(mapper, values, record, StarDocRecordRelation);
 
         return record;
     }
 
     mapResponseDocument(mapper: Mapper, doc: any, mapping: {}): Record {
-        const dataTechMapper = mapper['datastore']._mappers['sdocdatatech'];
-        const dataInfoMapper = mapper['datastore']._mappers['sdocdatainfo'];
-
         const values = {};
         values['id'] = this.mapperUtils.getMappedAdapterValue(mapping, doc, 'id', undefined);
         values['imageId'] = this.mapperUtils.getMappedAdapterNumberValue(mapping, doc, 'image_id_i', undefined);
@@ -158,107 +134,53 @@ export class StarDocAdapterResponseMapper implements GenericAdapterResponseMappe
         const record: StarDocRecord = <StarDocRecord>mapper.createRecord(
             StarDocRecordFactory.instance.getSanitizedValues(values, {}));
 
-        const imageField = doc[this.mapperUtils.mapToAdapterFieldName(mapping, 'i_fav_url_txt')];
-        let imageDocs = [];
-        if (imageField !== undefined) {
-            if (Array.isArray(imageField)) {
-                imageDocs = imageField;
-            } else {
-                imageDocs.push(imageField);
-            }
-            this.mapImageDocsToAdapterDocument(mapper, record, imageDocs);
-        } else {
-            record.set('sdocimages', []);
-        }
-        // console.log('mapResponseDocument record full:', record);
-
-
-        const dataTechValues = {};
-        dataTechValues['dur'] = this.mapperUtils.getMappedAdapterNumberValue(mapping, doc, 'data_tech_dur_f', undefined);
-        let dataTechSet = false;
-        for (const field in dataTechValues) {
-            if (dataTechValues[field] !== undefined && dataTechValues[field] !== 0) {
-                dataTechSet = true;
-                break;
-            }
-        }
-
-        if (dataTechSet) {
-            record.set('sdocdatatech', dataTechMapper.createRecord(
-                StarDocDataTechRecordFactory.instance.getSanitizedValues(dataTechValues, {})));
-        } else {
-            record.set('sdocdatatech', undefined);
-        }
-
-        const dataInfoValues = {};
-        dataInfoValues['guides'] = this.mapperUtils.getMappedAdapterValue(mapping, doc, 'data_info_guides_s', undefined);
-        let dataInfoSet = false;
-        for (const field in dataInfoValues) {
-            if (dataInfoValues[field] !== undefined && (dataInfoValues[field] + '').length > 0) {
-                dataInfoSet = true;
-                break;
-            }
-        }
-
-        if (dataInfoSet) {
-            record.set('sdocdatainfo', dataInfoMapper.createRecord(
-                StarDocDataInfoRecordFactory.instance.getSanitizedValues(dataInfoValues, {})));
-        } else {
-            record.set('sdocdatainfo', undefined);
-        }
+        this.mapDetailResponseDocuments(mapper, 'image', record,
+            ObjectUtils.mapValueToObjects(
+                doc[this.mapperUtils.mapToAdapterFieldName(mapping, 'i_fav_url_txt')],
+                'i_fav_url_txt'));
 
         // console.log('mapResponseDocument record full:', record);
 
         return record;
     }
 
-    mapDetailDataToAdapterDocument(mapper: Mapper, profile: string, record: Record, docs: any[]): void {
+    mapDetailDataToAdapterDocument(mapper: Mapper, profile: string, src: Record, docs: any[]): void {
+        const record: StarDocRecord = <StarDocRecord>src;
         switch (profile) {
             case 'image':
-                const imageUrls = [];
+                const imageDocs = [];
                 docs.forEach(doc => {
-                    imageUrls.push(doc['i_fav_url_txt']);
+                    const imageDoc = {};
+                    imageDoc['name'] = record.name;
+                    imageDoc['fileName'] = doc['i_fav_url_txt'];
+                    imageDocs.push(imageDoc);
                 });
-                this.mapImageDocsToAdapterDocument(mapper, <StarDocRecord>record, imageUrls);
+                record.set('tdocimages',
+                    this.mapperUtils.mapDetailDocsToDetailRecords(mapper['datastore']._mappers['tdocimage'],
+                        StarDocImageRecordFactory.instance, record, imageDocs));
                 break;
             case 'keywords':
-                let keywords = '';
-                docs.forEach(doc => {
-                    if (doc['keywords'] !== undefined && doc['keywords'] !== null) {
-                        keywords = doc['keywords'];
-                    }
-                });
-                (<StarDocRecord>record).keywords = keywords;
+                record.keywords = ObjectUtils.mergePropertyValues(docs, 'keywords', ', ');
                 break;
         }
     }
 
-    private mapImageDocsToAdapterDocument(mapper: Mapper, record: StarDocRecord, imageDocs: any[]) {
-        const imageMapper = mapper['datastore']._mappers['sdocimage'];
-        const images: StarDocImageRecord[] = [];
-        if (imageDocs !== undefined) {
-            let id = 1;
-            if (record.type === 'LOCATION') {
-                id = Number(record.locId);
-            } else if (record.type === 'IMAGE') {
-                id = Number(record.imageId);
-            }
-            id = id * 1000000;
-
-            for (const imageDoc of imageDocs) {
-                if (imageDoc === undefined || imageDoc === null) {
-                    continue;
-                }
-                const imageValues = {};
-                imageValues['name'] = record.name;
-                imageValues['id'] = (id++).toString();
-                imageValues['fileName'] = imageDoc;
-                const imageRecord = imageMapper.createRecord(
-                    StarDocImageRecordFactory.instance.getSanitizedValues(imageValues, {}));
-                images.push(imageRecord);
-            }
+    mapDetailResponseDocuments(mapper: Mapper, profile: string, src: Record, docs: any): void {
+        const record: StarDocRecord = <StarDocRecord>src;
+        switch (profile) {
+            case 'image':
+                const imageDocs = [];
+                docs.forEach(doc => {
+                    const imageDoc = {};
+                    imageDoc['name'] = record.name;
+                    imageDoc['fileName'] = doc['i_fav_url_txt'];
+                    imageDocs.push(imageDoc);
+                });
+                record.set('sdocimages',
+                    this.mapperUtils.mapDetailDocsToDetailRecords(mapper['datastore']._mappers['sdocimages'],
+                        StarDocImageRecordFactory.instance, record, imageDocs));
+                break;
         }
-        record.set('sdocimages', images);
     }
 }
 
