@@ -1,4 +1,5 @@
-import express from 'express';
+// These are important and needed before anything else
+import * as express from 'express';
 import * as fs from 'fs';
 import minimist from 'minimist';
 import {ServerConfig, ServerModuleLoader} from './server-module.loader';
@@ -25,7 +26,7 @@ ServerModuleLoader.loadModules(app, serverConfig);
 
 // start server
 app.listen(serverConfig.backendConfig['port'], function () {
-    console.log('MySHP app listening on port ' + serverConfig.backendConfig['port']);
+    console.log('MySHP app listening on port ' + serverConfig.backendConfig.port);
     if (!debug) {
         console.log = function() {};
     }

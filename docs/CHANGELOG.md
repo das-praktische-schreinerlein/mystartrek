@@ -17,6 +17,24 @@
 - none
 
 
+## 2.1.0
+- improved build-process
+- use typed configuration and extended firewall-options
+
+### new features
+- none
+ 
+### improvements
+- build: improved build-process
+- backend: use typed configuration and extended firewall-options
+
+### bug fixes
+- none
+ 
+### breaking changes
+- none
+
+
 ## 2.0.0
 - upgraded to angular7 + commons5
 - bumped up deps to the newest running versions
