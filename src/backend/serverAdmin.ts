@@ -9,7 +9,7 @@ const debug = argv['debug'] || false;
 if (!debug) {
     console.log = function() {};
 }
-if (!debug || debug === true || parseInt(debug, 10) < 1) {
+if (!debug || debug === false || parseInt(debug, 10) < 1) {
     console.trace = function() {};
     console.debug = function() {};
 }
@@ -27,9 +27,9 @@ switch (argv['command']) {
 }
 
 promise.then(value => {
-    console.log('DONE - command finished:', value);
+    console.log('DONE - command finished:', value, argv);
     process.exit(0);
 }).catch(reason => {
-    console.error('ERROR - command failed:', reason);
+    console.error('ERROR - command failed:', reason, argv);
     process.exit(-1);
 });

@@ -17,7 +17,7 @@
 - none
 
 
-## 2.1.0
+## 3.0.0
 - improved build-process
 - use typed configuration and extended firewall-options
 
@@ -27,12 +27,13 @@
 ### improvements
 - build: improved build-process
 - backend: use typed configuration and extended firewall-options
+- use current deps in package-lock.version
 
 ### bug fixes
 - none
  
 ### breaking changes
-- none
+- configuration: removed default-config and renamed default-environment to dev
 
 
 ## 2.0.0
