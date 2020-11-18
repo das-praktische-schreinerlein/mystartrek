@@ -272,7 +272,7 @@
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
-                            "vendorChunk": false,
+                            "vendorChunk": false
                         },
                         "dev-en": {
                             "i18nFile": "src/frontend/locales/messages.en.xlf",
