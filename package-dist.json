@@ -27,6 +27,7 @@
   },
   "private": true,
   "optionalDeps // do copy these to deps if needed": {
+    "minimist": "1.2.5",
     "mysql": "2.18.1",
     "knex": "0.19.5",
     "redis": "3.0.2",
