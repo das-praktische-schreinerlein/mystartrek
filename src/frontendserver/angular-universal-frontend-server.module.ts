@@ -1,5 +1,5 @@
-import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
+import 'zone.js/dist/zone-node';
 import {join} from 'path';
 import * as express from 'express';
 // Express Engine
@@ -32,7 +32,7 @@ export class AngularUniversalFrontendServerModule extends SimpleFrontendServerMo
         const domino = require('domino');
         const win: Window = domino.createWindow(template);
         global['window'] = win;
-        Object.defineProperty(win.document, 'referrer', {get : function(){ return 'https://www.myshp.de'; }});
+        Object.defineProperty(win.document, 'referrer', {get : function() { return 'https://www.myshp.de'; }});
         global['document'] = win.document;
         global['navigator'] = { userAgent: 'chrome', product: 'ReactNative', platform: 'Win'};
         global['window']['devicePixelRatio'] = 1;
@@ -41,7 +41,7 @@ export class AngularUniversalFrontendServerModule extends SimpleFrontendServerMo
 
     public configureViewEngine(): void {
         // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-        const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/' + this.config.distServerProfile + 'main.bundle');
+        const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('SERVER_BUNDLE');
 
         this.app.engine('html', ngExpressEngine({
             bootstrap: AppServerModuleNgFactory,

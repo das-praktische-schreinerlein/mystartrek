@@ -22,12 +22,13 @@
 - use typed configuration and extended firewall-options
 
 ### new features
-- none
+- scripts: added start-scripts
  
 ### improvements
 - build: improved build-process
 - backend: use typed configuration and extended firewall-options
 - use current deps in package-lock.version
+- build: improved backend-build 
 
 ### bug fixes
 - none

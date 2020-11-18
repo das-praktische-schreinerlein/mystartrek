@@ -27,18 +27,21 @@ let replacements = [];
 let distPath = '';
 if (profile === 'prod-de') {
     replacements = [
+        {search: 'SERVER_BUNDLE', replace: '../myshp-server/de/main'},
         {search: 'DIST_PROFILE', replace: 'myshp/de/'},
         {search: 'DIST_SERVER_PROFILE', replace: 'myshp-server/de/'}
     ];
     distPath = 'dist/frontendserver-de/';
 } else if (profile === 'beta-de') {
     replacements = [
+        {search: 'SERVER_BUNDLE', replace: '../myshpbeta-server/de/main'},
         {search: 'DIST_PROFILE', replace: 'myshpbeta/de/'},
         {search: 'DIST_SERVER_PROFILE', replace: 'myshpbeta-server/de/'}
     ];
     distPath = 'dist/frontendserver-beta-de/';
 } else if (profile === 'dev-de') {
     replacements = [
+        {search: 'SERVER_BUNDLE', replace: '../myshpdev-server/de/main'},
         {search: 'DIST_PROFILE', replace: 'myshpdev/de/'},
         {search: 'DIST_SERVER_PROFILE', replace: 'myshpdev-server/de/'}
     ];
@@ -49,20 +52,30 @@ if (profile === 'prod-de') {
 }
 
 module.exports = {
-    entry: {  frontendserverAngular: './src/frontendserver/frontendserverAngular.ts' },
+    entry: './dist/tsc-out-frontent/frontendserverAngular.js',
     resolve: { extensions: ['.js', '.ts', '.json'] },
-    mode: 'production',
-    target: 'node',
+    // mode: 'production',
+    mode: 'development',
+    /**
+    devtool: 'source-map',
+    devServer: {
+        contentBase: '../',
+    },
+    **/
+    target: 'async-node',
     // this makes sure we include node_modules and other 3rd party libraries
     externals: nodeModules,
     output: {
         path: path.join(__dirname, distPath),
-        filename: 'frontendserverAngular.js'
+        filename: 'frontendserverAngular.js',
+        libraryTarget: "commonjs"
     },
     module: {
         rules: [
-            { test: /\.ts$/, loader: 'ts-loader' },
-            { test: /\.ts$/, loader: 'string-replace-loader', query: { multiple: replacements} }
+            { test: /\.ts|\.js$/, loader: 'string-replace-loader', query: { multiple: replacements} },
+            // exclude node_modules and server-main to prevent problem with strict-mode (for instance domino)
+            { test: /\.js$/, exclude: /node_modules|myshpdev-server|myshpbeta-server|myshp-server/, loaders: ['babel-loader'] },
+            { test: /\.ts$/, loader: 'ts-loader' }
         ]
     },
     plugins: [
@@ -77,7 +90,6 @@ module.exports = {
             /(.+)?express(\\|\/)(.+)?/,
             path.join(__dirname, 'src'),
             {}
-        ),
-        new webpack.IgnorePlugin(/hiredis/)
+        )
     ]
 };
