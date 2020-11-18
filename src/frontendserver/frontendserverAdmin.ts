@@ -22,7 +22,7 @@ const maxNotCached = argv['maxNotCached'] || 999999;
 const staticFolder = join(process.cwd(), 'dist/static');
 const distProfile = 'DIST_PROFILE';
 const distServerProfile = 'DIST_SERVER_PROFILE';
-const localSitemapFile = argv['localSitemapFile'];
+const localSitemapUrl = argv['localSitemapUrl'];
 
 const filePathConfigJson = argv['frontend'];
 if (filePathConfigJson === undefined) {
@@ -116,10 +116,10 @@ const parseSiteMaps = function (siteMaps: string[]) {
         });
 }
 
-if (localSitemapFile) {
-    sitemaps.parseSitemaps(localSitemapFile, function () {}, function(err, siteMaps) {
+if (localSitemapUrl) {
+    sitemaps.parseSitemaps(localSitemapUrl, function () {}, function(err, siteMaps) {
         if (err) {
-            console.error('error while parsing localSitemapFile', localSitemapFile, err);
+            console.error('error while parsing localSitemapUrl', localSitemapUrl, err);
             process.exit(2);
         }
 
