@@ -31,7 +31,7 @@
 - build: improved backend-build 
 
 ### bug fixes
-- none
+- build: fixed angular-universal and site-caching
  
 ### breaking changes
 - configuration: removed default-config and renamed default-environment to dev
