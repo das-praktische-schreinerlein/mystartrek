@@ -1,11 +1,11 @@
 #!/bin/sh
 
-APP_NAME="myshp"
-USER="myshp"
-GROUP="myshpusers"
+APP_NAME="mystarm"
+USER="mystarm"
+GROUP="mystarmusers"
 NODE_ENV="production"
 PORT="4100"
-APP_DIR="/opt/myshp/app/myshp"
+APP_DIR="/opt/mystarm/app/mystarm"
 NODE_APP="dist/backend/backend.js"
 KWARGS="-c config/backend.prod.json -f config/firewall.prod.json"
 CONFIG_DIR="$APP_DIR"
@@ -22,7 +22,7 @@ NODE_EXEC=$(which node)
 # chkconfig: - 58 74
 # description: node-app is the script for starting a node app on boot.
 ### BEGIN INIT INFO
-# Provides: myshp
+# Provides: mystarm
 # Required-Start:    $network $remote_fs $local_fs
 # Required-Stop:     $network $remote_fs $local_fs
 # Default-Start:     2 3 4 5

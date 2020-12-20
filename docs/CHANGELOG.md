@@ -18,6 +18,7 @@
 
 
 ## 3.0.0
+- now bases on mysimplehomepage-3.0.0
 - improved build-process
 - use typed configuration and extended firewall-options
 
@@ -47,7 +48,7 @@
  
 ### improvements
 - bumped up deps to the newest running versions
-- removed unused components
+- removed unusd components
 
 ### bug fixes
 - frontend: IE now functional
