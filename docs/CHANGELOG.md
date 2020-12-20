@@ -2,21 +2,6 @@
  
 # Versions
  
-## Planned
-
-### new features
-- none
-
-### improvements
-- none
-
-### bug fixes
-- none
- 
-### breaking changes
-- none
-
-
 ## 3.0.0
 - now bases on mysimplehomepage-3.0.0
 - improved build-process
