@@ -6,10 +6,19 @@ const minimist = require ('minimist');
 const nodeModules = {};
 fs.readdirSync('node_modules')
     .filter(function(x) {
-        return ['.bin'].indexOf(x) === -1;
+        if (['.bin'].indexOf(x) === -1) {
+            return true;
+        }
+
+        console.error("filter .bin: ", x);
+        return false;
     })
     .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
+        if (mod.match(/redis/) || mod.match(/knex/) || mod.match(/sqlite/) ||
+            mod.match(/mysql/) || mod.match(/vid-streamer/) || mod.match(/fluent-ffmpeg/)) {
+            console.error("module as commonsjs: ", mod);
+            nodeModules[mod] = 'commonjs ' + mod;
+        }
     });
 
 const argv = minimist(process.argv.slice(2));
@@ -18,20 +27,23 @@ let replacements = [];
 let distPath = '';
 if (profile === 'prod-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mystarm/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mystarm-server/de/'}
+        {search: 'SERVER_BUNDLE', replace: '../mystarm-server/de/main', flags: 'g'},
+        {search: 'DIST_PROFILE', replace: 'mystarm/de/', flags: 'g'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarm-server/de/', flags: 'g'}
     ];
     distPath = 'dist/frontendserver-de/';
 } else if (profile === 'beta-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mystarmbeta/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmbeta-server/de/'}
+        {search: 'SERVER_BUNDLE', replace: '../mystarmbeta-server/de/main', flags: 'g'},
+        {search: 'DIST_PROFILE', replace: 'mystarmbeta/de/', flags: 'g'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmbeta-server/de/', flags: 'g'}
     ];
     distPath = 'dist/frontendserver-beta-de/';
 } else if (profile === 'dev-de') {
     replacements = [
-        {search: 'DIST_PROFILE', replace: 'mystarmdev/de/'},
-        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmdev-server/de/'}
+        {search: 'SERVER_BUNDLE', replace: '../mystarmdev-server/de/main', flags: 'g'},
+        {search: 'DIST_PROFILE', replace: 'mystarmdev/de/', flags: 'g'},
+        {search: 'DIST_SERVER_PROFILE', replace: 'mystarmdev-server/de/', flags: 'g'}
     ];
     distPath = 'dist/frontendserver-dev-de/';
 } else {
@@ -40,24 +52,30 @@ if (profile === 'prod-de') {
 }
 
 module.exports = {
-    entry: {  frontendserver: './src/frontendserver/frontendserver.ts' },
+    entry: './dist/tsc-out-frontent/frontendserver.js',
     resolve: { extensions: ['.js', '.ts', '.json'] },
     mode: 'production',
-    target: 'node',
-    // this makes sure we include node_modules and other 3rd party libraries
-    externals: {
-        include: /(node_modules|main\..*\.js)/,
-        exclude: /(.*redis.*)/
+    /**
+    mode: 'development',
+    devtool: 'source-map',
+    devServer: {
+        contentBase: '../',
     },
-     // nodeModules,
+    **/
+    target: 'async-node',
+    // this makes sure we include node_modules and other 3rd party libraries
+    externals: nodeModules,
     output: {
         path: path.join(__dirname, distPath),
-        filename: 'frontendserver.js'
+        filename: 'frontendserver.js',
+        libraryTarget: "commonjs"
     },
     module: {
         rules: [
-            { test: /\.ts$/, loader: 'ts-loader' },
-            { test: /\.ts$/, loader: 'string-replace-loader', query: { multiple: replacements} }
+            { test: /\.ts|\.js$/, loader: 'string-replace-loader', options: { multiple: replacements} },
+            // exclude node_modules and server-main to prevent problem with strict-mode (for instance domino)
+            { test: /\.js$/, exclude: /node_modules|mystarmdev-server|mystarmbeta-server|mystarm-server/, loaders: ['babel-loader'] },
+            { test: /\.ts$/, loader: 'ts-loader' }
         ]
     },
     plugins: [
@@ -72,7 +90,6 @@ module.exports = {
             /(.+)?express(\\|\/)(.+)?/,
             path.join(__dirname, 'src'),
             {}
-        ),
-        new webpack.IgnorePlugin(/hiredis/)
+        )
     ]
 };

@@ -254,7 +254,7 @@
                     "builder": "@angular-devkit/build-angular:server",
                     "options": {
                         "outputPath": "dist/server",
-                        "main": "src/frontend/main.ts",
+                        "main": "src/frontend/main.server.ts",
                         "tsConfig": "src/frontend/tsconfig.server.json",
                         "preserveSymlinks": true,
                         "bundleDependencies": "all"
@@ -276,7 +276,7 @@
                             "i18nFormat": "xlf",
                             "i18nLocale": "de",
                             "optimization": false,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
@@ -287,7 +287,7 @@
                             "i18nFormat": "xlf",
                             "i18nLocale": "en",
                             "optimization": false,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
@@ -304,7 +304,7 @@
                                 }
                             ],
                             "optimization": true,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
@@ -321,7 +321,7 @@
                                 }
                             ],
                             "optimization": true,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
@@ -338,7 +338,7 @@
                                 }
                             ],
                             "optimization": true,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
@@ -355,7 +355,7 @@
                                 }
                             ],
                             "optimization": true,
-                            "outputHashing": "all",
+                            "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
