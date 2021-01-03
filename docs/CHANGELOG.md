@@ -2,7 +2,7 @@
  
 # Versions
  
-## 3.0.0
+## 3.1.0
 - improved security
 
 ### new features
