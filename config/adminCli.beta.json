@@ -1,0 +1,11 @@
+{
+    "adminWritable": true,
+    "availableCommands": {
+        "generateSitemap": [
+            "*"
+        ]
+    },
+    "constantParameters": {
+        "noOverrides": "use all parameters as put to commandline"
+    }
+}

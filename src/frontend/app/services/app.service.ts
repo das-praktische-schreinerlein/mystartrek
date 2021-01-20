@@ -11,8 +11,10 @@ import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/rec
 @Injectable()
 export class AppService extends GenericAppService {
     private appConfig = {
+        adminBackendApiBaseUrl: environment.adminBackendApiBaseUrl,
         backendApiBaseUrl: environment.backendApiBaseUrl,
         permissions: {
+            adminWritable: environment.adminWritable,
         },
         components: {},
         services: {}

@@ -3,5 +3,4 @@ import {CommonBackendConfigType} from '@dps/mycms-server-commons/dist/backend-co
 import {CommonKeywordMapperConfigType} from '@dps/mycms-server-commons/src/backend-commons/modules/backend.commons';
 
 export interface BackendConfigType extends CommonBackendConfigType<CommonKeywordMapperConfigType, CacheConfig> {
-    bindIp: string  // TODO move to CommonBackendConfigType
 }

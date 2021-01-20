@@ -17,6 +17,7 @@
    "flgShowTopTen": false,
    "flgShowNews": false,
    "flgShowSearch": false,
+   "flgShowAdminArea": true,
    "heading": "Thats MySimpleHomePage",
    "name": "Willkommen",
    "subSectionIds": "skills,me",

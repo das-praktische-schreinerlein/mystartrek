@@ -7,10 +7,10 @@ import {ServerConfig, ServerModuleLoader} from './server-module.loader';
 const argv = minimist(process.argv.slice(2));
 
 const debug = argv['debug'] || false;
-const filePathConfigJson = argv['c'] || argv['backend'];
-const filePathFirewallConfigJson = argv['f'] || argv['firewall'];
+const filePathConfigJson = argv['backend'];
+const filePathFirewallConfigJson = argv['firewall'];
 if (filePathConfigJson === undefined || filePathFirewallConfigJson === undefined) {
-    console.error('ERROR - parameters required backendConfig: "-c | --backend" firewallConfig: "-f | --firewall"');
+    console.error('ERROR - parameters required backendConfig: "--backend" firewallConfig: "--firewall"');
     process.exit(-1);
 }
 
@@ -31,8 +31,9 @@ ServerModuleLoader.loadModules(app, serverConfig);
 
 // start server as seen on https://nodejs.org/api/net.html#net_server_listen
 const bindIp = serverConfig.backendConfig.bindIp ? serverConfig.backendConfig.bindIp : '127.0.0.1';
-app.listen(serverConfig.backendConfig.port, bindIp,  511, function () {
-    console.log('MyCms app listening on ip/port', bindIp, serverConfig.backendConfig.port);
+const tcpBacklog = serverConfig.backendConfig.tcpBacklog ? serverConfig.backendConfig.tcpBacklog : 511;
+app.listen(serverConfig.backendConfig.port, bindIp,  tcpBacklog, function () {
+    console.log('MySHP app listening on ip/port/tcpBacklog', bindIp, serverConfig.backendConfig.port, tcpBacklog);
     if (!debug) {
         console.log = function() {};
     }

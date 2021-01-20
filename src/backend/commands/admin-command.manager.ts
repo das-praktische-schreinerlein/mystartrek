@@ -1,25 +1,18 @@
 import {SiteMapGeneratorCommand} from './sitemap-generator.command';
-import {utils} from 'js-data';
+import {
+    CommonAdminCommandConfigType,
+    CommonAdminCommandManager
+} from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin-command.manager';
 
-export class AdminCommandManager {
-    protected siteMapGenerator: SiteMapGeneratorCommand;
+export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
+}
 
-    constructor() {
-        this.siteMapGenerator = new SiteMapGeneratorCommand();
+export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandConfigType> {
+    constructor(adminCommandConfig: AdminCommandConfigType) {
+        super({
+            'generateSitemap': new SiteMapGeneratorCommand()
+        }, adminCommandConfig);
     }
 
-    public process(argv): Promise<any> {
-        let promise: Promise<any>;
-        switch (argv['command']) {
-            case 'generateSitemap':
-                promise = this.siteMapGenerator.process(argv);
-                break;
-            default:
-                console.error('unknown command:', argv);
-                promise = utils.reject('unknown command');
-        }
-
-        return promise;
-    }
 }
 

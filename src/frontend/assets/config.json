@@ -4,5 +4,8 @@
         }
     },
     "services": {
+        "adminJobArea": {
+            "jobsAllowed": true
+        }
     }
 }
