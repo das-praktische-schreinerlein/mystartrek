@@ -5,6 +5,13 @@
             "*"
         ]
     },
+    "preparedCommands": {
+        "prepareAppEnv": {
+            "description": "prepare app-environment (no actions required)",
+            "commands": [
+            ]
+        }
+    },
     "constantParameters": {
         "noOverrides": "use all parameters as put to commandline"
     }

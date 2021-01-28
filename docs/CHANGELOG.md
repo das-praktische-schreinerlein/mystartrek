@@ -14,6 +14,7 @@
 ### improvements
 - security: bind on localhost only by default
 - backend: added parameter-validation on serverAdmin
+- backend: added scripts to prepare app-environment on startup
 - install: for derived apps - optional use local solr 
 - build: use commons-5.2.0
 
