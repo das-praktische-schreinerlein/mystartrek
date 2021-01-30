@@ -3,7 +3,7 @@ import {
     BaseImageRecordFactory,
     BaseImageRecordValidator
 } from '@dps/mycms-commons/dist/search-commons/model/records/baseimage-record';
-import {BaseEntityRecordRelationsType} from "@dps/mycms-commons/dist/search-commons/model/records/base-entity-record";
+import {BaseEntityRecordRelationsType} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
 
 export class StarDocImageRecord extends BaseImageRecord {
     sdoc_id: string;

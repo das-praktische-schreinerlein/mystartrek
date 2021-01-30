@@ -7,9 +7,9 @@ import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
-import {StarDocHttpAdapter} from "../../shared/sdoc-commons/services/sdoc-http.adapter";
-import {StarDocDataStore} from "../../shared/sdoc-commons/services/sdoc-data.store";
-import {StarDocDataService} from "../../shared/sdoc-commons/services/sdoc-data.service";
+import {StarDocHttpAdapter} from '../../shared/sdoc-commons/services/sdoc-http.adapter';
+import {StarDocDataStore} from '../../shared/sdoc-commons/services/sdoc-data.store';
+import {StarDocDataService} from '../../shared/sdoc-commons/services/sdoc-data.service';
 
 @Injectable()
 export class AppService extends GenericAppService {

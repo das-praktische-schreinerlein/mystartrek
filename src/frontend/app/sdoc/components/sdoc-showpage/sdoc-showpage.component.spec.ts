@@ -29,7 +29,7 @@ import {StarDocContentUtils} from '../../../shared-sdoc/services/sdoc-contentuti
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
 import {StarDocRoutingService} from '../../../../shared/sdoc-commons/services/sdoc-routing.service';
 import {ToastrServiceStub} from '@dps/mycms-frontend-commons/dist/testing/toasts-stubs';
-import {NgxMdModule, NgxMdService} from "ngx-md";
+import {NgxMdModule, NgxMdService} from 'ngx-md';
 
 describe('StarDocShowpageComponent', () => {
     let component: StarDocShowpageComponent;

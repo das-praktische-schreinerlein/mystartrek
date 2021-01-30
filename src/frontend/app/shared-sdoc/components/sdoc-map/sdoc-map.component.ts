@@ -7,8 +7,8 @@ import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {AbstractInlineComponent} from '@dps/mycms-frontend-commons/dist/angular-commons/components/inline.component';
 import * as Celestial from 'd3-celestial';
-import {Feature, FeatureCollection, Point} from "geojson";
-import {featureGroup} from "leaflet";
+import {Feature, FeatureCollection, Point} from 'geojson';
+import {featureGroup} from 'leaflet';
 
 @Component({
     selector: 'app-sdoc-map',

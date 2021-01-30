@@ -1,19 +1,45 @@
 import * as fs from 'fs';
-import {utils} from 'js-data';
+import {StarDocDataServiceModule} from '../modules/sdoc-dataservice.module';
+import {
+    KeywordValidationRule,
+    ValidationRule,
+    WhiteListValidationRule
+} from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
+import {
+    CommonAdminCommand,
+    SimpleConfigFilePathValidationRule,
+    SimpleFilePathValidationRule
+} from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin.command';
+import {StarDocFileUtils} from '../shared/sdoc-commons/services/sdoc-file.utils';
 import {StarDocAdapterResponseMapper} from '../shared/sdoc-commons/services/sdoc-adapter-response.mapper';
-import {AbstractCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/abstract.command';
-import {StarDocDataServiceModule} from "../modules/sdoc-dataservice.module";
-import {StarDocConverterModule} from "../modules/sdoc-converter.module";
-import {StarDocSolrAdapter} from "../shared/sdoc-commons/services/sdoc-solr.adapter";
+import {StarDocConverterModule} from '../modules/sdoc-converter.module';
+import {StarDocSolrAdapter} from '../shared/sdoc-commons/services/sdoc-solr.adapter';
 
-export class StarDocConverterCommand implements AbstractCommand {
-    public process(argv): Promise<any> {
-        const filePathConfigJson = argv['c'] || argv['backend'] || 'config/backend.json';
+export class StarDocConverterCommand extends CommonAdminCommand {
+    protected createValidationRules(): {[key: string]: ValidationRule} {
+        return {
+            backend: new SimpleConfigFilePathValidationRule(true),
+            srcFile: new SimpleFilePathValidationRule(true),
+            mode: new WhiteListValidationRule(true, ['SOLR', 'RESPONSE'], false),
+            type: new KeywordValidationRule(true)
+        };
+    }
+
+    protected definePossibleActions(): string[] {
+        return ['convertGeoJsonToStarDoc'];
+    }
+
+    protected processCommandArgs(argv: {}): Promise<any> {
+        const filePathConfigJson = argv['backend'];
+        if (filePathConfigJson === undefined) {
+            return Promise.reject('ERROR - parameters required backendConfig: "--backend"');
+        }
+
         const backendConfig = JSON.parse(fs.readFileSync(filePathConfigJson, {encoding: 'utf8'}));
         const writable = backendConfig['sdocWritable'] === true || backendConfig['sdocWritable'] === 'true';
         const dataService = StarDocDataServiceModule.getDataService('sdocSolrReadOnly', backendConfig);
         const action = argv['action'];
-        const srcFile = argv['srcFile'];
+        const srcFile = StarDocFileUtils.normalizeCygwinPath(argv['srcFile']);
         const type = argv['type'];
         const mode = argv['mode'];
         if (writable) {
@@ -27,18 +53,15 @@ export class StarDocConverterCommand implements AbstractCommand {
             case 'convertGeoJsonToStarDoc':
                 if (srcFile === undefined) {
                     console.error(srcFile + ' missing parameter - usage: --srcFile SRCFILE', argv);
-                    promise = utils.reject(srcFile + ' missing parameter - usage: --srcFile SRCFILE');
-                    return promise;
+                    return Promise.reject(srcFile + ' missing parameter - usage: --srcFile SRCFILE');
                 }
                 if (type === undefined) {
                     console.error(type + ' missing parameter - usage: --type TYPE', argv);
-                    promise = utils.reject(type + ' missing parameter - usage: --type TYPE');
-                    return promise;
+                    return Promise.reject(type + ' missing parameter - usage: --type TYPE');
                 }
                 if (mode === undefined || (mode !== 'SOLR' && mode !== 'RESPONSE')) {
                     console.error(mode + ' missing parameter - usage: --mode SOLR|RESPONSE', argv);
-                    promise = utils.reject(mode + ' missing parameter - usage: --mode SOLR|RESPONSE');
-                    return promise;
+                    return Promise.reject(mode + ' missing parameter - usage: --mode SOLR|RESPONSE');
                 }
 
                 promise = sdocConverterModule.convertGeoJSONOStarDoc(srcFile, type);
@@ -57,12 +80,12 @@ export class StarDocConverterCommand implements AbstractCommand {
                     console.log(JSON.stringify({ sdocs: sdocs}, undefined, ' '));
                 }).catch(reason => {
                     console.error('something went wrong:', reason);
+                    return Promise.reject(reason);
                 });
 
                 break;
             default:
-                console.error('unknown action:', argv);
-                promise = utils.reject('unknown action');
+                return Promise.reject('unknown action');
         }
 
         return promise;

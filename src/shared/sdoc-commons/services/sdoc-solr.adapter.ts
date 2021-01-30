@@ -4,8 +4,7 @@ import {StarDocSearchForm} from '../model/forms/sdoc-searchform';
 import {StarDocSearchResult} from '../model/container/sdoc-searchresult';
 import {StarDocAdapterResponseMapper} from './sdoc-adapter-response.mapper';
 import {SolrConfig} from '@dps/mycms-commons/dist/search-commons/services/solr-query.builder';
-import {Mapper} from "js-data";
-import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
+import {Mapper} from 'js-data';
 
 export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDocSearchForm, StarDocSearchResult> {
 

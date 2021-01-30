@@ -22,7 +22,7 @@ import {StarDocSearchFormConverter} from '../../services/sdoc-searchform-convert
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
-import {NgxMdModule, NgxMdService} from "ngx-md";
+import {NgxMdModule, NgxMdService} from 'ngx-md';
 
 describe('StarDocListItemPageComponent', () => {
     let component: StarDocListItemPageComponent;

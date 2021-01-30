@@ -33,16 +33,16 @@ import {DynamicComponentService} from '@dps/mycms-frontend-commons/dist/angular-
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {CookieLawModule} from 'angular2-cookie-law';
 import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
-import {StarDocModule} from "./sdoc/sdoc.module";
-import {StarDocDynamicComponentService} from "./shared-sdoc/services/sdoc-dynamic-components.service";
-import {StarDocDataService} from "../shared/sdoc-commons/services/sdoc-data.service";
-import {StarDocDataStore, StarDocTeamFilterConfig} from "../shared/sdoc-commons/services/sdoc-data.store";
-import {StarDocAlbumService} from "./shared-sdoc/services/sdoc-album.service";
-import {StarDocDataCacheService} from "./shared-sdoc/services/sdoc-datacache.service";
-import {StarDocPlaylistService} from "./shared-sdoc/services/sdoc-playlist.service";
-import {StarDocActionTagService} from "./shared-sdoc/services/sdoc-actiontag.service";
-import {StarDocRoutingService} from "../shared/sdoc-commons/services/sdoc-routing.service";
-import {StarDocActionTagsComponent} from "./shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component";
+import {StarDocModule} from './sdoc/sdoc.module';
+import {StarDocDynamicComponentService} from './shared-sdoc/services/sdoc-dynamic-components.service';
+import {StarDocDataService} from '../shared/sdoc-commons/services/sdoc-data.service';
+import {StarDocDataStore, StarDocTeamFilterConfig} from '../shared/sdoc-commons/services/sdoc-data.store';
+import {StarDocAlbumService} from './shared-sdoc/services/sdoc-album.service';
+import {StarDocDataCacheService} from './shared-sdoc/services/sdoc-datacache.service';
+import {StarDocPlaylistService} from './shared-sdoc/services/sdoc-playlist.service';
+import {StarDocActionTagService} from './shared-sdoc/services/sdoc-actiontag.service';
+import {StarDocRoutingService} from '../shared/sdoc-commons/services/sdoc-routing.service';
+import {StarDocActionTagsComponent} from './shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component';
 
 registerLocaleData(localeDe);
 

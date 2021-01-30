@@ -27,10 +27,10 @@ import {FileDropModule} from 'ngx-file-drop';
 import {FrontendCommonDocCommonsModule} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/frontend-cdoc-commons.module';
 import {StarDocKeywordsComponent} from './components/sdoc-keywords/sdoc-keywords.component';
 import {StarDocMultiActionHeaderComponent} from './components/sdoc-multiactionheader/sdoc-multiactionheader.component';
-import {StarDocListItemSmallComponent} from "./components/sdoc-list-item-small/sdoc-list-item-small.component";
-import {StarDocListItemFlatComponent} from "./components/sdoc-list-item-flat/sdoc-list-item-flat.component";
-import {StarDocListItemPageComponent} from "./components/sdoc-list-item-page/sdoc-list-item-page.component";
-import {StarDocListItemThinComponent} from "./components/sdoc-list-item-thin/sdoc-list-item-thin.component";
+import {StarDocListItemSmallComponent} from './components/sdoc-list-item-small/sdoc-list-item-small.component';
+import {StarDocListItemFlatComponent} from './components/sdoc-list-item-flat/sdoc-list-item-flat.component';
+import {StarDocListItemPageComponent} from './components/sdoc-list-item-page/sdoc-list-item-page.component';
+import {StarDocListItemThinComponent} from './components/sdoc-list-item-thin/sdoc-list-item-thin.component';
 
 @NgModule({
     declarations: [

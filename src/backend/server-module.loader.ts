@@ -8,9 +8,9 @@ import {PDocDataServiceModule} from './modules/pdoc-dataservice.module';
 import {DataCacheModule} from '@dps/mycms-server-commons/dist/server-commons/datacache.module';
 import {CommonServerConfigType} from '@dps/mycms-server-commons/dist/server-commons/server.commons';
 import {BackendConfigType} from './modules/backend.commons';
-import {StarDocDataServiceModule} from "./modules/sdoc-dataservice.module";
-import {StarDocDataService} from "shared/sdoc-commons/services/sdoc-data.service";
-import {StarDocServerModule} from "./modules/sdoc-server.module";
+import {StarDocDataServiceModule} from './modules/sdoc-dataservice.module';
+import {StarDocDataService} from 'shared/sdoc-commons/services/sdoc-data.service';
+import {StarDocServerModule} from './modules/sdoc-server.module';
 
 export interface ServerConfig extends CommonServerConfigType<BackendConfigType, FirewallConfig> {
 }

@@ -4,7 +4,7 @@ import {StarDocImageRecord, StarDocImageRecordFactory} from '../model/records/sd
 import {MapperUtils} from '@dps/mycms-commons/dist/search-commons/services/mapper.utils';
 import {GenericAdapterResponseMapper} from '@dps/mycms-commons/dist/search-commons/services/generic-adapter-response.mapper';
 import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
-import {ObjectUtils} from "@dps/mycms-commons/dist/commons/utils/object.utils";
+import {ObjectUtils} from '@dps/mycms-commons/dist/commons/utils/object.utils';
 
 export class StarDocAdapterResponseMapper implements GenericAdapterResponseMapper {
     protected mapperUtils = new MapperUtils();

@@ -16,7 +16,7 @@ import {DatePipe} from '@angular/common';
 import {CommonDocDataServiceStub} from '@dps/mycms-frontend-commons/dist/testing/cdoc-dataservice-stubs';
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
-import {TruncatePipe} from "@dps/mycms-frontend-commons/dist/angular-commons/pipes/truncate.pipe";
+import {TruncatePipe} from '@dps/mycms-frontend-commons/dist/angular-commons/pipes/truncate.pipe';
 
 describe('StarDocListItemComponent', () => {
     let component: StarDocListItemComponent;
