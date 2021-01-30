@@ -1,5 +1,20 @@
 {
     "filePathPDocJson": "config/pdocs.json",
+    "filePathThemeFilterJson": "config/themeFilterConfig.json",
+    "sdocDataStoreAdapter": "StarDocSolrAdapter",
+    "sdocWritable": false,
+    "StarDocItemsJsAdapter": {
+        "dataFile": "D:/tmp/test/mystartrek.json"
+    },
+    "StarDocSolrAdapter": {
+        "solrCoreStarDoc": "http://localhost:9999/solr/coremystarm/",
+        "solrCoreStarDocReadUsername": "mystarmread",
+        "solrCoreStarDocReadPassword": "SolrRocks"
+    },
+    "mapperConfig": {
+        "allowedKeywordPatterns": [".*"],
+        "replaceKeywordPatterns": []
+    },
     "cacheConfig": {
     },
     "port": 4101,

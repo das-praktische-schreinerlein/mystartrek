@@ -7,8 +7,8 @@
         "dataFile": "D:/tmp/test/mystartrek.json"
     },
     "StarDocSolrAdapter": {
-        "solrCoreStarDoc": "http://localhost:8983/solr/mystartrekdev/",
-        "solrCoreStarDocReadUsername": "mytbread",
+        "solrCoreStarDoc": "http://localhost:9999/solr/coremystarm/",
+        "solrCoreStarDocReadUsername": "mystarmadmin",
         "solrCoreStarDocReadPassword": "SolrRocks"
     },
     "mapperConfig": {

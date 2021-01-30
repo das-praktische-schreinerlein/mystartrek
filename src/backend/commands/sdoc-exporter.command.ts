@@ -31,7 +31,7 @@ export class StarDocExporterCommand extends CommonAdminCommand {
     }
 
     protected definePossibleActions(): string[] {
-        return ['exportDocs'];
+        return ['exportStarDocs'];
     }
 
     protected processCommandArgs(argv: {}): Promise<any> {
@@ -78,7 +78,7 @@ export class StarDocExporterCommand extends CommonAdminCommand {
         }
 
         return fileCheckPromise.then(() => {
-        fs.writeFileSync(dataFileName, '{"sdocs": [');
+            fs.writeFileSync(dataFileName, '{"sdocs": [');
             return transporter.exportDocs(typeOrder, perRun, writerCallback, responseMapper, dataService).then(value => {
                 writerCallback(']}');
                 return utils.resolve(value);

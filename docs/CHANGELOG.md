@@ -7,10 +7,13 @@
 - improved security
 - added admin-server and parameter-validation on serverAdmin
 - use commons-5.2.0
+- improved usage of local solr
+- improved loading of data
 
 ### new features
 - backend: added admin-server
 - frontend: added admin-area
+- improved usage of local solr
 
 ### improvements
 - security: bind on localhost only by default
@@ -18,6 +21,7 @@
 - backend: added scripts to prepare app-environment on startup
 - install: for derived apps - optional use local solr 
 - build: use commons-5.2.0
+- frontend: improved background-colors
 
 ### bug fixes
 - none

@@ -30,7 +30,7 @@ export class StarDocLoaderCommand extends CommonAdminCommand {
     }
 
     protected definePossibleActions(): string[] {
-        return ['loadDocs'];
+        return ['loadStarDocs'];
     }
 
     protected processCommandArgs(argv: {}): Promise<any> {

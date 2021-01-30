@@ -8,6 +8,71 @@
             "description": "prepare app-environment (no actions required)",
             "commands": [
             ]
+        },
+        "loadData": {
+            "description": "load data",
+            "commands": [
+                {
+                    "parameters": {
+                        "command": "convertStarDoc",
+                        "action": "convertGeoJsonToStarDoc",
+                        "backend": "config/backend.dev.json",
+                        "srcFile": "node_modules/d3-celestial/data/lg.json",
+                        "mode": "SOLR",
+                        "type": "LG",
+                        "file": "d:\\docs\\import-sdocs-lg.json",
+                        "renameFileIfExists": true
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "convertStarDoc",
+                        "action": "convertGeoJsonToStarDoc",
+                        "backend": "config/backend.dev.json",
+                        "srcFile": "node_modules/d3-celestial/data/dsos.20.json",
+                        "mode": "SOLR",
+                        "type": "DSO",
+                        "file": "d:\\docs\\import-sdocs-dso.20.json",
+                        "renameFileIfExists": true
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "convertStarDoc",
+                        "action": "convertGeoJsonToStarDoc",
+                        "backend": "config/backend.dev.json",
+                        "srcFile": "node_modules/d3-celestial/data/stars.14.json",
+                        "mode": "SOLR",
+                        "type": "STAR",
+                        "file": "d:\\docs\\import-sdocs-star.14.json",
+                        "renameFileIfExists": true
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "loadStarDoc",
+                        "action": "loadStarDocs",
+                        "backend": "config/backend.dev.json",
+                        "file": "d:\\docs\\import-sdocs-lg.json"
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "loadStarDoc",
+                        "action": "loadStarDocs",
+                        "backend": "config/backend.dev.json",
+                        "file": "d:\\docs\\import-sdocs-dso.20.json"
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "loadStarDoc",
+                        "action": "loadStarDocs",
+                        "backend": "config/backend.dev.json",
+                        "file": "d:\\docs\\import-sdocs-star.14.json"
+                    }
+                }
+            ]
         }
     },
     "constantParameters": {

@@ -171,7 +171,6 @@ export class StarDocRecordValidator extends CommonDocRecordValidator {
     public static instance = new StarDocRecordValidator();
 
     isValid(doc: BaseEntityRecord, errFieldPrefix?: string): boolean {
-        console.warn('StarDocRecordValidator: validation-errors', this.validate(doc, errFieldPrefix));
         // TODO: validate subtype requitred for TRACK, ROUTE, LOCATION
         return this.validate(doc, errFieldPrefix).length === 0;
     }
