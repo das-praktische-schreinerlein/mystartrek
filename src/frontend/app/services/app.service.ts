@@ -14,8 +14,10 @@ import {StarDocDataService} from "../../shared/sdoc-commons/services/sdoc-data.s
 @Injectable()
 export class AppService extends GenericAppService {
     private appConfig = {
+        adminBackendApiBaseUrl: environment.adminBackendApiBaseUrl,
         backendApiBaseUrl: environment.backendApiBaseUrl,
         permissions: {
+            adminWritable: environment.adminWritable,
         },
         components: {},
         services: {}

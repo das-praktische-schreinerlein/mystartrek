@@ -13,10 +13,11 @@
   },
   {
    "id": "start",
-   "descMd": "# MyStartrek ist ein Planetatium",
+   "descMd": "# MyStartrek ist ein Planetarium",
    "flgShowTopTen": false,
    "flgShowNews": false,
    "flgShowSearch": false,
+   "flgShowAdminArea": true,
    "heading": "Thats MyStarTrek",
    "name": "Willkommen",
    "subSectionIds": "",
