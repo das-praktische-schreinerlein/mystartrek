@@ -1,4 +1,3 @@
-import {Angulartics2Piwik} from 'angulartics2/piwik';
 import {AppEnvironment} from './app-environment';
 
 export const environment: AppEnvironment = {
@@ -11,7 +10,7 @@ export const environment: AppEnvironment = {
     allowAutoPlay: false,
     backendApiBaseUrl: 'http://localhost:4102/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
-    trackingProviders: [Angulartics2Piwik]
+    trackingProviders: [] // Angulartics2Piwik
 };
 
 // unset logger
