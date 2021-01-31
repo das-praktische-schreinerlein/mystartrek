@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/co
 import {StarDocRecord} from '../../../../shared/sdoc-commons/model/records/sdoc-record';
 import {ActivatedRoute} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {Layout, LayoutService, LayoutSizeData} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
+import {LayoutService, LayoutSizeData} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {ErrorResolver} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/resolver/error.resolver';
 import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/page.utils';
@@ -16,7 +16,6 @@ import {StarDocSearchForm} from '../../../../shared/sdoc-commons/model/forms/sdo
 import {Facets} from '@dps/mycms-commons/dist/search-commons/model/container/facets';
 import {StarDocSearchFormConverter} from '../../../shared-sdoc/services/sdoc-searchform-converter.service';
 import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
-import {isArray, isNumber} from 'util';
 import {StarDocContentUtils} from '../../../shared-sdoc/services/sdoc-contentutils.service';
 import {StarDocDataService} from '../../../../shared/sdoc-commons/services/sdoc-data.service';
 import {
@@ -51,34 +50,6 @@ export class StarDocShowpageComponent extends CommonDocShowpageComponent<StarDoc
             angularMarkdownService, angularHtmlService, cd, trackingProvider, appService, platformService, layoutService, environment);
     }
 
-    onRouteTracksFound(searchresult: StarDocSearchResult) {
-        this.onTackCloudRoutesFound(searchresult);
-        this.onTracksFound(searchresult);
-    }
-
-    onTackCloudRoutesFound(searchresult: StarDocSearchResult) {
-        this.tagcloudSearchResult = searchresult;
-    }
-
-    onTracksFound(searchresult: StarDocSearchResult) {
-        const realTracks = [];
-        if (searchresult !== undefined && searchresult.currentRecords !== undefined) {
-            for (const record of searchresult.currentRecords) {
-                if (record.designator || record.geoLoc !== undefined
-                    || (record.magnitude !== undefined && record.magnitude.length > 20)) {
-                    realTracks.push(record);
-                    this.flgMapAvailable = true;
-
-                    this.flgShowMap = this.flgMapAvailable;
-                    this.calcShowMaps();
-                }
-            }
-        }
-        this.tracks = realTracks;
-
-        this.cd.markForCheck();
-    }
-
     protected onResize(layoutSizeData: LayoutSizeData): void {
         super.onResize(layoutSizeData);
         this.layoutSize = layoutSizeData;
@@ -90,11 +61,6 @@ export class StarDocShowpageComponent extends CommonDocShowpageComponent<StarDoc
             baseSearchUrl: ['sdoc'].join('/'),
             baseSearchUrlDefault: ['sdoc'].join('/')
         };
-    }
-
-    protected configureProcessingOfResolvedData(): void {
-        const me = this;
-        const config = me.appService.getAppConfig();
     }
 
     protected getConfiguredIndexableTypes(config: {}): string[] {
