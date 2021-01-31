@@ -1,31 +1,4 @@
 <ng-container *ngIf="listItem.currentRecord !== undefined" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="listItem.currentRecord.type === 'IMAGE'">
-        <div class="card-block card-block-image" [ngClass]="listItem.styleClassFor">
-            <a [name]="listItem.currentRecord.id"></a>
-            <div>
-                <div class="image-container">
-                    <div class="multiaction-checkbox" *ngIf="isMultiActionTagSelected()">
-                        <input type="checkbox" [disabled]="isMultiActionAvailableForRecord()"
-                               [checked]="isMultiActionSelectedForRecord()"
-                               (click)="onChangeMultiActionForRecord($event)">
-                    </div>
-                    <h5 *ngIf="listItem.currentRecord.geoDistance > 0"><app-sdoc-distance [record]="listItem.currentRecord"></app-sdoc-distance></h5>
-                    <h5 class="listItem.currentRecord-type">{{listItem.currentRecord.type | translate }}</h5>
-                    <ng-container *ngIf="listItem.image">
-                        <img class="picture-thumbnail-big" width="100px"
-                             [src]="listItem.thumbnailUrl"
-                             (click)="submitShowImage(listItem.currentRecord)"
-                             alt="{{listItem.image.name}}">
-                    </ng-container>
-                    <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)"><h5 class="image-date">{{listItem.currentRecord | sdocdate}}</h5></a>
-                    <app-sdoc-datameta [record]="listItem.currentRecord"></app-sdoc-datameta>
-                    <ng-container *ngIf="!short">
-                        <app-sdoc-action [record]="listItem.currentRecord" [type]="'actionTagsSmall'" (actionTagEvent)="onActionTagEvent($event)"></app-sdoc-action>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-    </ng-container>
     <ng-container *ngSwitchDefault="">
         <div class="card-block" [ngClass]="listItem.styleClassFor">
             <a [name]="listItem.currentRecord.id"></a>
@@ -38,16 +11,10 @@
             <h5><app-sdoc-linked-loc-hierarchy [record]="listItem.currentRecord" [lastOnly]="true"></app-sdoc-linked-loc-hierarchy></h5>
             <div>
                 <div style="width: 100px; float: left">
-                    <h5 *ngIf="listItem.currentRecord.type !== 'LOCATION'" class="listItem.currentRecord-type">{{listItem.currentRecord.type | translate }}</h5>
-                    <h5 class="listItem.currentRecord-subtype">{{listItem.currentRecord.subtype | translate }}</h5>
-                    <ng-container *ngIf="listItem.image">
-                        <img class="picture-thumbnail" width="50px"
-                             [src]="listItem.thumbnailUrl"
-                             (click)="submitShowImage(listItem.currentRecord)"
-                             alt="{{listItem.image.name}}">
-                    </ng-container>
+                    <h5 *ngIf="listItem.currentRecord.type !== 'LOCATION'" class="listItem.currentRecord-type fx-bg-type">{{listItem.currentRecord.type | translate }}</h5>
+                    <h5 class="listItem.currentRecord-subtype fx-bg-type">{{listItem.currentRecord.subtype | translate }}</h5>
                 </div>
-                <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)"><h5 class="card-title">{{listItem.currentRecord.name}}</h5></a>
+                <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)"><h5 class="card-title fx-bg-name">{{listItem.currentRecord.name}}</h5></a>
                 <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
                 <app-sdoc-datameta [record]="listItem.currentRecord"></app-sdoc-datameta>
             </div>

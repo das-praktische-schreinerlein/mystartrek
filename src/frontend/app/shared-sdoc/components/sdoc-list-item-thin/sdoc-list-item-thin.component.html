@@ -24,8 +24,8 @@
                 </ng-container>
             </ng-container>
         </div>
-        <div class="col-6 layout-big">
-            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+        <div class="col-6 layout-big fx-bg-name">
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)" class="fx-bg-name">{{listItem.currentRecord.name}}</a>
         </div>
         <div class="col-4 layout-big">
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
@@ -57,7 +57,7 @@
             </ng-container>
         </div>
         <div class="col-4 layout-small">
-            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)" class="fx-bg-name">{{listItem.currentRecord.name}}</a>
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
         </div>
     </ng-container>
@@ -87,7 +87,7 @@
             </ng-container>
         </div>
         <div class="col-4 layout-verysmall">
-            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)">{{listItem.currentRecord.name}}</a>
+            <a [href]="listItem.urlShow" (click)="submitShow(listItem.currentRecord)" class="fx-bg-name">{{listItem.currentRecord.name}}</a>
             <app-sdoc-keywords [record]="listItem.currentRecord"></app-sdoc-keywords>
         </div>
     </ng-container>
