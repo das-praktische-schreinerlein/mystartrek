@@ -10,3 +10,5 @@ For more information take a look at documentation:
 - [credits for used libraries](docs/CREDITS.md)
 
 MySimpleHomePage bases on mytourbook-2.0.0.
+
+![startpage](docs/images/startpage-x400.png)
