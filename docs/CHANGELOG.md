@@ -1,7 +1,24 @@
 # Changelog of MySimpleHomePage
  
 # Versions
- 
+
+## 4.1.0
+- improved security with tools to reset service-passwords
+
+### new features
+- config: run ConfigInitializerCommand to reset service-passwords
+
+### improvements
+- none
+
+### bug fixes
+- none
+
+### breaking changes
+- none
+
+
+
 ## 4.0.0
 - improved security
 - added admin-server and parameter-validation on serverAdmin
