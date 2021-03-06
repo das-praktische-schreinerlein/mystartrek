@@ -2,10 +2,9 @@ import {
     CommonAdminCommand,
     SimpleConfigFilePathValidationRule
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin.command';
-import {RegExValidationReplaceRule, ValidationRule} from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
+import {PasswordValidationRule, ValidationRule} from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
 import {PasswordUtils} from '@dps/mycms-commons/dist/commons/utils/password.utils';
 import {ConfigInitializerUtil} from '@dps/mycms-commons/dist/tools/config-initializer.util';
-import * as XRegExp from 'xregexp';
 import * as Promise_serial from 'promise-serial';
 
 export class ConfigInitializerCommand extends CommonAdminCommand {
@@ -13,12 +12,8 @@ export class ConfigInitializerCommand extends CommonAdminCommand {
 
     protected createValidationRules(): {[key: string]: ValidationRule} {
         return {
-            'newpassword': new RegExValidationReplaceRule(false,
-                new XRegExp('^[-A-Za-z0-9_@\(\)<>:]*$', 'gi'),
-                new XRegExp('[^-A-Za-z0-9_@\(\)<>:]*', 'gi'), '', 50),
-            'tokenkey': new RegExValidationReplaceRule(false,
-                new XRegExp('^[-A-Za-z0-9_@\(\)<>:]*$', 'gi'),
-                new XRegExp('[^-A-Za-z0-9_@\(\)<>:]*', 'gi'), '', 50),
+            'newpassword': new PasswordValidationRule(false),
+            'tokenkey': new PasswordValidationRule(false),
             'configbasepath': new SimpleConfigFilePathValidationRule(false)
         };
     }
