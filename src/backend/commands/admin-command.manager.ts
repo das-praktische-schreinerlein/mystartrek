@@ -3,10 +3,10 @@ import {
     CommonAdminCommandConfigType,
     CommonAdminCommandManager
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin-command.manager';
+import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
 import {StarDocConverterCommand} from './sdoc-converter.command';
 import {StarDocLoaderCommand} from './sdoc-loader.command';
 import {StarDocExporterCommand} from './sdoc-exporter.command';
-import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
 
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
 }

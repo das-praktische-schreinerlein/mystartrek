@@ -51,15 +51,6 @@
             "commands": [
                 {
                     "parameters": {
-                        "command": "dbMigrate",
-                        "action": "migrateDB",
-                        "migrationDbConfigFile": "config/db-migrate-database.json",
-                        "migrationsDir": "migrations/mytbdb",
-                        "migrationEnv": "mytbdb_mysql"
-                    }
-                },
-                {
-                    "parameters": {
                         "command": "initConfig",
                         "action": "resetSolrPasswords",
                         "solrconfigbasepath": "dist/contrib/solr/server/solr"

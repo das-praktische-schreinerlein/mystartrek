@@ -10,7 +10,7 @@ export class ExtendedConfigInitializerCommand extends ConfigInitializerCommand {
     protected installerdbbasepath: string;
 
     public static replaceTourDocSolrPasswordInBackendConfig(file: string, solrPassword: string, required: boolean): Promise<boolean> {
-        return ConfigInitializerUtil.replaceSolrPasswordInBackendConfig(file, 'solrCoreTourDocReadPassword', solrPassword, required);
+        return ConfigInitializerUtil.replaceSolrPasswordInBackendConfig(file, 'solrCoreStarDocReadPassword', solrPassword, required);
     }
 
     protected createValidationRules(): {[key: string]: ValidationRule} {
