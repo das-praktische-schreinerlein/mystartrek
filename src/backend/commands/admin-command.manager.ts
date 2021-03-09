@@ -3,10 +3,10 @@ import {
     CommonAdminCommandConfigType,
     CommonAdminCommandManager
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin-command.manager';
-import {ConfigInitializerCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/config-initializer.command';
 import {StarDocConverterCommand} from './sdoc-converter.command';
 import {StarDocLoaderCommand} from './sdoc-loader.command';
 import {StarDocExporterCommand} from './sdoc-exporter.command';
+import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
 
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
 }
@@ -14,7 +14,7 @@ export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
 export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandConfigType> {
     constructor(adminCommandConfig: AdminCommandConfigType) {
         super({
-            'initConfig': new ConfigInitializerCommand(),
+            'initConfig': new ExtendedConfigInitializerCommand(),
             'convertStarDoc': new StarDocConverterCommand(),
             'loadStarDoc': new StarDocLoaderCommand(),
             'exportStarDoc': new StarDocExporterCommand(),
