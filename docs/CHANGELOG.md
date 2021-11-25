@@ -2,7 +2,23 @@
  
 # Versions
 
-## 4.1.0 (2020-05-13)
+## 4.2.0 (2021-11-25)
+- bumped up to commons 5.4.0
+
+### new features
+- none
+
+### improvements
+- bumped up to mycms-commons 5.4.0
+
+### bug fixes
+- none
+
+### breaking changes
+- none
+
+
+## 4.1.0 (2021-05-13)
 - improved security with tools to reset service-passwords
 
 ### new features
