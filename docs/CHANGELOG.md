@@ -2,6 +2,25 @@
  
 # Versions
 
+## 4.3.0
+- bumped up to commons 5.6.0
+- added viewer as separate environment to view static data without backend
+- split components and build for smaller optimized readonly-version
+
+### new features
+- viewer: added viewer as separate environment to view static data without backend
+
+### improvements
+- deps: bumped up to mycms-commons 5.6.0
+- frontend: split components and build for smaller optimized readonly-version
+
+### bug fixes
+- none
+
+### breaking changes
+- none
+
+
 ## 4.2.0 (2021-11-25)
 - bumped up to commons 5.4.0
 

@@ -2,24 +2,27 @@ import {AppEnvironment} from './app-environment';
 import {DataMode} from '../shared/commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
-    production: true,
+    production: false, // TODO set this to false for development
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
+    backendApiBaseUrl: undefined,
     defaultSearchTypes: '',
     emptyDefaultSearchTypes: '',
     useAssetStoreUrls: false,
     allowAutoPlay: false,
-    backendApiBaseUrl: 'http://localhost:4102/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
-    startDataMode: DataMode.BACKEND,
-    availableDataModes: [DataMode.BACKEND]
+    staticPDocsFile: 'assets/staticdata/static.myshppdocs.js',
+    startDataMode: DataMode.STATIC,
+    availableDataModes: [DataMode.STATIC]
 };
 
 // unset logger
-console.trace = function() {};
-console.debug = function() {};
-console.log = function() {};
-console.warn = function() {};
-console.error = function() {};
+if (environment.production) {
+    console.trace = function() {};
+    console.debug = function() {};
+    console.log = function() {};
+    console.warn = function() {};
+    console.error = function() {};
+}
 

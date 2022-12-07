@@ -1,3 +1,4 @@
+window.importStaticTranslationsJsonP = `
 {
     "nav.brand.appName": "MySimpleHomePage",
     "meta.title.prefix.errorPage": "MySimpleHomePage - Oje ein Fehler",
@@ -75,3 +76,11 @@
     "label.mdocratepers.gesamt.14": "phantastischer Meilenstein",
     "null": "Unbestimmt"
 }
+`;
+
+var script = document.createElement('script');
+script.type='application/json';
+script.id = 'assets/staticdata/static.myshptranslations-de.js';
+var text = document.createTextNode(importStaticTranslationsJsonP);
+script.appendChild(text);
+document.head.appendChild(script);

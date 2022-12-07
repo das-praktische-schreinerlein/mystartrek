@@ -11,7 +11,7 @@
     <meta name="keywords" lang="de" content="Homepage">
     <meta name="robots" content="index,follow">
 
-    <base href="/">
+    <script>document.write('<base href="' + document.location + '" />');</script>
 
     <style>
         div.flg-browser-not-compatible {
@@ -34,6 +34,10 @@
         }
     </style>
 
+    <script inline type="text/javascript" src="assets/staticdata/static.myshpconfig.js"></script>
+    <script inline type="text/javascript" src="assets/staticdata/static.myshppdocs.js"></script>
+    <script inline type="text/javascript" src="assets/staticdata/static.myshptranslations-de.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link inline rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link inline rel="icon" type="image/x-icon" sizes="48x48" href="assets/icons/favicon.ico">
@@ -43,7 +47,9 @@
     <link inline rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="msapplication-TileImage" content="assets/icons/mstile-144x144.png">
-    <meta name="theme-color" content="#ffffff"></head>
+    <meta name="theme-color" content="#ffffff">
+</head>
+
 <body>
 <div id="flash_browser_not_compatible" class="flg-browser-not-compatible">
     <div class="container content-container container-browser-not-compatible">
@@ -53,9 +59,6 @@
     </div>
 </div>
 <app-root>Loading...</app-root>
-
-<!-- Start TrackerCode (GA, Piwik -->
-<!-- End TrackerCode -->
 
 </body>
 </html>

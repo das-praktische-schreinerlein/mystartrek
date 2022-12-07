@@ -31,7 +31,7 @@ AdminServerModuleLoader.loadAdminModules(app, serverConfig);
 const bindIp = serverConfig.adminBackendConfig.bindIp ? serverConfig.adminBackendConfig.bindIp : '127.0.0.1';
 const tcpBacklog = serverConfig.adminBackendConfig.tcpBacklog ? serverConfig.adminBackendConfig.tcpBacklog : 511;
 app.listen(serverConfig.adminBackendConfig.port, bindIp,  tcpBacklog, function () {
-    console.log('MyTB app listening on ip/port/tcpBacklog', bindIp, serverConfig.adminBackendConfig.port, tcpBacklog);
+    console.log('MyShp app listening on ip/port/tcpBacklog', bindIp, serverConfig.adminBackendConfig.port, tcpBacklog);
 
     if (!debug) {
         console.log = function() {};

@@ -3,7 +3,7 @@
 ## prepare
 
 ### prepare build-scripts
-- build-dev.bash, build-beta.bash, build-prod.bash
+- build-dev.bash, build-beta.bash, build-prod.bash, build-viewer.bash
 ```bash
 #!/usr/bin/env bash
 
@@ -40,6 +40,13 @@ Run for the prod-versions in `dist/`.
 ```bash
 bash
 ./build-prod.bash
+```
+
+## Build viewer
+Run for the viewer-versions in `dist/`.
+```bash
+bash
+./build-viewer.bash
 ```
 
 ## Deploy prod
