@@ -7,6 +7,7 @@ import {AppEnvironment} from './app-environment';
 import {DataMode} from '../shared/commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
+    hideCopyrightFooter: true,
     production: false,
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
@@ -19,6 +20,8 @@ export const environment: AppEnvironment = {
     trackingProviders: [], // Angulartics2Piwik
     adminBackendApiBaseUrl: 'http://localhost:4900/adminapi/v1/',
     adminWritable: true,
+    hideInternalDescLinks: false,
+    hideInternalImages: false,
     startDataMode: DataMode.BACKEND,
     availableDataModes: [DataMode.BACKEND]
 };

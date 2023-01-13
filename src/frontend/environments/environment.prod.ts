@@ -12,6 +12,8 @@ export const environment: AppEnvironment = {
     backendApiBaseUrl: 'http://localhost:4102/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
+    hideInternalDescLinks: false,
+    hideInternalImages: false,
     startDataMode: DataMode.BACKEND,
     availableDataModes: [DataMode.BACKEND]
 };

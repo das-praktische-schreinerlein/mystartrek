@@ -72,7 +72,7 @@ export class AppService extends GenericAppService {
             if (DataMode.STATIC === me.appConfig.currentDataMode) {
                 return me.initStaticData();
             } else {
-            return me.initBackendData();
+                return me.initBackendData();
             }
         }).then(function onBackendLoaded() {
             console.log('app ready');

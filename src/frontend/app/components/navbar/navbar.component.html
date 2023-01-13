@@ -3,7 +3,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand mdl-navigation__link" routerLink="/pages/start" routerLinkActive="active">
-        <img src="assets/images/banner.jpg" width="30" class="d-inline-block picture-thumbnail align-top">
+        <img src="assets/images/banner.jpg" width="30" class="d-inline-block picture-thumbnail align-top img-navbar-banner">
         <span>{{ 'nav.brand.appName' | translate }}</span>
     </a>
 
@@ -56,10 +56,10 @@
                     <li class="dropdown-item"><app-switch-onoffline></app-switch-onoffline></li>
                 </ul>
             </li>
-
         </ul>
     </div>
 </nav>
+
 <nav class="navbar-fullpage show-on-fullpage-block">
     <button type="button" class="" (click)="doEndFullPage()">
         <span>&#x25A3;</span>

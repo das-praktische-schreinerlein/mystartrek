@@ -4,7 +4,7 @@ import {SectionsBaseUrlResolver} from '@dps/mycms-frontend-commons/dist/frontend
 import {SectionsPDocRecordResolver} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/resolver/sections-pdoc-details.resolver';
 import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SectionsPDocsResolver} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/resolver/sections-pdocs.resolver';
 import {ErrorResolver} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/resolver/error.resolver';
@@ -22,7 +22,7 @@ import {FrontendPDocCommonsModule} from '@dps/mycms-frontend-commons/dist/fronte
     ],
     imports: [
         TranslateModule,
-        NgbModule,
+        NgbCollapseModule, NgbTabsetModule,
         NgxMdModule.forRoot(),
         BrowserModule,
         FormsModule,

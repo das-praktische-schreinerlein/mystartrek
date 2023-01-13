@@ -6,6 +6,9 @@
     "services": {
         "adminJobArea": {
             "jobsAllowed": true
+        },
+        "global": {
+            "TODO set this to hide: hideCopyrightFooter": true
         }
     }
 }
