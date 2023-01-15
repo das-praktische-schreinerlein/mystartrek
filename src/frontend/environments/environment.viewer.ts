@@ -11,9 +11,12 @@ export const environment: AppEnvironment = {
     emptyDefaultSearchTypes: '',
     useAssetStoreUrls: false,
     allowAutoPlay: false,
+    sdocMaxItemsPerAlbum: 2000,
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
-    staticPDocsFile: 'assets/staticdata/static.myshppdocs.js',
+    staticPDocsFile: 'assets/staticdata/static.mystarmpdocs.js',
+    staticSDocsFiles: ['assets/staticdata/static.mystarmsdocs.js'],
+    adminWritable: false,
     hideInternalDescLinks: true,
     hideInternalImages: true,
     startDataMode: DataMode.STATIC,

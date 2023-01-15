@@ -11,12 +11,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
 import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAccordionModule, NgbRatingModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrModule} from 'ngx-toastr';
 import {LightboxModule} from 'ngx-lightbox';
 import {StarDocProfileMapComponent} from './components/sdoc-profilemap/sdoc-profilemap.component';
 import {StarDocMapComponent} from './components/sdoc-map/sdoc-map.component';
-import {StarDocLinkedLocHierarchyComponent} from './components/sdoc-linked-loc-hierarchy/sdoc-linked-loc-hierarchy.component';
+import {
+    StarDocLinkedLocHierarchyComponent
+} from './components/sdoc-linked-loc-hierarchy/sdoc-linked-loc-hierarchy.component';
 import {StarDocDistanceComponent} from './components/sdoc-distance/sdoc-distance.component';
 import {StarDocDateFormatPipe} from './pipes/sdoc-dateformat.pipe';
 import {DatePipe} from '@angular/common';
@@ -24,13 +26,16 @@ import {StarDocDataMetaComponent} from './components/sdoc-datameta/sdoc-datameta
 import {StarDocActionsComponent} from './components/sdoc-actions/sdoc-actions.component';
 import {StarDocActionTagsComponent} from './components/sdoc-actiontags/sdoc-actiontags.component';
 import {FileDropModule} from 'ngx-file-drop';
-import {FrontendCommonDocCommonsModule} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/frontend-cdoc-commons.module';
+import {
+    FrontendCommonDocCommonsModule
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/frontend-cdoc-commons.module';
 import {StarDocKeywordsComponent} from './components/sdoc-keywords/sdoc-keywords.component';
 import {StarDocMultiActionHeaderComponent} from './components/sdoc-multiactionheader/sdoc-multiactionheader.component';
 import {StarDocListItemSmallComponent} from './components/sdoc-list-item-small/sdoc-list-item-small.component';
 import {StarDocListItemFlatComponent} from './components/sdoc-list-item-flat/sdoc-list-item-flat.component';
 import {StarDocListItemPageComponent} from './components/sdoc-list-item-page/sdoc-list-item-page.component';
 import {StarDocListItemThinComponent} from './components/sdoc-list-item-thin/sdoc-list-item-thin.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -55,8 +60,8 @@ import {StarDocListItemThinComponent} from './components/sdoc-list-item-thin/sdo
         StarDocMultiActionHeaderComponent
     ],
     imports: [
+        NgbAccordionModule, NgbRatingModule, NgbTabsetModule,
         ToastrModule,
-        NgbModule,
         MultiselectDropdownModule,
         TranslateModule,
         BrowserModule,
@@ -68,7 +73,8 @@ import {StarDocListItemThinComponent} from './components/sdoc-list-item-thin/sdo
         AngularMapsModule,
         FrontendCommonDocCommonsModule,
         LightboxModule,
-        FileDropModule
+        FileDropModule,
+        RouterModule
     ],
     providers: [
         DatePipe

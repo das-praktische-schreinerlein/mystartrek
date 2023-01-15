@@ -7,6 +7,10 @@ import * as fs from 'fs';
 import {HttpAdapter} from 'js-data-http';
 import {StarDocItemsJsAdapter} from '../shared/sdoc-commons/services/sdoc-itemsjs.adapter';
 import {StarDocFileUtils} from '../shared/sdoc-commons/services/sdoc-file.utils';
+import {
+    ExtendedItemsJsConfig,
+    ItemsJsDataImporter
+} from '@dps/mycms-commons/dist/search-commons/services/itemsjs.dataimporter';
 
 export class StarDocDataServiceModule {
     private static dataServices = new Map<string, StarDocDataService>();
@@ -75,14 +79,16 @@ export class StarDocDataServiceModule {
         const dataService: StarDocDataService = new StarDocDataService(dataStore);
 
         // configure adapter
-        const itemsJsConfig = backendConfig['StarDocItemsJsAdapter'];
+        const options = { skipMediaCheck: false};
+        const itemsJsConfig: ExtendedItemsJsConfig = StarDocItemsJsAdapter.itemsJsConfig;
+        ItemsJsDataImporter.prepareConfiguration(itemsJsConfig);
         if (itemsJsConfig === undefined) {
             throw new Error('config for StarDocItemsJsAdapter not exists');
         }
         const records = StarDocFileUtils.parseRecordSourceFromJson(fs.readFileSync(itemsJsConfig['dataFile'], { encoding: 'utf8' }));
 
-        const adapter = new StarDocItemsJsAdapter({mapperConfig: backendConfig['mapperConfig']}, records);
-        dataStore.setAdapter('http', adapter, '', {});
+        const gdocAdapter = new StarDocItemsJsAdapter(options, records, itemsJsConfig);
+        dataStore.setAdapter('http', gdocAdapter, '', {});
 
         return dataService;
     }

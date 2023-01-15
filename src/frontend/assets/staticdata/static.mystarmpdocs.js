@@ -1,3 +1,4 @@
+window.importStaticDataPDocsJsonP = `
 {
  "pdocs": [
   {
@@ -13,7 +14,7 @@
   },
   {
    "id": "start",
-   "descMd": "# MyStarTrek \n\n Ein kleines feines Planetarium.",
+   "descMd": "# MyStarTrek \\n\\n Ein kleines feines Planetarium.",
    "flgShowTopTen": false,
    "flgShowNews": false,
    "flgShowSearch": true,
@@ -37,3 +38,11 @@
   }
  ]
 }
+`;
+
+var script = document.createElement('script');
+script.type='application/json';
+script.id = 'assets/staticdata/static.mystarmpdocs.js';
+var text = document.createTextNode(importStaticDataPDocsJsonP);
+script.appendChild(text);
+document.head.appendChild(script);

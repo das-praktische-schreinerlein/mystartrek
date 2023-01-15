@@ -4,9 +4,13 @@ import {StarDocSearchResult} from '../model/container/sdoc-searchresult';
 import {StarDocAdapterResponseMapper} from './sdoc-adapter-response.mapper';
 import {ItemsJsConfig} from '@dps/mycms-commons/dist/search-commons/services/itemsjs-query.builder';
 import {GenericItemsJsAdapter} from '@dps/mycms-commons/dist/search-commons/services/generic-itemsjs.adapter';
+import {ExtendedItemsJsConfig} from '@dps/mycms-commons/dist/search-commons/services/itemsjs.dataimporter';
 
 export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, StarDocSearchForm, StarDocSearchResult> {
-    public static itemsJsConfig: ItemsJsConfig = {
+    public static itemsJsConfig: ExtendedItemsJsConfig = {
+        skipMediaCheck: false,
+        aggregationFields: ['id', 'loc_id_i'],
+        refConfigs: [],
         spatialField: 'geo_loc_p',
         spatialSortKey: 'distance',
         searchableFields: ['id', 'image_id_i', 'loc_id_i',
@@ -19,54 +23,71 @@ export class StarDocItemsJsAdapter extends GenericItemsJsAdapter<StarDocRecord, 
             },
             'designator_facet_ss': {
             },
-            'magnitude_facet_is': {
-            },
-            'bvcoloridx_facet_ss': {
-            },
-            'dimension_facet_ss': {
-            },
             'keywords_txt': {
             },
-            'month_is': {
+            'subtype_ss': {
+                mapField: 'subtype_s',
+                conjunction: false,
+                sort: 'term',
+                order: 'asc',
+                hide_zero_doc_count: true,
+                size: 1000
             },
-            'loc_lochirarchie_txt': {},
-            'playlists_txt': {
+            'type_txt': {
+                mapField: 'type_s',
+                conjunction: false,
+                sort: 'term',
+                order: 'asc',
+                hide_zero_doc_count: false,
+                size: 1000
             },
-            'type_txt': {},
-            'id': {},
-            'week_is': {
+            'id': {
+                conjunction: false,
+                sort: 'term',
+                order: 'asc',
+                hide_zero_doc_count: true,
+                size: 1000
+            },
+            'UNDEFINED_FILTER': {
+                mapField: 'id',
+                field: 'id',
+                conjunction: true,
+                sort: 'term',
+                order: 'asc',
+                hide_zero_doc_count: true,
+                size: 1000
             }
         },
         sortings: {
             'date': {
-                'field': 'dateonly_s',
-                'order:': 'desc'
+                field: 'dateonly_s',
+                order: 'desc'
             },
             'dateAsc': {
-                'sort': 'date_dt',
-                'order:': 'asc'
+                field: 'date_dt',
+                order: 'asc'
             },
             'distance': {
-                'sort': 'geodist()',
-                'order:': 'asc'
+                field: 'geodist()',
+                order: 'asc'
             },
             'location': {
-                'sort': 'bvcoloridx_s',
-                'order:': 'asc'
+                field: 'bvcoloridx_s',
+                order: 'asc'
             },
             'relevance': {
             }
         },
         filterMapping: {
-            'html': 'html_txt',
-            'track_id_is': 'track_id_i'
+            'html': 'html_txt'
         },
         fieldMapping: {
         }
     };
 
-    constructor(config: any, data: any) {
-        super(config, new StarDocAdapterResponseMapper(config), data, StarDocItemsJsAdapter.itemsJsConfig);
+    constructor(config: any, records: any, itemsJsConfig: ExtendedItemsJsConfig) {
+        console.debug('init itemsjs with config', itemsJsConfig, records ? records.length : 0);
+        super(config, new StarDocAdapterResponseMapper(config), records, itemsJsConfig);
     }
 
     mapToAdapterDocument(props: any): any {

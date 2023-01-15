@@ -76,7 +76,7 @@
                         "srcFile": "node_modules/d3-celestial/data/lg.json",
                         "mode": "SOLR",
                         "type": "LG",
-                        "file": "d:\\docs\\import-sdocs-lg.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-lg.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -88,7 +88,7 @@
                         "srcFile": "node_modules/d3-celestial/data/dsos.20.json",
                         "mode": "SOLR",
                         "type": "DSO",
-                        "file": "d:\\docs\\import-sdocs-dso.20.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-dso.20.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -100,7 +100,7 @@
                         "srcFile": "node_modules/d3-celestial/data/stars.14.json",
                         "mode": "SOLR",
                         "type": "STAR",
-                        "file": "d:\\docs\\import-sdocs-star.14.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-star.14.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -109,7 +109,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "d:\\docs\\import-sdocs-lg.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-lg.json"
                     }
                 },
                 {
@@ -117,7 +117,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "d:\\docs\\import-sdocs-dso.20.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-dso.20.json"
                     }
                 },
                 {
@@ -125,7 +125,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "d:\\docs\\import-sdocs-star.14.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-star.14.json"
                     }
                 }
             ]

@@ -16,6 +16,7 @@ import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-com
 import {TranslateModule} from '@ngx-translate/core';
 import {FrontendCommonDocCommonsModule} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/frontend-cdoc-commons.module';
 import {FrontendPDocCommonsModule} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-commons/frontend-pdoc-commons.module';
+import {SharedStarDocModule} from '../shared-sdoc/shared-sdoc.module';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import {FrontendPDocCommonsModule} from '@dps/mycms-frontend-commons/dist/fronte
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedStarDocModule,
         FrontendPDocCommonsModule,
         SectionsRoutingModule,
         FrontendCommonDocCommonsModule

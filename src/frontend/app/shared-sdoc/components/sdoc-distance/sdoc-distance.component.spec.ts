@@ -2,7 +2,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {StarDocDistanceComponent} from './sdoc-distance.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 import {StarDocDataServiceStub} from '../../../../testing/sdoc-dataservice-stubs';
 
@@ -14,7 +13,7 @@ describe('StarDocDistanceComponent', () => {
         TestBed.configureTestingModule({
             declarations: [StarDocDistanceComponent],
             schemas: [NO_ERRORS_SCHEMA],
-            imports: [NgbModule.forRoot(),
+            imports: [
                 TranslateModule.forRoot()]
         })
             .compileComponents();

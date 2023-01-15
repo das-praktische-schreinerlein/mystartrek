@@ -3,16 +3,24 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AppState, GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
+import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
 import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services/minimal-http-backend-client';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
-import {BaseEntityRecord} from '@dps/mycms-commons/dist/search-commons/model/records/base-entity-record';
 import {StarDocHttpAdapter} from '../../shared/sdoc-commons/services/sdoc-http.adapter';
 import {StarDocDataStore} from '../../shared/sdoc-commons/services/sdoc-data.store';
 import {StarDocDataService} from '../../shared/sdoc-commons/services/sdoc-data.service';
 import {FallbackHttpClient} from './fallback-http-client';
+import * as Promise_serial from 'promise-serial';
 import {DataMode} from '../../shared/commons/model/datamode.enum';
 import {ToastrService} from 'ngx-toastr';
+import {StarDocAdapterResponseMapper} from '../../shared/sdoc-commons/services/sdoc-adapter-response.mapper';
+import {StarDocRecordRelation} from '../../shared/sdoc-commons/model/records/sdoc-record';
+import {StarDocItemsJsAdapter} from '../../shared/sdoc-commons/services/sdoc-itemsjs.adapter';
+import {
+    ExtendedItemsJsConfig,
+    ItemsJsDataImporter
+} from '@dps/mycms-commons/dist/search-commons/services/itemsjs.dataimporter';
 
 @Injectable()
 export class AppService extends GenericAppService {
@@ -21,6 +29,7 @@ export class AppService extends GenericAppService {
         backendApiBaseUrl: environment.backendApiBaseUrl,
         useAssetStoreUrls: environment.useAssetStoreUrls,
         staticPDocsFile: undefined,
+        staticSDocsFiles: undefined,
         permissions: {
             adminWritable: environment.adminWritable,
             allowAutoPlay: environment.allowAutoPlay
@@ -35,6 +44,7 @@ export class AppService extends GenericAppService {
         adminBackendApiBaseUrl: environment.adminBackendApiBaseUrl,
         backendApiBaseUrl: environment.backendApiBaseUrl,
         staticPDocsFile: environment.staticPDocsFile,
+        staticSDocsFiles: undefined,
         useAssetStoreUrls: environment.useAssetStoreUrls,
         permissions: {
             adminWritable: environment.adminWritable,
@@ -51,6 +61,7 @@ export class AppService extends GenericAppService {
         backendApiBaseUrl: environment.backendApiBaseUrl,
         useAssetStoreUrls: environment.useAssetStoreUrls,
         staticPDocsFile: undefined,
+        staticSDocsFiles: undefined,
         permissions: {
             adminWritable: environment.adminWritable,
             allowAutoPlay: environment.allowAutoPlay
@@ -122,13 +133,14 @@ export class AppService extends GenericAppService {
         if (DataMode.STATIC === me.appConfig.currentDataMode) {
             console.log('starting static app');
             me.appConfig = {...me.staticAppConfig};
-            return me.fallBackHttpClient.loadJsonPData('assets/staticdata/static.myshpconfig.js', 'importStaticConfigJsonP', 'config')
+            return me.fallBackHttpClient.loadJsonPData('assets/staticdata/static.mystarmconfig.js', 'importStaticConfigJsonP', 'config')
                 .then(function onDocLoaded(res: any) {
                     const config: {} = res;
                     console.log('initially loaded dynamic config from assets', config);
                     me.appConfig.components = config['components'];
                     me.appConfig.services = config['services'];
                     me.appConfig.staticPDocsFile = config['staticPDocsFile'] ? config['staticPDocsFile'] : me.appConfig.staticPDocsFile;
+                    me.appConfig.staticSDocsFiles = config['staticSDocsFiles'] ? config['staticSDocsFiles'] : me.appConfig.staticSDocsFiles;
                     me.appConfig.useAssetStoreUrls = false;
                     me.appConfig.currentDataMode = DataMode.STATIC;
 
@@ -181,6 +193,7 @@ export class AppService extends GenericAppService {
                 }).then(function onDocsAdded(records: BaseEntityRecord[]) {
                     // console.log('initially loaded pdocs from server', records);
                     me.pdocDataService.setWritable(false);
+                    me.sdocDataService.setWritable(false);
                     return resolve(true);
                 }).catch(function onError(reason: any) {
                     console.error('loading appdata failed:', reason);
@@ -192,8 +205,15 @@ export class AppService extends GenericAppService {
 
     initStaticData(): Promise<any> {
         const me = this;
+        this.sdocDataStore.setAdapter('http', undefined, '', {});
         this.pdocDataService.clearLocalStore();
+        this.sdocDataService.clearLocalStore();
         me.appConfig.permissions.adminWritable = false;
+
+        const options = { skipMediaCheck: false};
+        const itemsJsConfig: ExtendedItemsJsConfig = StarDocItemsJsAdapter.itemsJsConfig;
+        ItemsJsDataImporter.prepareConfiguration(itemsJsConfig);
+        const importer: ItemsJsDataImporter = new ItemsJsDataImporter(itemsJsConfig);
 
         return  me.fallBackHttpClient.loadJsonPData(me.appConfig.staticPDocsFile, 'importStaticDataPDocsJsonP', 'pdocs')
             .then(function onPDocLoaded(data: any) {
@@ -209,10 +229,61 @@ export class AppService extends GenericAppService {
                 console.log('initially loaded pdocs from assets', pdocs);
                 me.pdocDataService.setWritable(false);
 
+                console.log('load sdoc-files',  me.appConfig.staticSDocsFiles);
+                const promises = [];
+                for (const staticTDocsFile of me.appConfig.staticSDocsFiles) {
+                    promises.push(function () {
+                        return me.fallBackHttpClient.loadJsonPData(staticTDocsFile, 'importStaticDataSDocsJsonP', 'sdocs');
+                    });
+                }
+
+                return Promise_serial(promises, {parallelize: 1}).then(arrayOfResults => {
+                    const sdocs = [];
+                    for (let i = 0; i < arrayOfResults.length; i++) {
+                        const data = arrayOfResults[i];
+                        if (data['sdocs']) {
+                            const exportRecords = data['sdocs'].map(doc => {
+                                return importer.extendAdapterDocument(doc);
+                            });
+
+                            sdocs.push(...exportRecords);
+                            continue;
+                        }
+
+                        if (data['currentRecords']) {
+                            const responseMapper = new StarDocAdapterResponseMapper(options);
+                            const searchRecords = data['currentRecords'].map(doc => {
+                                const record = importer.createRecordFromJson(responseMapper,
+                                    me.sdocDataStore.getMapper('sdoc'), doc, StarDocRecordRelation);
+                                const adapterValues = responseMapper.mapToAdapterDocument({}, record);
+
+                                return importer.extendAdapterDocument(adapterValues);
+                            });
+
+                            sdocs.push(...searchRecords);
+                            continue;
+                        }
+
+                        return Promise.reject('No static sdocs found');
+                    }
+
+                    return Promise.resolve(sdocs);
+                }).catch(reason => {
+                    return Promise.reject(reason);
+                });
+            }).then(function onDocParsed(sdocs: any[]) {
+                console.log('initially loaded sdocs from assets', sdocs ? sdocs.length : 0);
+                const records = importer.mapToItemJsDocuments(sdocs);
+                const sdocAdapter = new StarDocItemsJsAdapter(options, records, itemsJsConfig);
+
+                me.sdocDataStore.setAdapter('http', sdocAdapter, '', {});
+                me.sdocDataService.setWritable(false);
+
                 return Promise.resolve(true);
             }).catch(function onError(reason: any) {
                 console.error('loading appdata failed:', reason);
                 me.pdocDataService.setWritable(false);
+                me.sdocDataService.setWritable(false);
 
                 return Promise.reject(false);
             });

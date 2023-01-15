@@ -27,8 +27,8 @@ export class StarDocDataServiceStub {
         return Promise.resolve(new StarDocSearchResult(searchForm, 0, [], new Facets()));
     };
 
-    newSearchResult(gdocSearchForm: StarDocSearchForm, recordCount: number,
+    newSearchResult(sdocSearchForm: StarDocSearchForm, recordCount: number,
                     currentRecords: StarDocRecord[], facets: Facets): StarDocSearchResult {
-        return new StarDocSearchResult(gdocSearchForm, recordCount, currentRecords, facets);
+        return new StarDocSearchResult(sdocSearchForm, recordCount, currentRecords, facets);
     }
 }

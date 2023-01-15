@@ -80,7 +80,7 @@ window.importStaticTranslationsJsonP = `
 
 var script = document.createElement('script');
 script.type='application/json';
-script.id = 'assets/staticdata/static.myshptranslations-de.js';
+script.id = 'assets/staticdata/static.mystarmtranslations-de.js';
 var text = document.createTextNode(importStaticTranslationsJsonP);
 script.appendChild(text);
 document.head.appendChild(script);

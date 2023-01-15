@@ -3,6 +3,8 @@
     "filePathThemeFilterJson": "config/themeFilterConfig.json",
     "sdocDataStoreAdapter": "StarDocSolrAdapter",
     "sdocWritable": true,
+    "nodejsBinaryPath": "node",
+    "inlineJsPath": "devtools/create-allinone-html.js",
     "StarDocItemsJsAdapter": {
         "dataFile": "D:/tmp/test/mystartrek.json"
     },

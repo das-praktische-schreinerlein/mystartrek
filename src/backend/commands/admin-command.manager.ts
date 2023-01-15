@@ -7,6 +7,7 @@ import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.com
 import {StarDocConverterCommand} from './sdoc-converter.command';
 import {StarDocLoaderCommand} from './sdoc-loader.command';
 import {StarDocExporterCommand} from './sdoc-exporter.command';
+import {MediaManagerCommand} from './media-manager.command';
 
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
 }
@@ -18,6 +19,7 @@ export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandC
             'convertStarDoc': new StarDocConverterCommand(),
             'loadStarDoc': new StarDocLoaderCommand(),
             'exportStarDoc': new StarDocExporterCommand(),
+            'mediaManager': new MediaManagerCommand(),
             'generateSitemap': new SiteMapGeneratorCommand()
         }, adminCommandConfig);
     }

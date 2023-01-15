@@ -33,7 +33,15 @@ import {environment} from '../environments/environment';
 import {FallbackHttpClient} from './services/fallback-http-client';
 import {NgModule} from '@angular/core';
 import {AppCommonRoutingModule} from './app.common.router';
-import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
+import {StarDocDataStore, StarDocTeamFilterConfig} from '../shared/sdoc-commons/services/sdoc-data.store';
+import {StarDocModule} from './sdoc/sdoc.module';
+import {StarDocDataService} from '../shared/sdoc-commons/services/sdoc-data.service';
+import {StarDocDynamicComponentService} from './shared-sdoc/services/sdoc-dynamic-components.service';
+import {StarDocAlbumService} from './shared-sdoc/services/sdoc-album.service';
+import {StarDocDataCacheService} from './shared-sdoc/services/sdoc-datacache.service';
+import {StarDocActionTagService} from './shared-sdoc/services/sdoc-actiontag.service';
+import {StarDocPlaylistService} from './shared-sdoc/services/sdoc-playlist.service';
+import {StarDocActionTagsComponent} from './shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component';
 
 registerLocaleData(localeDe);
 
@@ -55,11 +63,12 @@ export function getAngulartics2Providers(): any {
         ErrorPageComponent
     ],
     entryComponents: [
+        StarDocActionTagsComponent
     ],
     imports: [
         HttpClientModule,
         NgbCollapseModule,
-        BrowserModule.withServerTransition({appId: 'pdoc-app'}),
+        BrowserModule.withServerTransition({appId: 'sdoc-app'}),
         ToastrModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
@@ -70,6 +79,7 @@ export function getAngulartics2Providers(): any {
         }),
         Angulartics2Module.forRoot(getAngulartics2Providers()),
         AngularCommonsModule,
+        StarDocModule,
         SectionsModule,
         CookieLawModule,
         AppCommonRoutingModule
@@ -78,19 +88,26 @@ export function getAngulartics2Providers(): any {
         {provide: MinimalHttpBackendClient, useClass: BackendHttpClient},
         // customUrlSerializerProvider, // activate this to get parenthes in parameters running, but then suburls dont run anymore
         CommonRoutingService,
-        CommonDocRoutingService,
         {provide: GenericAppService, useClass: AppService},
         FallbackHttpClient,
         DynamicComponentService,
+        StarDocDynamicComponentService,
+        StarDocTeamFilterConfig,
+        StarDocDataStore,
+        StarDocDataService,
         PDocDataStore,
+        StarDocAlbumService,
         PDocDataService,
+        StarDocDataCacheService,
         SearchFormUtils,
         {provide: GenericTrackingService, useClass: TrackingService},
         AngularHtmlService,
         {provide: SearchParameterUtils, useClass: SearchParameterUtils},
         PageUtils,
         {provide: PlatformService, useClass: PlatformService},
-        LayoutService
+        LayoutService,
+        StarDocActionTagService,
+        StarDocPlaylistService
     ],
     bootstrap: [AppComponent]
 })
