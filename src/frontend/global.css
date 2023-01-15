@@ -8,6 +8,15 @@ body {
     overflow-y: scroll;
 }
 
+.modal-dialog {
+    max-width: 800px;
+}
+
+.dropdown-toggle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .map-container {
     background: black;
 }
@@ -96,6 +105,13 @@ body {
 }
 
 /**
+ * human readable filters
+ */
+div.humanReadableSearchFilter span.filterValue {
+    font-weight: bold;
+}
+
+/**
  * highlights high-rated items
  */
 .list-item-persrate-0 {
@@ -122,17 +138,17 @@ body {
 img.picture-thumbnail {
     border-radius: 5px;
 }
-img.picture, img.picture-thumbnail-big, img.picture-small, img.picture-big, video.picture-big  {
+img.picture, img.picture-thumbnail-big, img.picture-small, img.picture-big, video.picture-big, img.picture-teaser  {
     border-radius: 10px;
 }
 
-img.picture-small, img.picture-big, video.picture-big {
+img.picture-small, img.picture-big, video.picture-big , img.picture-teaser {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-div.leaflet-div-icon-end, div.leaflet-div-icon-start, div.leaflet-div-icon-point {
+div.leaflet-div-icon-area, div.leaflet-div-icon-end, div.leaflet-div-icon-start, div.leaflet-div-icon-point {
     border: 2px solid #8CACD3;
     border-radius: 2px;
     padding: 2px !IMPORTANT;
@@ -164,4 +180,16 @@ a.dismiss::after {
 }
 a.dismiss > svg {
     display: none !IMPORTANT;
+}
+
+
+
+/*******************
+ * Extended-Objects
+ *******************/
+app-cdoc-extended-object-properties div.label {
+    min-width: 15px !IMPORTANT;
+}
+app-cdoc-extended-object-properties div.value {
+    min-width: 15px !IMPORTANT;
 }

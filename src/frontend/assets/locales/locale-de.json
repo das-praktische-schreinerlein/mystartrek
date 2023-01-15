@@ -51,5 +51,7 @@
     "hrt_magnitude": "Helligkeit",
     "hrt_designator": "Katalog",
     "hrt_bvcoloridx": "color:",
-    "hrt_dimension": "Größe"
+    "hrt_dimension": "Größe",
+    "null": "Unbestimmt"
 }
+
