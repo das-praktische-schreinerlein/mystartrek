@@ -60,12 +60,9 @@
     <div class="container map-container container-fullline" *ngIf="flgShowMap">
         <app-sdoc-map [mapId]="'searchMap' + (searchFormLayout === 0 ? 'small' : 'big')"
                       [height]="'300'"
-                      [mapZoom]="mapZoom"
                       [sdocs]="searchResult.currentRecords"
                       (sdocClicked)="onMapStarDocClicked($event)"
-                      (centerChanged)="onMapCenterChanged($event)"
-                      (mapElementsFound)="onMapElementsFound($event)"
-                      [mapCenterPos]="mapCenterPos"></app-sdoc-map>
+        ></app-sdoc-map>
     </div>
     <div class="container">
         <app-cdoc-typetable [searchResult]="searchResult" (columnClicked)="onTypeTableColumnClicked($event)"></app-cdoc-typetable>

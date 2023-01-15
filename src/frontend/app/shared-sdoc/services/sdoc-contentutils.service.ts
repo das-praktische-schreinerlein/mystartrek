@@ -2,23 +2,19 @@ import {Injectable} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {StarDocRecord} from '../../../shared/sdoc-commons/model/records/sdoc-record';
 import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
-import {MapElement} from '@dps/mycms-frontend-commons/dist/angular-maps/services/leaflet-geo.plugin';
-import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
-import * as L from 'leaflet';
-import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
+import {
+    CommonDocRoutingService
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
 import {
     CommonDocContentUtils,
     CommonDocContentUtilsConfig,
     CommonItemData
 } from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-contentutils.service';
-import LatLng = L.LatLng;
 
 export interface StarDocItemData extends CommonItemData {
     tracks?: StarDocRecord[];
     flgShowMap?: boolean;
-    flgShowProfileMap?: boolean;
     flgMapAvailable?: boolean;
-    flgProfileMapAvailable?: boolean;
 }
 
 @Injectable()
@@ -97,54 +93,10 @@ export class StarDocContentUtils extends CommonDocContentUtils {
         return filters;
     }
 
-    createMapElementForStarDoc(record: StarDocRecord, showImageTrackAndGeoPos: boolean): MapElement[] {
-        const trackUrl = record.designator;
-
-        const isImage = (record.type === 'IMAGE');
-        const showTrack = (trackUrl !== undefined && trackUrl.length > 0 && (!isImage || showImageTrackAndGeoPos))
-            || (record.magnitude !== undefined && record.magnitude !== null && record.magnitude.length > 0);
-        const showGeoPos = (!showTrack || isImage) && record.geoLat && record.geoLon &&
-            record.geoLat !== '0.0' && record.geoLon !== '0.0';
-        const mapElements: MapElement[] = [];
-
-        if (showTrack) {
-            let storeUrl;
-            if (this.appService.getAppConfig()['useAssetStoreUrls'] === true) {
-                storeUrl = this.appService.getAppConfig()['tracksBaseUrl'] + 'json/' + record.id;
-            } else {
-                storeUrl = this.appService.getAppConfig()['tracksBaseUrl'] + trackUrl + '.json';
-            }
-            const mapElement: MapElement = {
-                id: record.id,
-                name: record.name,
-                trackUrl: storeUrl,
-                trackSrc: record.magnitude,
-                popupContent: '<b>' + record.type + ': ' + record.name + '</b>',
-                type: record.type
-            };
-            mapElements.push(mapElement);
-        }
-        if (showGeoPos) {
-            const ele = BeanUtils.getValue(record, 'geoEle') || BeanUtils.getValue(record, 'sdocdatatech.altMax');
-            const point = ele !== undefined ? new LatLng(+record.geoLat, +record.geoLon, +ele) : new LatLng(+record.geoLat, +record.geoLon);
-            const mapElement: MapElement = {
-                id: record.id,
-                name: record.type + ': ' + record.name,
-                point: point,
-                popupContent: '<b>' + record.type + ': ' + record.name + '</b>',
-                type: record.type
-            };
-            mapElements.push(mapElement);
-        }
-
-        return mapElements;
-    }
-
     updateItemData(itemData: StarDocItemData, record: StarDocRecord, layout: string): boolean {
         super.updateItemData(itemData, record, layout);
         if (record === undefined) {
             itemData.flgShowMap = false;
-            itemData.flgShowProfileMap = false;
             itemData.tracks = [];
             return false;
         }
@@ -167,16 +119,12 @@ export class StarDocContentUtils extends CommonDocContentUtils {
             || (record.magnitude !== undefined && record.magnitude.length > 20))) {
             itemData.tracks = [record];
             itemData.flgMapAvailable = true;
-            itemData.flgProfileMapAvailable = (record.designator !== undefined
-                || (record.magnitude !== undefined && record.magnitude.length > 20));
         } else {
             itemData.tracks = [];
             itemData.flgMapAvailable = false;
-            itemData.flgProfileMapAvailable = false;
         }
 
         itemData.flgShowMap = itemData.flgMapAvailable;
-        itemData.flgShowProfileMap = itemData.flgProfileMapAvailable;
     }
 
     protected getServiceConfig(): CommonDocContentUtilsConfig {

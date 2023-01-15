@@ -17,20 +17,11 @@
     </ng-container>
 
     <div *ngIf="listItem.currentRecord !== undefined">
-        <div [class]="('container content-container map-container ' + (!listItem.flgShowProfileMap ? 'container-fullline' : ''))" *ngIf="listItem.flgShowMap">
+        <div [class]="'container content-container map-container container-fullline'" *ngIf="listItem.flgShowMap">
             <app-sdoc-map [mapId]="'listItemMapPage' + listItem.currentRecord.id"
                           [height]="'400px'"
-                          [mapZoom]="'9'"
                           [sdocs]="listItem.tracks"
-                          [showImageTrackAndGeoPos]="'true'"
-                          [mapCenterPos]="undefined"></app-sdoc-map>
-        </div>
-
-        <div class="container content-container map-container" *ngIf="listItem.flgShowProfileMap">
-            <app-sdoc-profilemap [mapId]="'showProfileMap'"
-                                 [height]="'400px'"
-                                 [showImageTrackAndGeoPos]="'true'"
-                                 [sdocs]="listItem.tracks"></app-sdoc-profilemap>
+            ></app-sdoc-map>
         </div>
     </div>
 </ng-container>

@@ -5,13 +5,14 @@ import {StarDocSearchResult} from '../../../../shared/sdoc-commons/model/contain
 import {Facets} from '@dps/mycms-commons/dist/search-commons/model/container/facets';
 import {IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts} from 'angular-2-dropdown-multiselect';
 import {StarDocSearchFormUtils} from '../../services/sdoc-searchform-utils.service';
-import {GeoLocationService} from '@dps/mycms-commons/dist/commons/services/geolocation.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ToastrService} from 'ngx-toastr';
 import {StarDocDataCacheService} from '../../services/sdoc-datacache.service';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
 import {StarDocSearchFormConverter} from '../../services/sdoc-searchform-converter.service';
-import {CommonDocSearchformComponent} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/components/cdoc-searchform/cdoc-searchform.component';
+import {
+    CommonDocSearchformComponent
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/components/cdoc-searchform/cdoc-searchform.component';
 import {StarDocRecord} from '../../../../shared/sdoc-commons/model/records/sdoc-record';
 import {StarDocDataService} from '../../../../shared/sdoc-commons/services/sdoc-data.service';
 
@@ -23,8 +24,6 @@ import {StarDocDataService} from '../../../../shared/sdoc-commons/services/sdoc-
 })
 export class StarDocSearchformComponent extends CommonDocSearchformComponent<StarDocRecord, StarDocSearchForm, StarDocSearchResult, StarDocDataService> {
     // initialize a private variable _searchForm, it's a BehaviorSubject
-    private geoLocationService = new GeoLocationService();
-
     public optionsSelectSubType: IMultiSelectOption[] = [];
     public optionsSelectMagnitude: IMultiSelectOption[] = [];
     public optionsSelectDimension: IMultiSelectOption[] = [];
@@ -162,18 +161,6 @@ export class StarDocSearchformComponent extends CommonDocSearchformComponent<Sta
             this.sdocSearchFormUtils.getDesignatorValues(sdocSearchSearchResult), true, [], true);
         this.optionsSelectBvcoloridx = this.searchFormUtils.getIMultiSelectOptionsFromExtractedFacetValuesList(
             this.sdocSearchFormUtils.getBVColoridxValues(sdocSearchSearchResult), true, [], true);
-
-        const values: StarDocSearchForm = sdocSearchSearchResult.searchForm;
-        const [lat, lon, dist] = this.sdocSearchFormUtils.extractNearbyPos(values.nearby);
-        if (lat && lon && (values.nearbyAddress === undefined || values.nearbyAddress === '')) {
-            this.geoLocationService.doReverseLookup(lat, lon).then(function (result: any) {
-                me.searchFormGroup.patchValue({'nearbyAddress':
-                        StarDocSearchForm.sdocFields.nearbyAddress.validator.sanitize(result.address)});
-            });
-        }
-        if (dist) {
-            this.searchFormGroup.patchValue({'nearbyDistance': dist});
-        }
     }
 
     protected updateAvailabilityFlags(sdocSearchSearchResult: StarDocSearchResult) {

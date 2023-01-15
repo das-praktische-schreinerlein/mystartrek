@@ -1,14 +1,9 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
-
-import 'leaflet';
 import {StarDocRecord} from '../../../../shared/sdoc-commons/model/records/sdoc-record';
-import {MapElement} from '@dps/mycms-frontend-commons/dist/angular-maps/services/leaflet-geo.plugin';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {AbstractInlineComponent} from '@dps/mycms-frontend-commons/dist/angular-commons/components/inline.component';
 import * as Celestial from 'd3-celestial';
-import {Feature, FeatureCollection, Point} from 'geojson';
-import {featureGroup} from 'leaflet';
 
 @Component({
     selector: 'app-sdoc-map',
@@ -17,8 +12,6 @@ import {featureGroup} from 'leaflet';
 })
 export class StarDocMapComponent extends AbstractInlineComponent {
     showLoadingSpinner = false;
-    mapElements: MapElement[] = [];
-    mapElementsReverseMap = new Map<MapElement, StarDocRecord>();
     geoJson = {
         "type": "FeatureCollection",
         "features": []
@@ -33,42 +26,16 @@ export class StarDocMapComponent extends AbstractInlineComponent {
     @Input()
     public sdocs: StarDocRecord[];
 
-    @Input()
-    public mapCenterPos: L.LatLng;
-
-    @Input()
-    public mapZoom: number;
-
-    @Input()
-    public showImageTrackAndGeoPos? = false;
-
-    @Output()
-    public centerChanged: EventEmitter<L.LatLng> = new EventEmitter();
-
     @Output()
     public sdocClicked: EventEmitter<StarDocRecord> = new EventEmitter();
-
-    @Output()
-    public mapElementsFound: EventEmitter<MapElement[]> = new EventEmitter();
 
     constructor(private contentUtils: StarDocContentUtils, protected cd: ChangeDetectorRef,
                 private platformService: PlatformService) {
         super(cd);
     }
 
-    onTrackClicked(mapElement: MapElement) {
-        this.sdocClicked.emit(this.mapElementsReverseMap.get(mapElement));
-    }
-
-    onMapElementsLoaded(mapElements: MapElement[]) {
-        this.showLoadingSpinner = false;
-        this.cd.detectChanges();
-    }
-
     renderMap() {
-        this.mapElementsReverseMap.clear();
         if (!this.sdocs) {
-            this.mapElements = [];
             this.showLoadingSpinner = false;
             return;
         }
@@ -78,11 +45,6 @@ export class StarDocMapComponent extends AbstractInlineComponent {
 
         for (let i = 0; i < this.sdocs.length; i++) {
             const record =  this.sdocs[i];
-
-            for (const mapElement of this.contentUtils.createMapElementForStarDoc(record, this.showImageTrackAndGeoPos)) {
-                this.mapElementsReverseMap.set(mapElement, record);
-            }
-
             const feature = {
                 type: 'Feature',
                 id: record.id,
@@ -97,8 +59,6 @@ export class StarDocMapComponent extends AbstractInlineComponent {
             };
             this.geoJson.features.push(feature);
         }
-        this.mapElements = Array.from(this.mapElementsReverseMap.keys());
-        this.mapElementsFound.emit(this.mapElements);
 
         this.showLoadingSpinner = false;
 
@@ -131,6 +91,7 @@ export class StarDocMapComponent extends AbstractInlineComponent {
             lang: "",           // Language for names, so far only for constellations:
                                 // de: german, es: spanish. Default:en or empty string for english
             container: this.mapId,   // ID of parent element, e.g. div, null = html-body
+            // TODO - load it via inlining and copy data while building to dist not save it in project
             datapath: "assets/stardata/",  // Path/URL to data files, empty = subfolder 'data'
             stars: {
                 show: true,    // Show stars

@@ -10,10 +10,10 @@ import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/se
 import {ErrorResolver} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/resolver/error.resolver';
 import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/page.utils';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
-import * as L from 'leaflet';
-import {GenericTrackingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
+import {
+    GenericTrackingService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
-import {MapElement} from '@dps/mycms-frontend-commons/dist/angular-maps/services/leaflet-geo.plugin';
 import {
     CommonDocSearchpageComponent,
     CommonDocSearchpageComponentConfig
@@ -24,7 +24,9 @@ import {environment} from '../../../../environments/environment';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
 import {StarDocActionTagService} from '../../../shared-sdoc/services/sdoc-actiontag.service';
 import {StarDocSearchFormUtils} from '../../../shared-sdoc/services/sdoc-searchform-utils.service';
-import {CommonDocMultiActionManager} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-multiaction.manager';
+import {
+    CommonDocMultiActionManager
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-multiaction.manager';
 import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
 
 @Component({
@@ -35,10 +37,7 @@ import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
 })
 export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<StarDocRecord, StarDocSearchForm, StarDocSearchResult,
     StarDocDataService> {
-    mapCenterPos: L.LatLng = undefined;
     mapZoom = 9;
-    mapElements: MapElement[] = [];
-    profileMapElements: MapElement[] = [];
     flgShowMap = false;
     flgMapAvailable = false;
 
@@ -57,30 +56,6 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
         console.log("sdocClicked", sdoc);
     }
 
-    onMapCenterChanged(newCenter: L.LatLng) {
-        console.log("newCenter", newCenter);
-    }
-
-    onMapElementsFound(mapElements: MapElement[]) {
-        this.mapElements = [];
-        this.mapElements = mapElements;
-        this.flgMapAvailable = this.mapElements.length > 0;
-        this.flgShowMap = this.flgMapAvailable && this.flgShowMap;
-        this.calcShowMaps();
-        this.cd.markForCheck();
-
-        return false;
-    }
-
-    onProfileMapElementsFound(mapElements: MapElement[]) {
-        this.profileMapElements = mapElements;
-        this.calcShowMaps();
-        this.cd.markForCheck();
-
-        return false;
-    }
-
-
     protected getComponentConfig(config: {}): CommonDocSearchpageComponentConfig {
         return {
             baseSearchUrl: ['sdoc'].join('/'),
@@ -88,15 +63,6 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
             availableCreateActionTypes: [],
             maxAllowedM3UExportItems: BeanUtils.getValue(config, 'services.serverItemExport.maxAllowedM3UItems')
         };
-    }
-
-    protected doProcessAfterResolvedData(config: {}): void {
-        if (this.searchForm.nearby !== undefined && this.searchForm.nearby.length > 0) {
-            const [lat, lon] = this.searchForm.nearby.split('_');
-            this.mapCenterPos = new L.LatLng(+lat, +lon);
-        } else {
-            this.mapCenterPos = undefined;
-        }
     }
 
     protected doPreChecksBeforeSearch(): boolean {
@@ -118,7 +84,7 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
             this.flgMapAvailable = false;
         } else {
             // console.log('update searchResult', sdocSearchResult);
-            this.flgMapAvailable = this.mapCenterPos !== undefined || this.searchResult.recordCount > 0;
+            this.flgMapAvailable = this.searchResult.recordCount > 0;
         }
 
         this.flgShowMap = this.flgMapAvailable;

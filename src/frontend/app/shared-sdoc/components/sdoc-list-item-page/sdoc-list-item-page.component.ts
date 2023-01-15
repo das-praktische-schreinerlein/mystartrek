@@ -29,9 +29,7 @@ export class StarDocListItemPageComponent extends AbstractInlineComponent {
         urlShow: undefined,
         tracks: [],
         flgShowMap: false,
-        flgShowProfileMap: false,
         flgMapAvailable: false,
-        flgProfileMapAvailable: false
     };
     maxImageHeight = '0';
     imageShowMap = false;
@@ -115,7 +113,6 @@ export class StarDocListItemPageComponent extends AbstractInlineComponent {
         this.maxImageHeight = (window.innerHeight - 150) + 'px';
         if (this.record.type === 'IMAGE') {
             this.listItem.flgShowMap = this.listItem.flgShowMap &&  this.imageShowMap;
-            this.listItem.flgShowProfileMap = this.listItem.flgShowProfileMap &&  this.imageShowMap;
         }
         this.cd.markForCheck();
     }

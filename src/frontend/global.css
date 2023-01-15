@@ -148,19 +148,6 @@ img.picture-small, img.picture-big, video.picture-big , img.picture-teaser {
     margin-right: auto;
 }
 
-div.leaflet-div-icon-area, div.leaflet-div-icon-end, div.leaflet-div-icon-start, div.leaflet-div-icon-point {
-    border: 2px solid #8CACD3;
-    border-radius: 2px;
-    padding: 2px !IMPORTANT;
-    background-color: white;
-    margin: 2px !IMPORTANT;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    height: 25px !IMPORTANT;
-    white-space: nowrap;
-    width: 100px !IMPORTANT;
-}
-
 /*******************
  * Container
  *******************/

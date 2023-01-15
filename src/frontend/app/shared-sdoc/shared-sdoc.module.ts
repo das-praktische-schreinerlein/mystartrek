@@ -4,7 +4,6 @@ import {StarDocListComponent} from './components/sdoc-list/sdoc-list.component';
 import {StarDocListItemComponent} from './components/sdoc-list-item/sdoc-list-item.component';
 import {StarDocSearchformComponent} from './components/sdoc-searchform/sdoc-searchform.component';
 import {StarDocInlineSearchpageComponent} from './components/sdoc-inline-searchpage/sdoc-inline-searchpage.component';
-import {AngularMapsModule} from '@dps/mycms-frontend-commons/dist/angular-maps/angular-maps.module';
 import {AngularCommonsModule} from '@dps/mycms-frontend-commons/dist/angular-commons/angular-commons.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -14,7 +13,6 @@ import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect';
 import {NgbAccordionModule, NgbRatingModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 import {ToastrModule} from 'ngx-toastr';
 import {LightboxModule} from 'ngx-lightbox';
-import {StarDocProfileMapComponent} from './components/sdoc-profilemap/sdoc-profilemap.component';
 import {StarDocMapComponent} from './components/sdoc-map/sdoc-map.component';
 import {
     StarDocLinkedLocHierarchyComponent
@@ -33,9 +31,9 @@ import {StarDocKeywordsComponent} from './components/sdoc-keywords/sdoc-keywords
 import {StarDocMultiActionHeaderComponent} from './components/sdoc-multiactionheader/sdoc-multiactionheader.component';
 import {StarDocListItemSmallComponent} from './components/sdoc-list-item-small/sdoc-list-item-small.component';
 import {StarDocListItemFlatComponent} from './components/sdoc-list-item-flat/sdoc-list-item-flat.component';
-import {StarDocListItemPageComponent} from './components/sdoc-list-item-page/sdoc-list-item-page.component';
 import {StarDocListItemThinComponent} from './components/sdoc-list-item-thin/sdoc-list-item-thin.component';
 import {RouterModule} from '@angular/router';
+import {StarDocListItemPageComponent} from './components/sdoc-list-item-page/sdoc-list-item-page.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +46,6 @@ import {RouterModule} from '@angular/router';
         StarDocSearchformComponent,
         StarDocInlineSearchpageComponent,
         StarDocMapComponent,
-        StarDocProfileMapComponent,
         StarDocInlineSearchpageComponent,
         StarDocLinkedLocHierarchyComponent,
         StarDocDataMetaComponent,
@@ -70,7 +67,6 @@ import {RouterModule} from '@angular/router';
         ReactiveFormsModule,
         HttpClientModule,
         AngularCommonsModule,
-        AngularMapsModule,
         FrontendCommonDocCommonsModule,
         LightboxModule,
         FileDropModule,
@@ -89,7 +85,6 @@ import {RouterModule} from '@angular/router';
         StarDocSearchformComponent,
         StarDocInlineSearchpageComponent,
         StarDocMapComponent,
-        StarDocProfileMapComponent,
         StarDocInlineSearchpageComponent,
         StarDocLinkedLocHierarchyComponent,
         StarDocDataMetaComponent,
