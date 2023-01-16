@@ -87,8 +87,8 @@ export class StarDocDataServiceModule {
         }
         const records = StarDocFileUtils.parseRecordSourceFromJson(fs.readFileSync(itemsJsConfig['dataFile'], { encoding: 'utf8' }));
 
-        const gdocAdapter = new StarDocItemsJsAdapter(options, records, itemsJsConfig);
-        dataStore.setAdapter('http', gdocAdapter, '', {});
+        const sdocAdapter = new StarDocItemsJsAdapter(options, records, itemsJsConfig);
+        dataStore.setAdapter('http', sdocAdapter, '', {});
 
         return dataService;
     }

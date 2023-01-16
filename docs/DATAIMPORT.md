@@ -28,14 +28,14 @@ for %f in (%STARDIR%\*.geojson) do (
         --backend config/backend.dev.json ^
         --srcFile %STARDIR%\%~nf.geojson ^
         --mode RESPONSE ^
-        --file %STARDIR%\%~nf.gdoc.json ^
+        --file %STARDIR%\%~nf.json ^
         --renameFileIfExists true
 )
 ```
 - create viewer-files for directory-entries via bash
 ```bash
 STARDIR=F:/playground/celestrial-poi-geojson
-FILTER=$STARDIR/*.gdoc.json
+FILTER=$STARDIR/*.sdoc.json
 FILES=`echo $FILTER | sed "s/ /,/g"`
 echo $FILES
 sbin/generateViewerFileForStaticData.sh $STARDIR/ $FILES mymm-stars
@@ -54,15 +54,15 @@ sbin\celestrial-geojson-import.bat
 - OR import files via windows cmd manualy
 ```cmd
 STARDIR=F:\playground\star-poi-geojson
-for %f in (%STARDIR%\*.gdoc.json) do (
+for %f in (%STARDIR%\*.sdoc.json) do (
     echo %~nf
     node dist\backend\serverAdmin.js ^
         --debug ^
         --command loadStarDoc ^
-        --action loadDocs ^
+        --action loadStarDocs ^
         --adminclibackend config/adminCli.dev.json ^
         --backend config/backend.dev.json ^
-        --file %STARDIR%\%~nf.gdoc.json ^
+        --file %STARDIR%\%~nf.json ^
         --renameFileAfterSuccess true
 )
 ```

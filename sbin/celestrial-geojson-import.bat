@@ -9,15 +9,15 @@ echo *****************************************************************
 echo import star geojson
 echo *****************************************************************
 
-for %f in (%STARDIR%\*.sdoc.json) do (
+for %%f in (%STARDIR%\*.sdoc.json) do (
     echo %%~nf
     node dist\backend\serverAdmin.js ^
         --debug ^
         --command loadStarDoc ^
-        --action loadDocs ^
+        --action loadStarDocs ^
         --adminclibackend config/adminCli.dev.json ^
         --backend config/backend.dev.json ^
-        --file %STARDIR%/%%~nf.sdoc.json ^
+        --file %STARDIR%/%%~nf.json ^
         --renameFileAfterSuccess true
 )
 
