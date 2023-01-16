@@ -1,11 +1,132 @@
-patch-package
+diff --git a/node_modules/d3-celestial/celestial.js b/node_modules/d3-celestial/celestial.js
+index 1a83446..77caa5d 100644
 --- a/node_modules/d3-celestial/celestial.js
 +++ b/node_modules/d3-celestial/celestial.js
-@@ -3922,5 +3922,5 @@ function d3_eventDispatch(target) {
+@@ -102,6 +102,31 @@ Celestial.display = function(config) {
+   if ($("error") === null) d3.select("body").append("div").attr("id", "error");
+ 
+ 
++  function getCachedDataUrl(url) {
++    if (!config.cachedDataUrls) {
++      console.log('url not cached - cachedDataUrls empty', url, config.cachedDataUrls);
++      return undefined;
++    }
++
++    var data = config.cachedDataUrls[url];
++    if (!data) {
++      console.log('url not cached - but there are cachedDataUrls', url, Object.keys(config.cachedDataUrls));
++    }
++
++    return data;
++  }
++
++  function getJson(url, callback) {
++    var data = getCachedDataUrl(url);
++    if (data) {
++      console.log('load celestrialdata for url from cache', url);
++      return callback(undefined, data);
++    }
++
++    console.log('load celestrialdata from url', url);
++    return d3.json(url, callback);
++  }
++
+   function load() {
+     //Celestial planes
+     for (var key in cfg.lines) {
+@@ -126,7 +151,7 @@ Celestial.display = function(config) {
+     }
+ 
+     //Milky way outline
+-    d3.json(path + "mw.json", function(error, json) {
++    getJson(path + "mw.json", function(error, json) {
+       if (error) { 
+         window.alert("Your Browser doesn't support local file loading or the file doesn't exist. See readme.md");
+         return console.warn(error);  
+@@ -142,7 +167,7 @@ Celestial.display = function(config) {
+     }); 
+ 
+     //Constellation names or designation
+-    d3.json(path + "constellations.json", function(error, json) {
++    getJson(path + "constellations.json", function(error, json) {
+       if (error) return console.warn(error);
+       
+       var con = getData(json, trans);
+@@ -174,7 +199,7 @@ Celestial.display = function(config) {
+     });
+ 
+     //Constellation boundaries
+-    d3.json(path + "constellations.bounds.json", function(error, json) {
++    getJson(path + "constellations.bounds.json", function(error, json) {
+       if (error) return console.warn(error);
+ 
+       var conb = getData(json, trans);
+@@ -187,7 +212,7 @@ Celestial.display = function(config) {
+     });
+ 
+     //Constellation lines
+-    d3.json(path + "constellations.lines.json", function(error, json) {
++    getJson(path + "constellations.lines.json", function(error, json) {
+       if (error) return console.warn(error);
+ 
+       var conl = getData(json, trans);
+@@ -200,7 +225,7 @@ Celestial.display = function(config) {
+     });
+     
+     //Stars
+-    d3.json(path + cfg.stars.data, function(error, json) {
++    getJson(path + cfg.stars.data, function(error, json) {
+       if (error) return console.warn(error);
+ 
+       var st = getData(json, trans);
+@@ -214,7 +239,7 @@ Celestial.display = function(config) {
+     });
+ 
+     //Deep space objects
+-    d3.json(path + cfg.dsos.data, function(error, json) {
++    getJson(path + cfg.dsos.data, function(error, json) {
+       if (error) return console.warn(error);
+       
+       var ds = getData(json, trans);
+@@ -228,7 +253,7 @@ Celestial.display = function(config) {
+     });
+ 
+     //Planets, Sun & (Moon tbi)
+-    d3.json(path + "planets.json", function(error, json) {
++    getJson(path + "planets.json", function(error, json) {
+       if (error) return console.warn(error);
+       
+       var pl = getPlanets(json, trans);
+@@ -243,7 +268,7 @@ Celestial.display = function(config) {
+ 
+     if (Celestial.data.length > 0) { 
+       Celestial.data.forEach( function(d) {
+-        if (has(d, "file")) d3.json(d.file, d.callback);
++        if (has(d, "file")) getJson(d.file, d.callback);
+         else setTimeout(d.callback, 0);
+       }, this);
+     }
+@@ -2466,7 +2491,6 @@ function geo(cfg) {
+  
+ }
+ 
+-﻿
+ var gmdat = {
+   "sol": 0.0002959122082855911025,  // AU^3/d^2
+   "mer": 164468599544771, //km^3/d^2
+@@ -2907,7 +2931,7 @@ var Kepler = function () {
+ 
+   return kepler;  
+ };
+-﻿
++
+ var Moon = {
+   elements: function(dat) {
+     var t = (dat.jd - 2451545) / 36525,
+@@ -3922,5 +3946,5 @@ function d3_eventDispatch(target) {
  }
  
  })();
 -this.Celestial = Celestial;
 +if (typeof define === "function" && define.amd) this.Celestial = Celestial, define(Celestial); else if (typeof module === "object" && module.exports) module.exports = Celestial; else this.Celestial = Celestial;
  })();
-\ No newline at end of file

@@ -18,7 +18,8 @@ node dist\backend\serverAdmin.js ^
     --srcFile node_modules\d3-celestial\data\lg.json ^
     --mode SOLR ^
     --type LG ^
-    --file %STARDIR%\lg.sdoc.json
+    --file %STARDIR%\lg.sdoc.json ^
+    --renameFileIfExists true
 node dist\backend\serverAdmin.js ^
     --debug ^
     --command convertStarDoc ^
@@ -28,7 +29,8 @@ node dist\backend\serverAdmin.js ^
     --srcFile node_modules\d3-celestial\data\dsos.20.json ^
     --mode SOLR ^
     --type DSO ^
-    --file %STARDIR%\dso.sdoc.json
+    --file %STARDIR%\dso.sdoc.json ^
+    --renameFileIfExists true
 node dist\backend\serverAdmin.js ^
     --debug ^
     --command convertStarDoc ^
@@ -38,7 +40,8 @@ node dist\backend\serverAdmin.js ^
     --srcFile node_modules\d3-celestial\data\stars.14.json ^
     --mode SOLR ^
     --type STAR ^
-    --file %STARDIR%\stars.14.sdoc.json
+    --file %STARDIR%\stars.14.sdoc.json ^
+     --renameFileIfExists true
 
 for %%f in (%STARDIR%\*.geojson) do (
     echo "convert file: %%~nf"

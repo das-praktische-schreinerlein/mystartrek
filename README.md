@@ -10,6 +10,8 @@ For more information take a look at documentation:
 - [usage instructions](docs/DATAIMPORT.md)
 - [credits for used libraries](docs/CREDITS.md)
 
+Best would be to build, comvert data and create a viewer-single-html which can be copied/used on every device as described in [usage instructions](docs/DATAIMPORT.md)
+
 MyStarTrek bases on mysimplehomepage-3.0.0.
 
 ![searchpage](docs/images/searchpage-x400.png)

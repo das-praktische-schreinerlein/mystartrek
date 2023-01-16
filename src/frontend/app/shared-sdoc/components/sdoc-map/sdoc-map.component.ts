@@ -5,6 +5,16 @@ import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {AbstractInlineComponent} from '@dps/mycms-frontend-commons/dist/angular-commons/components/inline.component';
 import * as Celestial from 'd3-celestial';
 
+// import static data
+import * as dataMw from 'd3-celestial/data/mw.json';
+import * as dataConstellations from 'd3-celestial/data/constellations.json';
+import * as dataConstellationsBounds from 'd3-celestial/data/constellations.bounds.json';
+import * as datacCnstellationsLines from 'd3-celestial/data/constellations.lines.json';
+import * as dataStars6 from 'd3-celestial/data/stars.6.json';
+import * as dataDsosBright from 'd3-celestial/data/dsos.bright.json';
+import * as dataPlanets from 'd3-celestial/data/planets.json';
+
+
 @Component({
     selector: 'app-sdoc-map',
     templateUrl: './sdoc-map.component.html',
@@ -91,7 +101,6 @@ export class StarDocMapComponent extends AbstractInlineComponent {
             lang: "",           // Language for names, so far only for constellations:
                                 // de: german, es: spanish. Default:en or empty string for english
             container: this.mapId,   // ID of parent element, e.g. div, null = html-body
-            // TODO - load it via inlining and copy data while building to dist not save it in project
             datapath: "assets/stardata/",  // Path/URL to data files, empty = subfolder 'data'
             stars: {
                 show: true,    // Show stars
@@ -263,6 +272,16 @@ export class StarDocMapComponent extends AbstractInlineComponent {
                     }
                 });
             } });
+
+        config['cachedDataUrls'] = {
+            'assets/stardata/mw.json': dataMw,
+            'assets/stardata/constellations.json': dataConstellations,
+            'assets/stardata/constellations.bounds.json': dataConstellationsBounds,
+            'assets/stardata/constellations.lines.json': datacCnstellationsLines,
+            'assets/stardata/stars.6.json': dataStars6,
+            'assets/stardata/dsos.bright.json': dataDsosBright,
+            'assets/stardata/planets.json': dataPlanets
+        };
 
         // Display map with the configuration above or any subset therof
         Celestial.display(config);

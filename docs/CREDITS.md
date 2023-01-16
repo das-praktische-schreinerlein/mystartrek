@@ -5,6 +5,10 @@ As datastore it supports Solr, MySql and Sqlite.
 
 MyStarTrek uses a bunch of libraries and tools. Many thanx to the people behind these projects. 
 
+## frontend+data
+- celestial
+  - [celestial](https://github.com/ofrohn/d3-celestial)
+
 ## frontend
 - web-framework
     - [angular5](https://angular.io/)

@@ -10,7 +10,7 @@ import {Feature, FeatureCollection} from 'geojson';
 export class StarDocConverterModule {
     private dataService: StarDocDataService;
     private backendConfig: {};
-    private keywordSrcLst = ['natural', 'tourism', 'surface', 'condition', 'man_made', 'amenity'];
+    private keywordSrcLst = [];
 
     constructor(backendConfig, dataService: StarDocDataService) {
         this.dataService = dataService;
@@ -85,9 +85,10 @@ export class StarDocConverterModule {
                     }
                 }
 
+                const id = (feature.id + '') || feature.properties['name'].toUpperCase().replace(/[^A-Z0-9]+/g, '');
                 const geoObj = <StarDocRecord>responseMapper.mapResponseDocument(mapper, {
                     type_s: type,
-                    id: feature.id,
+                    id: id,
                     geo_lat_s: geoLat,
                     geo_lon_s: geoLon,
                     geo_loc_p: geoLoc,

@@ -20,6 +20,7 @@ import {CommonDocDataServiceStub} from '@dps/mycms-frontend-commons/dist/testing
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {TruncatePipe} from '@dps/mycms-frontend-commons/dist/angular-commons/pipes/truncate.pipe';
+import {NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('StarDocListItemComponent', () => {
     let component: StarDocListItemComponent;
@@ -40,6 +41,7 @@ describe('StarDocListItemComponent', () => {
             ],
             schemas: [NO_ERRORS_SCHEMA],
             imports: [
+                NgbAccordionModule,
                 TranslateModule.forRoot()]
         })
             .compileComponents();
