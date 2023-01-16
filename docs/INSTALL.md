@@ -16,6 +16,13 @@ MYCMSPROJECT="mysimplehomepage"
 npm prune && npm install
 ``` 
 
+## Build viewer
+Run for the viewer-versions in `dist/`.
+```bash
+bash
+./build-viewer.bash
+```
+
 ## Build dev
 Run for the dev-versions in `dist/`.
 ```bash
