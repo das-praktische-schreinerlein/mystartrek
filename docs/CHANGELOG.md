@@ -2,7 +2,7 @@
  
 # Versions
 
-## 4.4.0
+## 4.4.0 (2023-03-18)
 - bumped up to commons 5.7.0
 
 ### new features
