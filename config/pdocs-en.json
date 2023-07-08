@@ -9,7 +9,12 @@
    "name": "Mainmenu",
    "subSectionIds": "start,vita,roadmap",
    "teaser": "Mainmenu",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "menu"
   },
   {
    "id": "start",
@@ -21,7 +26,12 @@
    "name": "Welcome",
    "subSectionIds": "skills,me",
    "teaser": "Welcome at MySimpleHomePage",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "start"
   },
   {
    "id": "skills",
@@ -32,7 +42,12 @@
    "name": "Skills",
    "subSectionIds": "",
    "teaser": "My Skills",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SimplePage",
+   "key": "skills"
   },
   {
    "id": "me",
@@ -43,7 +58,12 @@
    "name": "Meine Person",
    "subSectionIds": "",
    "teaser": "Meine Person",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SimplePage",
+   "key": "me"
   },
   {
    "id": "vita",
@@ -54,7 +74,12 @@
    "name": "Vita",
    "subSectionIds": "experiences,projects",
    "teaser": "Meine Vita",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "vita"
   },
   {
    "id": "experiences",
@@ -65,7 +90,12 @@
    "name": "Erfahrungen",
    "subSectionIds": "",
    "teaser": "Meine beruflichen Erfahrungen",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SimplePage",
+   "key": "experiences"
   },
   {
    "id": "projects",
@@ -76,7 +106,12 @@
    "name": "Private Projekte",
    "subSectionIds": "",
    "teaser": "Private Projekte",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SimplePage",
+   "key": "projects"
   },
   {
    "id": "impress",
@@ -87,7 +122,12 @@
    "name": "Impressum/Datenschutz",
    "subSectionIds": "",
    "teaser": "Impressum/Datenschutz - der rechtliche Teil",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_dev,profile_beta,profile_prod",
+   "langkeys": "lang_en",
+   "subtype": "SimplePage",
+   "key": "impress"
   }
  ]
 }
