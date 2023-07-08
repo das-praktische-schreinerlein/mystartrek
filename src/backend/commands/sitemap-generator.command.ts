@@ -2,12 +2,14 @@ import * as fs from 'fs';
 import {SitemapConfig, SitemapGeneratorModule} from '@dps/mycms-server-commons/dist/backend-commons/modules/sitemap-generator.module';
 import {PDocSearchForm} from '@dps/mycms-commons/dist/pdoc-commons/model/forms/pdoc-searchform';
 import {PDocRecord} from '@dps/mycms-commons/dist/pdoc-commons/model/records/pdoc-record';
-import {PDocDataServiceModule} from '../modules/pdoc-dataservice.module';
 import {
-    CommonAdminCommand,
-    SimpleConfigFilePathValidationRule
+    CommonAdminCommand
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin.command';
-import {ValidationRule} from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
+import {
+    SimpleConfigFilePathValidationRule,
+    ValidationRule
+} from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
+import {PagesDataserviceModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pages-dataservice.module';
 
 export class SiteMapGeneratorCommand extends CommonAdminCommand {
     protected createValidationRules(): {[key: string]: ValidationRule} {
@@ -44,8 +46,8 @@ export class SiteMapGeneratorCommand extends CommonAdminCommand {
             }
         });
         return SitemapGeneratorModule.generateSiteMapFiles(
-            PDocDataServiceModule.getDataService('pdocSolr' + sitemapConfig.locale + 'ReadOnly', generatorConfig.backendConfig,
-                sitemapConfig.locale),
+            PagesDataserviceModule.getDataService('pdocSolr' + sitemapConfig.locale + 'ReadOnly', generatorConfig.backendConfig,
+                sitemapConfig.locale).getSearchService(),
             sitemapConfig,
             new PDocSearchForm({})
         );

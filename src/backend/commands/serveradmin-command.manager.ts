@@ -4,6 +4,7 @@ import {
     CommonServerAdminCommandConfigType,
     CommonServerAdminCommandManager
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-serveradmin-command.manager';
+import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-manager.command';
 
 export interface ServerAdminCommandConfigType extends CommonServerAdminCommandConfigType, AdminCommandConfigType {
     outputDir: string,
@@ -15,7 +16,8 @@ export class ServerAdminCommandManager extends CommonServerAdminCommandManager<S
     constructor(adminCommandConfig: ServerAdminCommandConfigType) {
         // only define a subset of commands
         super({
-                'generateSitemap': new SiteMapGeneratorCommand()
+                'generateSitemap': new SiteMapGeneratorCommand(),
+                'pageManager': new PageManagerCommand(),
             },
             adminCommandConfig,
             // only allow a subset of actions
