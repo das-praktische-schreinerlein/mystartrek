@@ -10,7 +10,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Hauptmenü",
    "subSectionIds": "start,vita,roadmap",
    "teaser": "Hauptmenü",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "menu"
   },
   {
    "id": "start",
@@ -22,7 +27,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Willkommen",
    "subSectionIds": "skills,me",
    "teaser": "Willkommen bei MySimpleHomePage",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "start"
   },
   {
    "id": "skills",
@@ -33,7 +43,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Skills",
    "subSectionIds": "",
    "teaser": "Meine Skills",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SimplePage",
+   "key": "skills"
   },
   {
    "id": "me",
@@ -44,7 +59,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Meine Person",
    "subSectionIds": "",
    "teaser": "Meine Person",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SimplePage",
+   "key": "me"
   },
   {
    "id": "vita",
@@ -55,7 +75,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Vita",
    "subSectionIds": "experiences,projects",
    "teaser": "Meine Vita",
-   "type": "SectionOverviewPage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SectionOverviewPage",
+   "key": "vita"
   },
   {
    "id": "experiences",
@@ -66,7 +91,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Erfahrungen",
    "subSectionIds": "",
    "teaser": "Meine beruflichen Erfahrungen",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SimplePage",
+   "key": "experiences"
   },
   {
    "id": "projects",
@@ -77,7 +107,12 @@ window.importStaticDataPDocsJsonP = `
    "name": "Private Projekte",
    "subSectionIds": "",
    "teaser": "Private Projekte",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SimplePage",
+   "key": "projects"
   },
   {
    "id": "impress",
@@ -88,13 +123,16 @@ window.importStaticDataPDocsJsonP = `
    "name": "Impressum/Datenschutz",
    "subSectionIds": "",
    "teaser": "Impressum/Datenschutz - der rechtliche Teil",
-   "type": "SimplePage"
+   "type": "PAGE",
+   "flags": "",
+   "profiles": "profile_viewer",
+   "langkeys": "lang_de,lang_en",
+   "subtype": "SimplePage",
+   "key": "impress"
   }
  ]
-}
-`;
-
-var script = document.createElement('script');
+}`;
+var script = document.createElement("script");
 script.type='application/json';
 script.id = 'assets/staticdata/static.myshppdocs.js';
 var text = document.createTextNode(importStaticDataPDocsJsonP);
