@@ -7,6 +7,7 @@
 - bumped up deps
 - added optional password-encryption of static-viewer-version
 - backend/frontend: add page-management
+- improve imageInlineLoader
 
 ### new features
 - added optional password-encryption of static-viewer-version
@@ -15,6 +16,7 @@
 ### improvements
 - use commons 6.0.0
 - bumped up deps
+- improve imageInlineLoader
 
 ### bug fixes
 - none

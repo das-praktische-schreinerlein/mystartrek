@@ -67,27 +67,11 @@
 
 <app-root>Loading...</app-root>
 
-<img id="dummyBannerLoader" src="assets/images/banner-big.jpg" style="display: none" alt="">
+<img src="assets/images/banner-big.jpg" style="display: none" alt=""
+     data-replacementsrc="assets/images/banner-big.jpg"
+     data-replacementfilter=".img-navbar-banner, .img-sidebar-banner" />
 <script>
-    function inlineBannerUtil() {
-        var dummyBannerImage = document.getElementById('dummyBannerLoader');
-        if (!dummyBannerImage) {
-            console.error('banner not found', dummyBannerImage);
-            return;
-        }
-
-        var style = document.createElement('style');
-        style.type = 'text/css';
-        style.innerHTML =
-            '.img-navbar-banner { content: url(\'' + dummyBannerImage.currentSrc + '\'); }' +
-            '.img-sidebar-banner { content: url(\'' + dummyBannerImage.currentSrc + '\'); }';
-
-        document.getElementsByTagName('head')[0].appendChild(style);
-
-        console.log('add banner-style', style);
-    }
-
-    inlineBannerUtil();
+    WebImageLoader.loadInlineImages();
 </script>
 
 </body>
