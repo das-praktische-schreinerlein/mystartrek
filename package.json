@@ -146,7 +146,8 @@
   "dependencyHints": {
     "@babel/runtime": "fixed to prevent 'TypeError: l is undefined' on viewer and builded versions",
     "@babel/runtime-corejs3": "fixed to prevent 'TypeError: l is undefined' on viewer and builded versions",
-    "core-js-pure": "fixed to prevent 'TypeError: l is undefined' on viewer and builded versions"
+    "core-js-pure": "fixed to prevent 'TypeError: l is undefined' on viewer and builded versions",
+    "mermaid": "// TODO remove mermaid if not used to minimize build-size"
   },
   "optionalDeps // do copy these to deps if needed": {
     "db-migrate-mysql": "2.2.0",
@@ -205,11 +206,11 @@
     "js-data-http": "3.0.1",
     "knex": "0.20.10",
     "lz-string": "1.5.0",
-    "marked": "1.2.9",
+    "marked": "4.3.0",
+    "mermaid": "8.14.0",
     "minimist": "1.2.8",
     "ngx-file-drop": "6.0.1",
     "ngx-lightbox": "1.2.0",
-    "ngx-md": "7.1.3",
     "ngx-toastr": "10.2.0",
     "node-noop": "1.0.0",
     "promise-serial": "0.1.5",
@@ -241,6 +242,7 @@
     "cross-os": "1.5.0",
     "cross-var-no-babel": "1.2.0",
     "enhanced-resolve": "4.5.0",
+    "extract-zip": "2.0.1",
     "istanbul": "0.4.5",
     "istanbul-api": "1.3.7",
     "jasmine-core": "4.0.1",

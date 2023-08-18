@@ -1,12 +1,10 @@
 import {AppComponent} from './components/app/app.component';
-import {AppService} from './services/app.service';
 import {NgbCollapseModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ToastrModule} from 'ngx-toastr';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
-import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 import {SectionsModule} from './sections/sections.module';
 import {StaticPagesDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/staticpages-data.service';
@@ -17,7 +15,6 @@ import {AngularCommonsModule} from '@dps/mycms-frontend-commons/dist/angular-com
 import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/page.utils';
 import {BackendHttpClient} from './services/backend-http-client';
 import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services/minimal-http-backend-client';
-import {AngularHtmlService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/angular-html.service';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {GenericTrackingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
@@ -81,7 +78,6 @@ export function getAngulartics2Providers(): any {
         // customUrlSerializerProvider, // activate this to get parenthes in parameters running, but then suburls dont run anymore
         CommonRoutingService,
         CommonDocRoutingService,
-        {provide: GenericAppService, useClass: AppService},
         FallbackHttpClient,
         DynamicComponentService,
         PDocDataStore,
@@ -90,7 +86,6 @@ export function getAngulartics2Providers(): any {
         StaticPagesDataService,
         SearchFormUtils,
         {provide: GenericTrackingService, useClass: TrackingService},
-        AngularHtmlService,
         {provide: SearchParameterUtils, useClass: SearchParameterUtils},
         PageUtils,
         {provide: PlatformService, useClass: PlatformService},
@@ -98,4 +93,5 @@ export function getAngulartics2Providers(): any {
     ],
     bootstrap: [AppComponent]
 })
-export class AppCommonModule {}
+export class AppCommonModule {
+}
