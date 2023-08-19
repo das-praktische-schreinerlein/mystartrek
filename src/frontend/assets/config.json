@@ -143,12 +143,12 @@
                         {
                             "label": "Toggle-Lists-Text",
                             "type": "singleCommand",
-                            "command": "<!---TOGGLER.APPEND li:dps-md-ul,text--->"
+                            "command": "<!---TOGGLER.AFTER ul:dps-md-ul,text--->"
                         },
                         {
                             "label": "Toggle-Lists-Icon",
                             "type": "singleCommand",
-                            "command": "<!---TOGGLER.APPEND li:dps-md-ul,icon--->"
+                            "command": "<!---TOGGLER.AFTER ul:dps-md-ul,icon--->"
                         },
                         {
                             "label": "Graph",
