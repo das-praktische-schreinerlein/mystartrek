@@ -9,13 +9,13 @@
         <router-outlet></router-outlet>
     </div>
     <div *ngIf="hideCopyrightFooter" class="container text-center hidden-print">
-        <a (click)="printPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" i18n="link printPreview footer|Link printPreview footer@@a.footer.printPreview">🖶Print</a>
-        <a (click)="printPdfPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" i18n="link printPreview footer|Link printPreview footer@@a.footer.printPreview">🖻PDF</a>
+        <div (click)="printPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" class="print-command-container"><span></span></div>
+        <div (click)="printPdfPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" class="pdf-command-container"><span></span></div>
     </div>
     <div *ngIf="!hideCopyrightFooter" class="container text-center hidden-print">
         <a href="pages/impress" i18n="link impress footer|Link impress footer@@a.footer.impress">&copy;2018 Impressum/Datenschutz</a>
-        <a (click)="printPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" i18n="link printPreview footer|Link printPreview footer@@a.footer.printPreview">🖶Print</a>
-        <a (click)="printPdfPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" i18n="link printPreview footer|Link printPreview footer@@a.footer.printPreview">🖻PDF</a>
+        <div (click)="printPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" class="print-command-container"><span></span></div>
+        <div (click)="printPdfPreview(undefined, undefined, 'app-root', 800, 200, 'print\.css')" class="pdf-command-container"><span></span></div>
     </div>
     <div *ngIf="!hideCopyrightFooter" class="container text-center hidden-print">
         <cookie-law [name]="cookieLawSeenName" [expiration]="3000" *ngIf="showLaw" >
