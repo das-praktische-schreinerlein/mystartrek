@@ -33,6 +33,7 @@ import {AppCommonRoutingModule} from './app.common.router';
 import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
 import {PDocDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.store';
+import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
 
 registerLocaleData(localeDe);
 
@@ -89,7 +90,8 @@ export function getAngulartics2Providers(): any {
         {provide: SearchParameterUtils, useClass: SearchParameterUtils},
         PageUtils,
         {provide: PlatformService, useClass: PlatformService},
-        LayoutService
+        LayoutService,
+        PrintService
     ],
     bootstrap: [AppComponent]
 })

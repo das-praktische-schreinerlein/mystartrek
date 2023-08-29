@@ -10,6 +10,7 @@ import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/se
 import {environment} from '../../../environments/environment';
 import {ToastrService} from 'ngx-toastr';
 import {AbstractAppComponent} from '@dps/mycms-frontend-commons/dist/frontend-section-commons/components/abstract-app.component';
+import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
 
 @Component({
     selector: 'app-root',
@@ -24,8 +25,23 @@ export class AppComponent extends AbstractAppComponent {
     constructor(appService: GenericAppService, toastr: ToastrService,
                 translate: TranslateService, router: Router, @Inject(LOCALE_ID) locale: string,
                 http: HttpClient, commonRoutingService: CommonRoutingService, cd: ChangeDetectorRef,
-                platformService: PlatformService, pageUtils: PageUtils, layoutService: LayoutService) {
+                platformService: PlatformService, pageUtils: PageUtils, layoutService: LayoutService,
+                protected printService: PrintService, protected pdfPrintService: PrintService) {
         super(appService, toastr, translate, router, locale, http, commonRoutingService, cd, platformService, pageUtils, layoutService,
             environment);
+    }
+
+    public printPreview(idRefFilter: string, classNameFilter ?: string, tagNameFilter ?: string, width ?: number, height ?: number,
+                 printCssIdRegExp?: string) {
+        this.printService.printPreview(idRefFilter, classNameFilter, tagNameFilter, width, height, printCssIdRegExp);
+
+        return false;
+    }
+
+    public printPdfPreview(idRefFilter: string, classNameFilter ?: string, tagNameFilter ?: string, width ?: number, height ?: number,
+                        printCssIdRegExp?: string) {
+        this.pdfPrintService.printPreview(idRefFilter, classNameFilter, tagNameFilter, width, height, printCssIdRegExp);
+
+        return false;
     }
 }
