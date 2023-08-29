@@ -16,6 +16,7 @@ import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/
 import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/page.utils';
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -37,7 +38,8 @@ describe('AppComponent', () => {
                 { provide: ToastrService, useValue: new ToastrServiceStub() },
                 PlatformService,
                 PageUtils,
-                LayoutService
+                LayoutService,
+                PrintService
             ],
             schemas: [NO_ERRORS_SCHEMA]
         });
