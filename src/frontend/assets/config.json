@@ -57,6 +57,12 @@
                             "commandEnd": "\n"
                         },
                         {
+                            "label": "<link>",
+                            "type": "rangeCommand",
+                            "commandStart": "[](",
+                            "commandEnd": ")"
+                        },
+                        {
                             "label": "<bold>",
                             "type": "rangeCommand",
                             "commandStart": "**",
