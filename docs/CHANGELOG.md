@@ -9,11 +9,13 @@
 - backend/frontend: add page-management
 - improve imageInlineLoader
 - backend/frontend: use new fully featured markdown-support with extensions
+- frontend: added print/pdf-support
 
 ### new features
 - added optional password-encryption of static-viewer-version
 - backend/frontend: add page-management
 - backend/frontend: use new fully featured markdown-support with extensions
+- frontend: added print/pdf-support
 
 ### improvements
 - use commons 6.0.0
