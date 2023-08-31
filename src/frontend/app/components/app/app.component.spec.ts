@@ -17,6 +17,10 @@ import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/servic
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
+import {SimplePrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-print.service';
+import {PdfGenerator, PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
+import {SimplePdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-pdf-print.service';
+import {PrintDialogPdfGenerator} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print-dialog-pdf.generator';
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -39,7 +43,9 @@ describe('AppComponent', () => {
                 PlatformService,
                 PageUtils,
                 LayoutService,
-                PrintService
+                {provide: PrintService, useClass: SimplePrintService},
+                {provide: PdfGenerator, useClass: PrintDialogPdfGenerator},
+                {provide: PdfPrintService, useClass: SimplePdfPrintService}
             ],
             schemas: [NO_ERRORS_SCHEMA]
         });
