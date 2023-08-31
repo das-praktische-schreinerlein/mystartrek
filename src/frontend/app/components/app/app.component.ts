@@ -10,7 +10,9 @@ import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/se
 import {environment} from '../../../environments/environment';
 import {ToastrService} from 'ngx-toastr';
 import {AbstractAppComponent} from '@dps/mycms-frontend-commons/dist/frontend-section-commons/components/abstract-app.component';
-import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
+import {PrintOptions, PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
+import {ElementFilterType} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.utils';
+import {PdfPrintOptions, PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
 
 @Component({
     selector: 'app-root',
@@ -21,26 +23,56 @@ import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/ser
 @Injectable()
 export class AppComponent extends AbstractAppComponent {
     title = 'MySimpleHomePage';
+    printAvailable: true;
+    pdfPrintAvailable: true;
 
     constructor(appService: GenericAppService, toastr: ToastrService,
                 translate: TranslateService, router: Router, @Inject(LOCALE_ID) locale: string,
                 http: HttpClient, commonRoutingService: CommonRoutingService, cd: ChangeDetectorRef,
                 platformService: PlatformService, pageUtils: PageUtils, layoutService: LayoutService,
-                protected printService: PrintService, protected pdfPrintService: PrintService) {
+                protected printService: PrintService, protected pdfPrintService: PdfPrintService) {
         super(appService, toastr, translate, router, locale, http, commonRoutingService, cd, platformService, pageUtils, layoutService,
             environment);
     }
 
-    public printPreview(idRefFilter: string, classNameFilter ?: string, tagNameFilter ?: string, width ?: number, height ?: number,
-                 printCssIdRegExp?: string) {
-        this.printService.printPreview(idRefFilter, classNameFilter, tagNameFilter, width, height, printCssIdRegExp);
+    public openPrintPreview(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
+                            printCssIdRegExp?: string) {
+        const options: PrintOptions = {
+            printElementFilter: {
+                type: elementFilterType,
+                value: filter
+            },
+            previewWindow: {
+                width: width,
+                height: height
+            },
+            printStyleIdFilter: new RegExp(printCssIdRegExp)
+        };
+        this.printService.openPrintPreview(options);
 
         return false;
     }
 
-    public printPdfPreview(idRefFilter: string, classNameFilter ?: string, tagNameFilter ?: string, width ?: number, height ?: number,
-                        printCssIdRegExp?: string) {
-        this.pdfPrintService.printPreview(idRefFilter, classNameFilter, tagNameFilter, width, height, printCssIdRegExp);
+    public printPdf(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
+                    printCssIdRegExp?: string) {
+        const options: PdfPrintOptions = {
+            printElementFilter: {
+                type: elementFilterType,
+                value: filter
+            },
+            previewWindow: {
+                width: width,
+                height: height
+            },
+            printStyleIdFilter: new RegExp(printCssIdRegExp),
+            fileName: 'filename.pdf',
+            pdfOptions: {
+                orientation: 'portrait',
+                format: 'a4'
+            },
+            waitForRenderingMs: 1000
+        };
+        this.pdfPrintService.printPdf(options);
 
         return false;
     }

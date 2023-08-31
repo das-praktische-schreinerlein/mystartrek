@@ -34,6 +34,10 @@ import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
 import {PDocDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.store';
 import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
+import {SimplePrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-print.service';
+import {PdfGenerator, PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
+import {SimplePdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-pdf-print.service';
+import {PrintDialogPdfGenerator} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print-dialog-pdf.generator';
 
 registerLocaleData(localeDe);
 
@@ -91,7 +95,10 @@ export function getAngulartics2Providers(): any {
         PageUtils,
         {provide: PlatformService, useClass: PlatformService},
         LayoutService,
-        PrintService
+        {provide: PrintService, useClass: SimplePrintService},
+        // TODO if you want pdf replace PrintDialogPdfGenerator by JsPdfGenerator and move jspdf in package.json from optional to dep
+        {provide: PdfGenerator, useClass: PrintDialogPdfGenerator},
+        {provide: PdfPrintService, useClass: SimplePdfPrintService}
     ],
     bootstrap: [AppComponent]
 })
