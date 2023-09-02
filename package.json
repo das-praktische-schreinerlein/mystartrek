@@ -135,7 +135,7 @@
     "testCoverage": "npm run build-before-prepare && ng test frontend --preserveSymlinks=true --environment=dev --code-coverage true --watch=false",
     "testwatch": "npm run build-before-prepare && ng test frontend --preserveSymlinks=true --environment=dev --watch=true",
     "version": "ng -v",
-    "webpack-analyzer:dev-de": "webpack-bundle-analyzer dist/static/mysqhdev/de/stats.json",
+    "webpack-analyzer:dev-de": "webpack-bundle-analyzer dist/static/myshpdev/de/stats.json",
     "webpack-analyzer:viewer-de": "webpack-bundle-analyzer dist/static/myshpviewer/de/stats.json",
     "webpack-analyzer:server": "webpack-bundle-analyzer dist/server-stats.json",
     "webpack-analyzer:serveradmin": "webpack-bundle-analyzer dist/serveradmin-stats.json",
