@@ -35,7 +35,7 @@ export class AppComponent extends AbstractAppComponent {
             environment);
     }
 
-    public onOpenPrintPreview(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
+    onOpenPrintPreview(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
                             printCssIdRegExp?: string) {
         const options: PrintOptions = {
             printElementFilter: {
@@ -53,7 +53,7 @@ export class AppComponent extends AbstractAppComponent {
         return false;
     }
 
-    public onPrintPdf(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
+    onPrintPdf(elementFilterType: ElementFilterType, filter: string, width?: number, height?: number,
                     printCssIdRegExp?: string) {
         const options: PdfPrintOptions = {
             printElementFilter: {
