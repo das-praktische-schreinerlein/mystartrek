@@ -23,6 +23,8 @@ export class MediaManagerCommand extends CommonAdminCommand {
             exportDir: new SimpleFilePathValidationRule(false),
             exportName: new SimpleFilePathValidationRule(false),
             ignoreErrors: new NumberValidationRule(false, 1, 999999999, 10),
+            inlineProfile: new KeywordValidationRule(false),
+            outputFile: new SimpleFilePathValidationRule(false),
             parallel: new NumberValidationRule(false, 1, 999, 10),
             force: new KeywordValidationRule(false),
             skipCheckForExistingFilesInDataBase : new KeywordValidationRule(false),
@@ -42,6 +44,7 @@ export class MediaManagerCommand extends CommonAdminCommand {
         // importDir and outputDir are used in CommonMediaManagerCommand too
         argv['srcFile'] = PDocFileUtils.normalizeCygwinPath(argv['srcFile']);
         argv['pdocFile'] = PDocFileUtils.normalizeCygwinPath(argv['pdocFile']);
+        argv['outputFile'] = PDocFileUtils.normalizeCygwinPath(argv['outputFile']);
 
         const filePathConfigJson = argv['backend'];
         if (filePathConfigJson === undefined) {
@@ -49,6 +52,7 @@ export class MediaManagerCommand extends CommonAdminCommand {
         }
 
         const action = argv['action'];
+        const outputFile = argv['outputFile'];
         const backendConfig: BackendConfigType = JSON.parse(fs.readFileSync(filePathConfigJson, {encoding: 'utf8'}));
 
         let promise: Promise<any>;
@@ -57,6 +61,7 @@ export class MediaManagerCommand extends CommonAdminCommand {
         const pdocFile = argv['pdocFile'];
         const exportDir = argv['exportDir'];
         const exportName = argv['exportName'];
+        const inlineProfile = argv['inlineProfile'];
 
         const viewerManagerModule = new ViewerManagerModule();
 
@@ -129,11 +134,18 @@ export class MediaManagerCommand extends CommonAdminCommand {
                     return promise;
                 }
 
+                const targetFileName = outputFile !== undefined
+                    ? outputFile
+                    : srcFile
+
+                // TODO password for encryption
+
                 promise = viewerManagerModule.inlineDataOnViewerFile(
                     backendConfig.nodejsBinaryPath,
                     backendConfig.inlineJsPath,
                     srcFile,
-                    srcFile);
+                    targetFileName,
+                    inlineProfile);
 
                 break;
         }

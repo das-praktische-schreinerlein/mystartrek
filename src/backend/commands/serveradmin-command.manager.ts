@@ -5,6 +5,7 @@ import {
     CommonServerAdminCommandManager
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-serveradmin-command.manager';
 import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-manager.command';
+import {MediaManagerCommand} from './media-manager.command';
 
 export interface ServerAdminCommandConfigType extends CommonServerAdminCommandConfigType, AdminCommandConfigType {
     outputDir: string,
@@ -17,6 +18,7 @@ export class ServerAdminCommandManager extends CommonServerAdminCommandManager<S
         // only define a subset of commands
         super({
                 'generateSitemap': new SiteMapGeneratorCommand(),
+                'mediaManager': new MediaManagerCommand(),
                 'pageManager': new PageManagerCommand(),
             },
             adminCommandConfig,
