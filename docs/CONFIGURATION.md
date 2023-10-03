@@ -237,8 +237,8 @@ export const environment = {
     "meta.title.prefix.cdocSectionShowPage": "MyStarTrek - {{title}} - {{cdoc}}",
     "meta.desc.prefix.errorPage": "MyStarTrek - Oje ein Fehler ist aufgetreten",
     "meta.desc.prefix.sectionPage": "MyStarTrek - {{title}} - {{teaser}}",
-    "meta.desc.prefix.cdocSearchPage": "MyStarTrek - Touren/Berichte/Regionen/Bilder/Infos",
+    "meta.desc.prefix.cdocSearchPage": "MyStarTrek - Infos",
     "meta.desc.prefix.cdocShowPage": "MyStarTrek - Infos für {{cdoc}}",
-    "meta.desc.prefix.cdocSectionSearchPage": "MyStarTrek - Touren/Berichte/Regionen/Bilder/Infos zum Thema {{title}} - {{teaser}}",
+    "meta.desc.prefix.cdocSectionSearchPage": "MyStarTrek - Infos zum Thema {{title}} - {{teaser}}",
     "meta.desc.prefix.cdocSectionShowPage": "MyStarTrek - {{title}} - Infos für {{cdoc}}",
 ```

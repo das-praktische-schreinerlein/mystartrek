@@ -123,12 +123,12 @@ div.humanReadableSearchFilter span.filterValue {
 .list-item-persrate-3 {
 }
 .list-item-persrate-4 {
-    border: 3px solid gold !IMPORTANT;
-    border-color: gold !IMPORTANT;
+    border: 3px solid gold !important;
+    border-color: gold !important;
 }
 .list-item-persrate-5 {
     border: 3px solid gold;
-    border-color: gold !IMPORTANT;
+    border-color: gold !important;
     background: gold;
 }
 
@@ -163,10 +163,10 @@ div.leaflet-container {
 }
 
 a.dismiss::after {
-    content: "OK" !IMPORTANT;
+    content: "OK" !important;
 }
 a.dismiss > svg {
-    display: none !IMPORTANT;
+    display: none !important;
 }
 
 
@@ -175,8 +175,8 @@ a.dismiss > svg {
  * Extended-Objects
  *******************/
 app-cdoc-extended-object-properties div.label {
-    min-width: 15px !IMPORTANT;
+    min-width: 15px !important;
 }
 app-cdoc-extended-object-properties div.value {
-    min-width: 15px !IMPORTANT;
+    min-width: 15px !important;
 }

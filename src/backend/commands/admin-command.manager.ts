@@ -8,19 +8,28 @@ import {StarDocConverterCommand} from './sdoc-converter.command';
 import {StarDocLoaderCommand} from './sdoc-loader.command';
 import {StarDocExporterCommand} from './sdoc-exporter.command';
 import {MediaManagerCommand} from './media-manager.command';
+import {DbMigrateCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/dbmigrate.command';
+import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-manager.command';
+import {PDocLoaderCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-loader.command';
+import {PDocConverterCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-converter.command';
+import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
 
+// tslint:disable-next-line:no-empty-interface
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
 }
 
 export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandConfigType> {
     constructor(adminCommandConfig: AdminCommandConfigType) {
         super({
-            'initConfig': new ExtendedConfigInitializerCommand(),
+            'convertPDoc': new PDocConverterCommand(),
             'convertStarDoc': new StarDocConverterCommand(),
-            'loadStarDoc': new StarDocLoaderCommand(),
+            'dbMigrate': new DbMigrateCommand(),
             'exportStarDoc': new StarDocExporterCommand(),
+            'initConfig': new ExtendedConfigInitializerCommand(),
+            'loadPDoc': new PDocLoaderCommand(),
+            'loadStarDoc': new StarDocLoaderCommand(),
             'mediaManager': new MediaManagerCommand(),
-            'generateSitemap': new SiteMapGeneratorCommand()
+            'pageManager': new PageManagerCommand()
         }, adminCommandConfig);
     }
 

@@ -1,23 +1,20 @@
 import {AppComponent} from './components/app/app.component';
-import {AppService} from './services/app.service';
 import {NgbCollapseModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ToastrModule} from 'ngx-toastr';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
-import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 import {SectionsModule} from './sections/sections.module';
-import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
-import {PDocDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.store';
+import {StaticPagesDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/staticpages-data.service';
+import {StaticPagesDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/staticpages-data.store';
 import {BrowserModule} from '@angular/platform-browser';
 import {ErrorPageComponent} from './components/errorpage/errorpage.component';
 import {AngularCommonsModule} from '@dps/mycms-frontend-commons/dist/angular-commons/angular-commons.module';
 import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/page.utils';
 import {BackendHttpClient} from './services/backend-http-client';
 import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services/minimal-http-backend-client';
-import {AngularHtmlService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/angular-html.service';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {GenericTrackingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
@@ -42,6 +39,14 @@ import {StarDocDataCacheService} from './shared-sdoc/services/sdoc-datacache.ser
 import {StarDocActionTagService} from './shared-sdoc/services/sdoc-actiontag.service';
 import {StarDocPlaylistService} from './shared-sdoc/services/sdoc-playlist.service';
 import {StarDocActionTagsComponent} from './shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component';
+import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
+import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
+import {PDocDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.store';
+import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
+import {SimplePrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-print.service';
+import {PdfGenerator, PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
+import {SimplePdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-pdf-print.service';
+import {PrintDialogPdfGenerator} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print-dialog-pdf.generator';
 
 registerLocaleData(localeDe);
 
@@ -89,6 +94,7 @@ export function getAngulartics2Providers(): any {
         // customUrlSerializerProvider, // activate this to get parenthes in parameters running, but then suburls dont run anymore
         CommonRoutingService,
         {provide: GenericAppService, useClass: AppService},
+        CommonDocRoutingService,
         FallbackHttpClient,
         DynamicComponentService,
         StarDocDynamicComponentService,
@@ -98,17 +104,24 @@ export function getAngulartics2Providers(): any {
         PDocDataStore,
         StarDocAlbumService,
         PDocDataService,
+        StaticPagesDataStore,
+        StaticPagesDataService,
         StarDocDataCacheService,
         SearchFormUtils,
         {provide: GenericTrackingService, useClass: TrackingService},
-        AngularHtmlService,
         {provide: SearchParameterUtils, useClass: SearchParameterUtils},
         PageUtils,
         {provide: PlatformService, useClass: PlatformService},
+        LayoutService,
+        {provide: PrintService, useClass: SimplePrintService},
+        // TODO if you want pdf replace PrintDialogPdfGenerator by JsPdfGenerator and move jspdf in package.json from optional to dep
+        {provide: PdfGenerator, useClass: PrintDialogPdfGenerator},
+        {provide: PdfPrintService, useClass: SimplePdfPrintService},
         LayoutService,
         StarDocActionTagService,
         StarDocPlaylistService
     ],
     bootstrap: [AppComponent]
 })
-export class AppCommonModule {}
+export class AppCommonModule {
+}
