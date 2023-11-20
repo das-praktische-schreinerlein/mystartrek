@@ -1,4 +1,3 @@
-import {SiteMapGeneratorCommand} from './sitemap-generator.command';
 import {
     CommonAdminCommandConfigType,
     CommonAdminCommandManager
@@ -11,8 +10,10 @@ import {MediaManagerCommand} from './media-manager.command';
 import {DbMigrateCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/dbmigrate.command';
 import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-manager.command';
 import {PDocLoaderCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-loader.command';
-import {PDocConverterCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-converter.command';
-import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
+import {
+    PDocConverterCommand
+} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-converter.command';
+import {SiteMapGeneratorCommand} from './sitemap-generator.command';
 
 // tslint:disable-next-line:no-empty-interface
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
@@ -25,6 +26,7 @@ export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandC
             'convertStarDoc': new StarDocConverterCommand(),
             'dbMigrate': new DbMigrateCommand(),
             'exportStarDoc': new StarDocExporterCommand(),
+            'generateSitemap': new SiteMapGeneratorCommand(),
             'initConfig': new ExtendedConfigInitializerCommand(),
             'loadPDoc': new PDocLoaderCommand(),
             'loadStarDoc': new StarDocLoaderCommand(),

@@ -4,13 +4,11 @@ import {
     CommonKeywordMapperConfigType,
     CommonSqlConnectionConfigType
 } from '@dps/mycms-server-commons/dist/backend-commons/modules/backend.commons';
-import {CommonPDocBackendConfigType} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-backend.commons';
+import {
+    CommonPDocBackendConfigType
+} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-backend.commons';
 import {FacetCacheUsageConfigurations} from '@dps/mycms-commons/dist/search-commons/services/sql-query.builder';
 import {FacetCacheConfiguration} from '@dps/mycms-commons/dist/facetcache-commons/model/facetcache.configuration';
-import {
-    CommonBackendConfigType,
-    CommonKeywordMapperConfigType
-} from '@dps/mycms-server-commons/dist/backend-commons/modules/backend.commons';
 
 export interface SqlConnectionConfigType extends CommonSqlConnectionConfigType<FacetCacheUsageConfigurations, FacetCacheConfiguration> {
 }

@@ -17,13 +17,17 @@ import {BackendHttpClient} from './services/backend-http-client';
 import {MinimalHttpBackendClient} from '@dps/mycms-commons/dist/commons/services/minimal-http-backend-client';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {GenericTrackingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
+import {
+    GenericTrackingService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
 import {TrackingService} from './services/tracking.service';
 import {Angulartics2Module} from 'angulartics2';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
-import {DynamicComponentService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/dynamic-components.service';
+import {
+    DynamicComponentService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/dynamic-components.service';
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
 import {CookieLawModule} from 'angular2-cookie-law';
 import {environment} from '../environments/environment';
@@ -39,14 +43,25 @@ import {StarDocDataCacheService} from './shared-sdoc/services/sdoc-datacache.ser
 import {StarDocActionTagService} from './shared-sdoc/services/sdoc-actiontag.service';
 import {StarDocPlaylistService} from './shared-sdoc/services/sdoc-playlist.service';
 import {StarDocActionTagsComponent} from './shared-sdoc/components/sdoc-actiontags/sdoc-actiontags.component';
-import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
+import {
+    CommonDocRoutingService
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
 import {PDocDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.service';
 import {PDocDataStore} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-data.store';
 import {PrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print.service';
 import {SimplePrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-print.service';
-import {PdfGenerator, PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
-import {SimplePdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-pdf-print.service';
-import {PrintDialogPdfGenerator} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print-dialog-pdf.generator';
+import {
+    PdfGenerator,
+    PdfPrintService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/pdf-print.service';
+import {
+    SimplePdfPrintService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-pdf-print.service';
+import {
+    PrintDialogPdfGenerator
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/print-dialog-pdf.generator';
+import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
+import {AppService} from './services/app.service';
 
 registerLocaleData(localeDe);
 

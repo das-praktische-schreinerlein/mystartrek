@@ -25,7 +25,12 @@ import {StarDocSearchFormConverter} from '../../services/sdoc-searchform-convert
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
 import {StarDocContentUtils} from '../../services/sdoc-contentutils.service';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
-import {NgxMdModule, NgxMdService} from 'ngx-md';
+import {
+    SimpleAngularHtmlService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-angular-html.service';
+import {
+    SimpleAngularMarkdownService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-angular-markdown.service';
 
 describe('StarDocListItemPageComponent', () => {
     let component: StarDocListItemPageComponent;
@@ -44,16 +49,14 @@ describe('StarDocListItemPageComponent', () => {
                 CommonDocRoutingService,
                 SearchFormUtils,
                 StarDocContentUtils,
-                NgxMdService,
-                AngularMarkdownService,
-                AngularHtmlService,
+                { provide: AngularMarkdownService, useClass: SimpleAngularMarkdownService },
+                { provide: AngularHtmlService, useClass: SimpleAngularHtmlService },
                 DatePipe,
                 { provide: GenericAppService, useValue: new AppServiceStub() }
             ],
             schemas: [NO_ERRORS_SCHEMA],
             imports: [
                 TranslateModule.forRoot(),
-                NgxMdModule.forRoot(),
                 HttpClientModule]
         })
             .compileComponents();

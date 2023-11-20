@@ -4,9 +4,12 @@ import {StarDocSearchpageComponent} from './sdoc-searchpage.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {StarDocDataService} from '../../../../shared/sdoc-commons/services/sdoc-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 import {StarDocSearchFormConverter} from '../../../shared-sdoc/services/sdoc-searchform-converter.service';
 import {ToastrService} from 'ngx-toastr';
-import {CommonDocRoutingService} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
+import {
+    CommonDocRoutingService
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-routing.service';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ActivatedRouteStub} from '@dps/mycms-frontend-commons/dist/testing/router-stubs';
 import {StarDocDataServiceStub} from '../../../../testing/sdoc-dataservice-stubs';
@@ -16,7 +19,9 @@ import {PageUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/servic
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
 import {RouterStub} from '@dps/mycms-frontend-commons/dist/angular-commons/testing/router-stubs';
 import {Angulartics2} from 'angulartics2';
-import {GenericTrackingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
+import {
+    GenericTrackingService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/generic-tracking.service';
 import {Angulartics2Stub} from '@dps/mycms-frontend-commons/dist/angular-commons/testing/angulartics2-stubs';
 import {PlatformService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/platform.service';
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
@@ -28,7 +33,9 @@ import {StarDocSearchFormUtils} from '../../../shared-sdoc/services/sdoc-searchf
 import {StarDocActionTagService} from '../../../shared-sdoc/services/sdoc-actiontag.service';
 import {StarDocAlbumService} from '../../../shared-sdoc/services/sdoc-album.service';
 import {StarDocPlaylistService} from '../../../shared-sdoc/services/sdoc-playlist.service';
-import {CommonDocContentUtils} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-contentutils.service';
+import {
+    CommonDocContentUtils
+} from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-contentutils.service';
 import {ToastrServiceStub} from '@dps/mycms-frontend-commons/dist/testing/toasts-stubs';
 
 describe('StarDocSearchpageComponent', () => {
@@ -45,6 +52,7 @@ describe('StarDocSearchpageComponent', () => {
                 { provide: StarDocDataService, useValue: new StarDocDataServiceStub() },
                 { provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
                 { provide: Router, useValue: new RouterStub() },
+                { provide: Location, useValue: {} },
                 CommonRoutingService,
                 StarDocSearchFormConverter,
                 SearchFormUtils,

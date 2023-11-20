@@ -5,7 +5,9 @@ import {
 import {PasswordUtils} from '@dps/mycms-commons/dist/commons/utils/password.utils';
 import {ConfigInitializerUtil} from '@dps/mycms-commons/dist/tools/config-initializer.util';
 import * as Promise_serial from 'promise-serial';
-import {ConfigInitializerCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/config-initializer.command';
+import {
+    ConfigInitializerCommand
+} from '@dps/mycms-server-commons/dist/backend-commons/commands/config-initializer.command';
 
 export class ExtendedConfigInitializerCommand extends ConfigInitializerCommand {
     protected solrconfigbasepath: string;
@@ -89,6 +91,8 @@ export class ExtendedConfigInitializerCommand extends ConfigInitializerCommand {
 
             promises.push(function () {
                 return me.setSolrWritePasswords(newpassword, solrPasswordHash);
+            });
+
             promises.push(function () {
                 return ConfigInitializerUtil.replaceSolrUserPasswordInSolrConfig(
                     me.solrconfigbasepath + '/security.json', 'mystarmadmin', solrPasswordHash, false);

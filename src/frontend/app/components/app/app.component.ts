@@ -21,7 +21,7 @@ import {PdfPrintService} from '@dps/mycms-frontend-commons/dist/angular-commons/
 })
 @Injectable()
 export class AppComponent extends AbstractAppComponent {
-    title = 'MyStartTrek';
+    title = 'MyStarTrek';
     showLoadingSpinner = true;
     showLaw = false;
     hideCopyrightFooter = environment.hideCopyrightFooter;

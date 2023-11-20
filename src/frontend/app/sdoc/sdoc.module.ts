@@ -28,7 +28,6 @@ import {
     AngularMarkdownService
 } from '@dps/mycms-frontend-commons/dist/angular-commons/services/angular-markdown.service';
 import {CommonRoutingService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/common-routing.service';
-import {StarDocAlbumResolver} from '../shared-sdoc/resolver/sdoc-album.resolver';
 import {StarDocAlbumpageComponent} from './components/sdoc-albumpage/sdoc-albumpage.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutService} from '@dps/mycms-frontend-commons/dist/angular-commons/services/layout.service';
@@ -42,6 +41,15 @@ import {
     FrontendCommonDocCommonsModule
 } from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/frontend-cdoc-commons.module';
 import {StarDocRoutingService} from '../../shared/sdoc-commons/services/sdoc-routing.service';
+import {SpecificAngularMarkdownService} from '../services/specific-angular-markdown.service';
+import {SpecificAngularHtmlService} from '../services/specific-angular-html.service';
+import {
+    HtmlLocalLinkRenderer
+} from '@dps/mycms-frontend-commons/dist/angular-commons/htmlrenderer/html-locallink.renderer';
+import {
+    HtmlTogglerRenderer,
+    SimpleHtmlTogglerRenderer
+} from '@dps/mycms-frontend-commons/dist/angular-commons/htmlrenderer/html-toggler.renderer';
 
 @NgModule({
     declarations: [
@@ -81,10 +89,11 @@ import {StarDocRoutingService} from '../../shared/sdoc-commons/services/sdoc-rou
         ErrorResolver,
         PageUtils,
         StarDocLightBoxService,
-        AngularHtmlService,
-        AngularMarkdownService,
-        StarDocAlbumResolver,
-        LayoutService
+        LayoutService,
+        {provide: AngularMarkdownService, useClass: SpecificAngularMarkdownService},
+        {provide: AngularHtmlService, useClass: SpecificAngularHtmlService},
+        HtmlLocalLinkRenderer,
+        {provide: HtmlTogglerRenderer, useClass: SimpleHtmlTogglerRenderer}
     ],
     exports: [
         StarDocSearchpageComponent

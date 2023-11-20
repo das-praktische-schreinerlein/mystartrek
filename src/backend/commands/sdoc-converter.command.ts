@@ -2,14 +2,12 @@ import * as fs from 'fs';
 import {StarDocDataServiceModule} from '../modules/sdoc-dataservice.module';
 import {
     KeywordValidationRule,
+    SimpleConfigFilePathValidationRule,
+    SimpleFilePathValidationRule,
     ValidationRule,
     WhiteListValidationRule
 } from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
-import {
-    CommonAdminCommand,
-    SimpleConfigFilePathValidationRule,
-    SimpleFilePathValidationRule
-} from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin.command';
+import {CommonAdminCommand} from '@dps/mycms-server-commons/dist/backend-commons/commands/common-admin.command';
 import {StarDocFileUtils} from '../shared/sdoc-commons/services/sdoc-file.utils';
 import {StarDocAdapterResponseMapper} from '../shared/sdoc-commons/services/sdoc-adapter-response.mapper';
 import {StarDocConverterModule} from '../modules/sdoc-converter.module';

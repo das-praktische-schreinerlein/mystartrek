@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StarDocSearchForm, StarDocSearchFormValidator} from '../../../shared/sdoc-commons/model/forms/sdoc-searchform';
 import {
-    GenericSearchFormSearchFormConverter,
+    GenericSearchFormConverter,
     HumanReadableFilter
 } from '@dps/mycms-commons/dist/search-commons/services/generic-searchform.converter';
 import {SearchParameterUtils} from '@dps/mycms-commons/dist/search-commons/services/searchparameter.utils';
@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
 
 @Injectable()
-export class StarDocSearchFormConverter implements GenericSearchFormSearchFormConverter<StarDocSearchForm> {
+export class StarDocSearchFormConverter implements GenericSearchFormConverter<StarDocSearchForm> {
     public HRD_IDS = {
         loc_id_i: 'LOCATION',
         loc_lochirarchie_ids_txt: 'LOCATION',
@@ -66,6 +66,28 @@ export class StarDocSearchFormConverter implements GenericSearchFormSearchFormCo
         return this.searchParameterUtils.joinParamsToOneRouteParameter(whatMap, this.splitter);
     }
 
+    searchFormToValueMap(sdocSearchForm: StarDocSearchForm): {[key: string]: string } {
+        const searchForm = (sdocSearchForm ? sdocSearchForm : new StarDocSearchForm({}));
+
+        const where = this.joinWhereParams(searchForm);
+        const moreFilter = this.joinMoreFilterParams(searchForm);
+        const what = this.joinWhatParams(searchForm);
+
+        const params: {[key: string]: string } = {
+            when: this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.when, 'jederzeit'),
+            where: this.searchParameterUtils.joinAndUseValueOrDefault(where, 'ueberall'),
+            what: this.searchParameterUtils.joinAndUseValueOrDefault(what, 'alles'),
+            fulltext: this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.fulltext, 'egal'),
+            moreFilter: this.searchParameterUtils.joinAndUseValueOrDefault(moreFilter, 'ungefiltert'),
+            sort: this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.sort, 'relevance'),
+            type: this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.type, 'alle'),
+            perPage: (+searchForm.perPage || 10) + '',
+            pageNum: (+searchForm.pageNum || 1) + ''
+        };
+
+        return params;
+    }
+
     searchFormToUrl(baseUrl: string, sdocSearchForm: StarDocSearchForm): string {
         let url = baseUrl + 'search/';
         const searchForm = (sdocSearchForm ? sdocSearchForm : new StarDocSearchForm({}));
@@ -75,13 +97,13 @@ export class StarDocSearchFormConverter implements GenericSearchFormSearchFormCo
         const what = this.joinWhatParams(searchForm);
 
         const params: Object[] = [
-            this.searchParameterUtils.useValueOrDefault(searchForm.when, 'jederzeit'),
-            this.searchParameterUtils.useValueOrDefault(where, 'ueberall'),
-            this.searchParameterUtils.useValueOrDefault(what, 'alles'),
-            this.searchParameterUtils.useValueOrDefault(searchForm.fulltext, 'egal'),
-            this.searchParameterUtils.useValueOrDefault(moreFilter, 'ungefiltert'),
-            this.searchParameterUtils.useValueOrDefault(searchForm.sort, 'relevance'),
-            this.searchParameterUtils.useValueOrDefault(searchForm.type, 'alle'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.when, 'jederzeit'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(where, 'ueberall'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(what, 'alles'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.fulltext, 'egal'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(moreFilter, 'ungefiltert'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.sort, 'relevance'),
+            this.searchParameterUtils.joinAndUseValueOrDefault(searchForm.type, 'alle'),
             +searchForm.perPage || 10,
             +searchForm.pageNum || 1
         ];

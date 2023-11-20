@@ -1,4 +1,3 @@
-import {Router} from 'js-data-express';
 import {Mapper} from 'js-data';
 import {StarDocRecord} from '../shared/sdoc-commons/model/records/sdoc-record';
 import {StarDocDataService} from '../shared/sdoc-commons/services/sdoc-data.service';

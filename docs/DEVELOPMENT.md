@@ -1,4 +1,4 @@
-# Develop MyStartTrek
+# Develop MyStarTrek
 
 ## prepare
 

@@ -34,7 +34,12 @@ import {StarDocContentUtils} from '../../../shared-sdoc/services/sdoc-contentuti
 import {SearchFormUtils} from '@dps/mycms-frontend-commons/dist/angular-commons/services/searchform-utils.service';
 import {StarDocRoutingService} from '../../../../shared/sdoc-commons/services/sdoc-routing.service';
 import {ToastrServiceStub} from '@dps/mycms-frontend-commons/dist/testing/toasts-stubs';
-import {NgxMdModule, NgxMdService} from 'ngx-md';
+import {
+    SimpleAngularHtmlService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-angular-html.service';
+import {
+    SimpleAngularMarkdownService
+} from '@dps/mycms-frontend-commons/dist/angular-commons/services/simple-angular-markdown.service';
 
 describe('StarDocShowpageComponent', () => {
     let component: StarDocShowpageComponent;
@@ -44,8 +49,8 @@ describe('StarDocShowpageComponent', () => {
         TestBed.configureTestingModule({
             declarations: [StarDocShowpageComponent, StarDocDateFormatPipe],
             imports: [
-                TranslateModule.forRoot(),
-                NgxMdModule.forRoot()],
+                TranslateModule.forRoot()
+            ],
             providers: [
                 { provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
                 { provide: Router, useValue: new RouterStub() },
@@ -58,9 +63,8 @@ describe('StarDocShowpageComponent', () => {
                 StarDocRoutingService,
                 { provide: ToastrService, useValue: new ToastrServiceStub() },
                 TranslateService,
-                NgxMdService,
-                AngularMarkdownService,
-                AngularHtmlService,
+                { provide: AngularMarkdownService, useClass: SimpleAngularMarkdownService },
+                { provide: AngularHtmlService, useClass: SimpleAngularHtmlService },
                 ErrorResolver,
                 PageUtils,
                 GenericTrackingService,

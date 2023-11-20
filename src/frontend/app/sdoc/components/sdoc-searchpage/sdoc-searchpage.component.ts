@@ -28,6 +28,7 @@ import {
     CommonDocMultiActionManager
 } from '@dps/mycms-frontend-commons/dist/frontend-cdoc-commons/services/cdoc-multiaction.manager';
 import {BeanUtils} from '@dps/mycms-commons/dist/commons/utils/bean.utils';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-sdoc-searchpage',
@@ -46,10 +47,11 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
                 cdocRoutingService: StarDocRoutingService, toastr: ToastrService, pageUtils: PageUtils,
                 cd: ChangeDetectorRef, trackingProvider: GenericTrackingService, appService: GenericAppService,
                 platformService: PlatformService, layoutService: LayoutService, searchFormUtils: SearchFormUtils,
-                sdocSearchFormUtils: StarDocSearchFormUtils, protected actionService: StarDocActionTagService) {
+                sdocSearchFormUtils: StarDocSearchFormUtils, protected actionService: StarDocActionTagService,
+                location: Location) {
         super(route, commonRoutingService, errorResolver, sdocDataService, searchFormConverter, cdocRoutingService,
             toastr, pageUtils, cd, trackingProvider, appService, platformService, layoutService, searchFormUtils,
-            sdocSearchFormUtils, new CommonDocMultiActionManager(appService, actionService), environment);
+            sdocSearchFormUtils, new CommonDocMultiActionManager(appService, actionService), environment, location);
     }
 
     onMapStarDocClicked(sdoc: StarDocRecord) {
@@ -58,6 +60,7 @@ export class StarDocSearchpageComponent extends CommonDocSearchpageComponent<Sta
 
     protected getComponentConfig(config: {}): CommonDocSearchpageComponentConfig {
         return {
+            defaultLayoutPerType: {},
             baseSearchUrl: ['sdoc'].join('/'),
             baseSearchUrlDefault: ['sdoc'].join('/'),
             availableCreateActionTypes: [],

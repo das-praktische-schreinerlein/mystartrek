@@ -1,7 +1,6 @@
 import {StarDocSearchResult} from '../shared/sdoc-commons/model/container/sdoc-searchresult';
 import {StarDocSearchForm, StarDocSearchFormValidator} from '../shared/sdoc-commons/model/forms/sdoc-searchform';
 import {StarDocDataService} from '../shared/sdoc-commons/services/sdoc-data.service';
-import {Router} from 'js-data-express';
 import express from 'express';
 import {StarDocRecord} from '../shared/sdoc-commons/model/records/sdoc-record';
 import {DataCacheModule} from '@dps/mycms-server-commons/dist/server-commons/datacache.module';
