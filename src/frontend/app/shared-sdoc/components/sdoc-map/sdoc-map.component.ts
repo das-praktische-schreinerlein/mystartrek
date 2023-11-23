@@ -274,13 +274,13 @@ export class StarDocMapComponent extends AbstractInlineComponent {
             } });
 
         config['cachedDataUrls'] = {
-            'assets/stardata/mw.json': dataMw,
-            'assets/stardata/constellations.json': dataConstellations,
-            'assets/stardata/constellations.bounds.json': dataConstellationsBounds,
-            'assets/stardata/constellations.lines.json': datacCnstellationsLines,
-            'assets/stardata/stars.6.json': dataStars6,
-            'assets/stardata/dsos.bright.json': dataDsosBright,
-            'assets/stardata/planets.json': dataPlanets
+            'assets/stardata/mw.json': dataMw['default'],
+            'assets/stardata/constellations.json': dataConstellations['default'],
+            'assets/stardata/constellations.bounds.json': dataConstellationsBounds['default'],
+            'assets/stardata/constellations.lines.json': datacCnstellationsLines['default'],
+            'assets/stardata/stars.6.json': dataStars6['default'],
+            'assets/stardata/dsos.bright.json': dataDsosBright['default'],
+            'assets/stardata/planets.json': dataPlanets['default']
         };
 
         // Display map with the configuration above or any subset therof

@@ -17,7 +17,7 @@ sbin/celestrial-geojson-generate-viewer.sh
 #### do it manually
 - convert geojson files via windows cmd
 ```cmd
-STARDIR=F:\playground\star-poi-geojson
+STARDIR=F:\playground\celestrial-star-geojson
 for %f in (%STARDIR%\*.geojson) do (
     echo %~nf
     node dist\backend\serverAdmin.js ^
@@ -34,7 +34,7 @@ for %f in (%STARDIR%\*.geojson) do (
 ```
 - create viewer-files for directory-entries via bash
 ```bash
-STARDIR=F:/playground/celestrial-poi-geojson
+STARDIR=F:/playground/celestrial-star-geojson
 FILTER=$STARDIR/*.sdoc.json
 FILES=`echo $FILTER | sed "s/ /,/g"`
 echo $FILES
@@ -53,7 +53,7 @@ sbin\celestrial-geojson-import.bat
 ```
 - OR import files via windows cmd manualy
 ```cmd
-STARDIR=F:\playground\star-poi-geojson
+STARDIR=F:\playground\celestrial-star-geojson
 for %f in (%STARDIR%\*.sdoc.json) do (
     echo %~nf
     node dist\backend\serverAdmin.js ^
@@ -76,12 +76,12 @@ npm run backend-load-data
 ```
 - OR do it manually
 ```
-node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\lg.json --mode SOLR --type LG --file F:\playground\celestrial-star-geojson\import-sdocs-lg.json
-node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\dsos.20.json --mode SOLR --type DSO --file F:\playground\celestrial-star-geojson\import-sdocs-dsos.20.json
-node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\stars.14.json --mode SOLR --type STAR --file F:\playground\celestrial-star-geojson\import-sdocs-stars.14.json
-node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  d:\docs\import-sdocs-lg.json
-node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  d:\docs\import-sdocs-dsos.20.json
-node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  d:\docs\import-sdocs-stars.14.json
+node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\lg.json --mode SOLR --type LG --file F:\playground\celestrial-star-geojson\import-lg.sdoc.json
+node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\dsos.20.json --mode SOLR --type DSO --file F:\playground\celestrial-star-geojson\import-dsos.20.sdoc.json
+node dist\backend\serverAdmin.js --debug --command convertStarDoc --action convertGeoJsonToStarDoc --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --srcFile node_modules\d3-celestial\data\stars.14.json --mode SOLR --type STAR --file F:\playground\celestrial-star-geojson\import-stars.14.sdoc.json
+node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  f:\playground\celestrial-star-geojson\import-lg.sdoc.json
+node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  f:\playground\celestrial-star-geojson\import-dsos.20.sdoc.json
+node dist\backend\serverAdmin.js --debug --command loadStarDoc --action loadStarDocs --adminclibackend config/adminCli.dev.json --backend config/backend.dev.json --file  f:\playground\celestrial-star-geojson\import-stars.14.sdoc.json
 ```
 
 ### configure local environments

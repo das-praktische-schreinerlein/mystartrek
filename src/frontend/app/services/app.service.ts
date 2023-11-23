@@ -190,16 +190,15 @@ export class AppService extends GenericAppService {
             }
         };
         const sdocAdapter = new StarDocHttpAdapter(options);
-
         const pdocAdapter = new PDocHttpAdapter(options);
 
         this.sdocDataStore.setAdapter('http', undefined, '', {});
         this.pdocDataStore.setAdapter('http', undefined, '', {});
         this.pagesDataStore.setAdapter('http', undefined, '', {});
 
+        this.sdocDataService.clearLocalStore();
         this.pagesDataService.clearLocalStore();
         this.pdocDataService.clearLocalStore();
-        this.sdocDataService.clearLocalStore();
 
         this.sdocDataStore.setAdapter('http', sdocAdapter, '', {});
 
@@ -215,9 +214,10 @@ export class AppService extends GenericAppService {
                     return me.pagesDataService.addMany(docs);
                 }).then(function onDocsAdded(records: BaseEntityRecord[]) {
                     // console.log('initially loaded pdocs from server', records);
+                    me.sdocDataService.setWritable(false);
+                    me.pdocDataService.setWritable(false);
                     me.pagesDataService.setWritable(false);
                     me.pdocDataService.setWritable(me.appConfig.permissions.pdocWritable);
-                    me.sdocDataService.setWritable(false);
 
                     me.pdocDataStore.setAdapter('http', pdocAdapter, '', {});
 
@@ -234,11 +234,11 @@ export class AppService extends GenericAppService {
     initStaticData(): Promise<any> {
         const me = this;
         this.sdocDataStore.setAdapter('http', undefined, '', {});
-        this.pagesDataStore.setAdapter('http', undefined, '', {});
-
-        this.pagesDataService.clearLocalStore();
         this.sdocDataService.clearLocalStore();
 
+        this.pagesDataStore.setAdapter('http', undefined, '', {});
+        this.pdocDataService.clearLocalStore();
+        this.pagesDataService.clearLocalStore();
 
         this.pagesDataService.setWritable(false);
 
@@ -267,7 +267,7 @@ export class AppService extends GenericAppService {
                 console.log('initially loaded pdocs from assets', pdocs);
 
                 me.pagesDataService.setWritable(false);
-                console.log('load sdoc-files',  me.appConfig.staticSDocsFiles);
+
                 const promises = [];
                 for (const staticTDocsFile of me.appConfig.staticSDocsFiles) {
                     promises.push(function () {
@@ -275,6 +275,7 @@ export class AppService extends GenericAppService {
                     });
                 }
 
+                console.log('load sdoc-files',  me.appConfig.staticSDocsFiles);
                 return Promise_serial(promises, {parallelize: 1}).then(arrayOfResults => {
                     const sdocs = [];
                     for (let i = 0; i < arrayOfResults.length; i++) {
@@ -322,6 +323,7 @@ export class AppService extends GenericAppService {
                 console.error('loading appdata failed:', reason);
 
                 me.pagesDataService.setWritable(false);
+                me.pdocDataService.setWritable(false);
                 me.sdocDataService.setWritable(false);
 
                 return Promise.reject(false);

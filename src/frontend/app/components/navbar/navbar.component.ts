@@ -41,12 +41,12 @@ export class NavbarComponent implements OnInit {
                     this.availableDataModes = [];
                 }
 
-                if (environment.pdocWritable === true) {
-                    this.pdocWritable = true;
-                }
-
                 if (this.config && this.config['sdocMaxItemsPerAlbum'] > 0) {
                     this.albumAllowed = true;
+                }
+
+                if (environment.pdocWritable === true) {
+                    this.pdocWritable = true;
                 }
 
                 me.cd.markForCheck();

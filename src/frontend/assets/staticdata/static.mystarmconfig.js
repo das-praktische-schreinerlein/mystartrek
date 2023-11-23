@@ -11,7 +11,7 @@ window.importStaticConfigJsonP = `
             "showBigImages": false,
             "allowedQueryParams": [],
             "availableTabs": {
-                "POI": true
+                "STAR": true
             }
         },
         "sdoc-albumpage": {
@@ -23,7 +23,7 @@ window.importStaticConfigJsonP = `
         },
         "pdoc-sectionpage": {
             "availableTabs": {
-                "POI": true,
+                "STAR": true,
                 "ALL": true
             }
         }

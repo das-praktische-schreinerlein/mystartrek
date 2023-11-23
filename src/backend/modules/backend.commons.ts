@@ -15,7 +15,15 @@ export interface SqlConnectionConfigType extends CommonSqlConnectionConfigType<F
 
 export interface BackendConfigType extends CommonBackendConfigType<CommonKeywordMapperConfigType, CacheConfig>,
     CommonPDocBackendConfigType<SqlConnectionConfigType> {
+    sdocDataStoreAdapter: string,
+    sdocWritable: boolean,
     sdocImportConverterAdditionalKeywords?: string[],
-    nodejsBinaryPath: string,
-    inlineJsPath: string
+    StarDocItemsJsAdapter: {
+        dataFile: string
+    },
+    StarDocSolrAdapter: {
+        solrCoreStarDoc: string,
+        solrCoreStarDocReadUsername: string,
+        solrCoreStarDocReadPassword: string
+    }
 }

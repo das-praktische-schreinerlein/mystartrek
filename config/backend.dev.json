@@ -18,18 +18,13 @@
         "allowedKeywordPatterns": [".*"],
         "replaceKeywordPatterns": []
     },
-    "startPDocApi": true,
+    "startPDocApi": false,
     "pdocDataStoreAdapter": "PDocSqlAdapter",
-    "pdocWritable": true,
+    "pdocWritable": false,
     "PDocSqlAdapter": {
         "client": "sqlite3",
         "connection": {
-            "filename": "F:/playground/myshp-test/myshp.sqlite",
-            "host": "localhost",
-            "user": "testmysqhdb",
-            "password": "testmysqhdb",
-            "database": "testmysqhdb",
-            "port": "3306"
+            "filename": "F:/playground/mystarm-test/mystarm.sqlite"
         },
         "facetCacheUsage": {
             "active": false,

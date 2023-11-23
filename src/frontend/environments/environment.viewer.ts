@@ -6,7 +6,6 @@ export const environment: AppEnvironment = {
     production: false, // TODO set this to false for development
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
-    backendApiBaseUrl: undefined,
     defaultSearchTypes: '',
     emptyDefaultSearchTypes: '',
     useAssetStoreUrls: false,
@@ -15,6 +14,7 @@ export const environment: AppEnvironment = {
     pdocEmptyDefaultSearchTypes: 'page',
     allowAutoPlay: false,
     sdocMaxItemsPerAlbum: 2000,
+    backendApiBaseUrl: undefined,
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
     staticPDocsFile: 'assets/staticdata/static.mystarmpdocs.js',

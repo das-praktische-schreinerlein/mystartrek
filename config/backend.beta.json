@@ -1,7 +1,6 @@
 {
     "profile": "beta",
     "filePathPDocJson": "config/pdocs.json",
-    "startPDocApi": false,
     "filePathThemeFilterJson": "config/themeFilterConfig.json",
     "sdocDataStoreAdapter": "StarDocSolrAdapter",
     "sdocWritable": false,
@@ -17,6 +16,7 @@
         "allowedKeywordPatterns": [".*"],
         "replaceKeywordPatterns": []
     },
+    "startPDocApi": false,
     "cacheConfig": {
     },
     "port": 4101,

@@ -55,8 +55,8 @@
                         "command": "dbMigrate",
                         "action": "migrateDB",
                         "migrationDbConfigFile": "config/db-migrate-database.json",
-                        "migrationsDir": "migrations/myshpdb",
-                        "migrationEnv": "myshpdb_sqlite3"
+                        "migrationsDir": "migrations/mystarmdb",
+                        "migrationEnv": "mystarmdb_sqlite3"
                     }
                 },
                 {
@@ -93,7 +93,7 @@
                         "srcFile": "node_modules/d3-celestial/data/lg.json",
                         "mode": "SOLR",
                         "type": "LG",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-lg.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-lg.sdoc.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -105,7 +105,7 @@
                         "srcFile": "node_modules/d3-celestial/data/dsos.20.json",
                         "mode": "SOLR",
                         "type": "DSO",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-dso.20.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-dso.20.sdoc.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -117,7 +117,7 @@
                         "srcFile": "node_modules/d3-celestial/data/stars.14.json",
                         "mode": "SOLR",
                         "type": "STAR",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-star.14.json",
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-star.14.sdoc.json",
                         "renameFileIfExists": true
                     }
                 },
@@ -126,7 +126,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-lg.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-lg.sdoc.json"
                     }
                 },
                 {
@@ -134,7 +134,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-dso.20.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-dso.20.sdoc.json"
                     }
                 },
                 {
@@ -142,7 +142,7 @@
                         "command": "loadStarDoc",
                         "action": "loadStarDocs",
                         "backend": "config/backend.dev.json",
-                        "file": "f:\\playground\\celestrial-star-geojson\\import-sdocs-star.14.json"
+                        "file": "f:\\playground\\celestrial-star-geojson\\import-star.14.sdoc.json"
                     }
                 }
             ]

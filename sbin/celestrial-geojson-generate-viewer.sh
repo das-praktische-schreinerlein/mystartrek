@@ -13,7 +13,7 @@ FILES=`echo $FILTER | sed "s/ /,/g"`
 
 echo "run generate celestrial-viewer for files: ${FILES}"
 ${SCRIPTPATH}/generateViewerFileForStaticData.sh ${STARDIR}/ $FILES mystarm-stars
-${SCRIPTPATH}/setConfigValueInViewerFile.sh "${W_STARDIR}\\mystarm-stars.html" "bestMatchingTabsOrder" '"POI","INFO"'
-${SCRIPTPATH}/setConfigValueInViewerFile.sh "${W_STARDIR}\\mystarm-stars.html" "favoritesTabsOrder" '"POI"'
+${SCRIPTPATH}/setConfigValueInViewerFile.sh "${W_STARDIR}\\mystarm-stars.html" "bestMatchingTabsOrder" '"STAR","INFO"'
+${SCRIPTPATH}/setConfigValueInViewerFile.sh "${W_STARDIR}\\mystarm-stars.html" "favoritesTabsOrder" '"STAR"'
 
 echo "done generate celestrial-viewer for files: ${FILES}"

@@ -9,15 +9,15 @@
 
     <div class="navbar-collapse collapse hidden-print" id="navbarContent" [ngbCollapse]="!isExpanded">
         <ul class="nav navbar-nav" role="menu">
+            <li class="nav-item">
+                <a class="nav-link mdl-navigation__link" routerLink="/sdoc/search/jederzeit/ueberall/alles/egal/ungefiltert/relevance/alle/10/1" routerLinkActive="active" i18n="link search navBar|Link search navBar@@a.navBar.search">Suche</a>
+            </li>
+
             <ng-container *ngIf="pdocWritable">
                 <li class="nav-item">
                     <a class="nav-link mdl-navigation__link" routerLink="/pdoc/search" routerLinkActive="active" i18n="link pdocsearch navBar|Link pdocsearch navBar@@a.navBar.pdocsearch">Seitenverwaltung</a>
                 </li>
             </ng-container>
-
-            <li class="nav-item">
-                <a class="nav-link mdl-navigation__link" routerLink="/sdoc/search/jederzeit/ueberall/alles/egal/ungefiltert/relevance/alle/10/1" routerLinkActive="active" i18n="link search navBar|Link search navBar@@a.navBar.search">Suche</a>
-            </li>
 
             <ng-container *ngIf="sections !== undefined && sections.length > 0">
                 <ng-container *ngFor="let menuSection of sections">

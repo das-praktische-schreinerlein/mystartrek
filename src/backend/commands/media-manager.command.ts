@@ -9,11 +9,11 @@ import {
     ValidationRule,
     WhiteListValidationRule
 } from '@dps/mycms-commons/dist/search-commons/model/forms/generic-validator.util';
+import {FileUtils} from '@dps/mycms-commons/dist/commons/utils/file.utils';
 import {BackendConfigType} from '../modules/backend.commons';
 import {ViewerManagerModule} from '@dps/mycms-server-commons/dist/media-commons/modules/viewer-manager.module';
 import {PDocFileUtils} from '@dps/mycms-commons/dist/pdoc-commons/services/pdoc-file.utils';
 import path from 'path';
-import {FileUtils} from '@dps/mycms-commons/dist/commons/utils/file.utils';
 
 export class MediaManagerCommand extends CommonAdminCommand {
     protected createValidationRules(): {[key: string]: ValidationRule} {

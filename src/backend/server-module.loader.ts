@@ -9,11 +9,17 @@ import {BackendConfigType} from './modules/backend.commons';
 import {StarDocDataServiceModule} from './modules/sdoc-dataservice.module';
 import {StarDocDataService} from 'shared/sdoc-commons/services/sdoc-data.service';
 import {StarDocServerModule} from './modules/sdoc-server.module';
-import {PDocWriterServerModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-writer-server.module';
+import {
+    PDocWriterServerModule
+} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-writer-server.module';
 import {PagesServerModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pages-server.module';
-import {PagesDataserviceModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pages-dataservice.module';
+import {
+    PagesDataserviceModule
+} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pages-dataservice.module';
 import {StaticPagesDataService} from '@dps/mycms-commons/dist/pdoc-commons/services/staticpages-data.service';
-import {PDocDataServiceModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-dataservice.module';
+import {
+    PDocDataServiceModule
+} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-dataservice.module';
 import {PDocServerModule} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/modules/pdoc-server.module';
 import {MarkdownService} from '@dps/mycms-commons/dist/markdown-commons/markdown.service';
 import {DefaultOptions} from '@dps/mycms-commons/dist/markdown-commons/options';
@@ -44,6 +50,11 @@ export class ServerModuleLoader {
         ConfigureServerModule.configureDefaultErrorHandler(app);
     }
 
+    public static loadAdditionalModules(app, serverConfig: ServerConfig, cache: DataCacheModule) {
+        ServerModuleLoader.loadModuleSDoc(app, serverConfig, cache);
+        ServerModuleLoader.loadModulePDoc(app, serverConfig, cache);
+    }
+
     public static loadModulePages(app, serverConfig: ServerConfig, cache: DataCacheModule) {
         const markdownService = new MarkdownService(DefaultOptions.getDefault(), MarkdownDefaultExtensions);
         const pagesDataServiceDE: StaticPagesDataService = PagesDataserviceModule.getDataService('pdocSolrDE',
@@ -70,23 +81,22 @@ export class ServerModuleLoader {
         }
     }
 
+    public static isServerWritable(serverConfig: ServerConfig) {
+        const pdocWritable = serverConfig.backendConfig.pdocWritable === true
+            || <any>serverConfig.backendConfig.pdocWritable === 'true';
+        const sdocWritable = serverConfig.backendConfig.sdocWritable === true
+            || <any>serverConfig.backendConfig.sdocWritable === 'true';
+
+        return pdocWritable || sdocWritable;
+    }
+
     public static loadModuleSDoc(app, serverConfig: ServerConfig, cache: DataCacheModule) {
         // configure dataservices
         const sdocDataService: StarDocDataService = StarDocDataServiceModule.getDataService('sdocSolr',
             serverConfig.backendConfig);
-        const sdocServerModule = StarDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix, sdocDataService, cache,
-            serverConfig.backendConfig);
+
+        // add routes
+        const sdocServerModule = StarDocServerModule.configureRoutes(app, serverConfig.apiDataPrefix,
+            sdocDataService, cache, serverConfig.backendConfig);
     }
-
-    public static isServerWritable(serverConfig: ServerConfig) {
-        const pdocWritable = serverConfig.backendConfig.pdocWritable === true
-            || <any>serverConfig.backendConfig.pdocWritable === 'true';
-
-        return pdocWritable;
-    }
-
-    public static loadAdditionalModules(app, serverConfig: ServerConfig, cache: DataCacheModule) {
-        ServerModuleLoader.loadModulePDoc(app, serverConfig, cache);
-    }
-
 }

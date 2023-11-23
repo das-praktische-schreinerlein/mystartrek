@@ -136,7 +136,7 @@ export class ExtendedConfigInitializerCommand extends ConfigInitializerCommand {
 
         promises.push(function () {
             return ConfigInitializerUtil.replaceSolrUserPasswordInSolrConfig(
-                me.solrconfigbasepath + '/security.json', 'myshpread', solrPasswordHash, false);
+                me.solrconfigbasepath + '/security.json', 'mystarmread', solrPasswordHash, false);
         });
 
         return Promise_serial(promises, {parallelize: 1}).then(() => {
@@ -160,11 +160,11 @@ export class ExtendedConfigInitializerCommand extends ConfigInitializerCommand {
         });
         promises.push(function () {
             return ConfigInitializerUtil.replaceSolrUserPasswordInSolrConfig(
-                me.solrconfigbasepath + '/security.json', 'myshpadmin', solrPasswordHash, false);
+                me.solrconfigbasepath + '/security.json', 'mystarmadmin', solrPasswordHash, false);
         });
         promises.push(function () {
             return ConfigInitializerUtil.replaceSolrUserPasswordInSolrConfig(
-                me.solrconfigbasepath + '/security.json', 'myshpupdate', solrPasswordHash, false);
+                me.solrconfigbasepath + '/security.json', 'mystarmupdate', solrPasswordHash, false);
         });
 
         return Promise_serial(promises, {parallelize: 1}).then(() => {

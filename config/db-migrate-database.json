@@ -1,9 +1,9 @@
 {
-    "myshpdb_sqlite3": {
+    "mystarmdb_sqlite3": {
         "driver": "sqlite3",
-        "filename": "F:/playground/myshp-test/myshp.sqlite"
+        "filename": "F:/playground/mystarm-test/mystarm.sqlite"
     },
-    "myshpdb_mysql": {
+    "mystarmdb_mysql": {
         "driver": "mysql",
         "host": "localhost",
         "user": "testmysqhdb",

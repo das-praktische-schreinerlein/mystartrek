@@ -6,6 +6,9 @@ import {
 } from '@dps/mycms-server-commons/dist/backend-commons/commands/common-serveradmin-command.manager';
 import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-manager.command';
 import {MediaManagerCommand} from './media-manager.command';
+import {StarDocExporterCommand} from './sdoc-exporter.command';
+import {StarDocLoaderCommand} from './sdoc-loader.command';
+import {StarDocConverterCommand} from './sdoc-converter.command';
 
 export interface ServerAdminCommandConfigType extends CommonServerAdminCommandConfigType, AdminCommandConfigType {
     outputDir: string,
@@ -18,6 +21,9 @@ export class ServerAdminCommandManager extends CommonServerAdminCommandManager<S
         // only define a subset of commands
         super({
                 'generateSitemap': new SiteMapGeneratorCommand(),
+                'convertStarDoc': new StarDocConverterCommand(),
+                'loadStarDoc': new StarDocLoaderCommand(),
+                'exportStarDoc': new StarDocExporterCommand(),
                 'mediaManager': new MediaManagerCommand(),
                 'pageManager': new PageManagerCommand(),
             },
