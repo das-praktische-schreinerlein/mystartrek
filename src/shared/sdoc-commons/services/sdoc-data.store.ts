@@ -107,7 +107,7 @@ export class StarDocDataStore extends GenericDataStore<StarDocRecord, StarDocSea
         }
         if (searchForm.type !== undefined && searchForm.type.length > 0) {
             filter = filter || {};
-            filter['type_txt'] = {
+            filter['type_ss'] = {
                 'in': searchForm.type.split(/,/)
             };
         }

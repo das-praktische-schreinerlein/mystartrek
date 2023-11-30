@@ -47,7 +47,7 @@ export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDo
             },
             'playlists_txt': {
             },
-            'type_txt': {
+            'type_ss': {
             },
             'week_is': {
                 'f.week_is.facet.limit': '-1',
@@ -60,7 +60,7 @@ export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDo
         },
         commonSortOptions: {
             'bq': 'type_s:IMAGE^1',
-            'qf': 'html_txt^12.0 name_txt^10.0 desc_txt^8.0 keywords_txt^6.0 loc_lochirarchie_txt^4.0',
+            'qf': 'html_txt^12.0 name_s^10.0 desc_txt^8.0 keywords_txt^6.0 loc_lochirarchie_txt^4.0',
             'defType': 'edismax',
             'boost': 'recip(rord(date_dts),1,1000,1000)'
         },
@@ -107,7 +107,6 @@ export class StarDocSolrAdapter extends GenericSolrAdapter<StarDocRecord, StarDo
             name_s: props.name,
             playlists_txt: (props.playlists ? props.playlists.split(', ').join(',,') : ''),
             type_s: props.type,
-            type_txt: props.type,
             subtype_s: props.subtype,
             subtype_facet_ss: props.subtype,
 

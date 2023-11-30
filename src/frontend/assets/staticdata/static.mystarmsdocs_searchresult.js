@@ -8,7 +8,7 @@ window.importStaticDataSDocsJsonP = `{
         "facets": {
         },
         "selectLimits": {
-            "type_txt": 1
+            "type_ss": 1
         }
     }
 }
