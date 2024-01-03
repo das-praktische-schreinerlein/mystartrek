@@ -96,8 +96,6 @@ export function getAngulartics2Providers(): any {
         {provide: PlatformService, useClass: PlatformService},
         LayoutService,
         {provide: PrintService, useClass: SimplePrintService},
-        // TODO if you want pdf replace PrintDialogPdfGenerator by JsPdfGenerator and move jspdf in package.json from optional to dep
-        {provide: PdfGenerator, useClass: PrintDialogPdfGenerator},
         {provide: PdfPrintService, useClass: SimplePdfPrintService}
     ],
     bootstrap: [AppComponent]
