@@ -6,9 +6,11 @@
 - use new commons
 - frontend: improved text-editor
 - frontend: added full-page mdpad-editor
+- frontend: added own app-mdpad-editor with pdf-support
 
 ### new features
 - frontend: added full-page mdpad-editor
+- frontend: added own app-mdpad-editor with pdf-support
 
 ### improvements
 - use new commons

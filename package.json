@@ -9,7 +9,8 @@
     "set_this_for_solrgoal_withsolr": "install-solr-doit",
     "set_this_for_solrgoal_withouthsolr": "noop",
     "set_viewerpassword_to_generate_viewer_with_password_protection_viewerpassword": "",
-    "viewerpassword": ""
+    "viewerpassword": "",
+    "mdpadpassword": ""
   },
   "scripts": {
     "adminserver-serve-dev": "node dist/backend/adminServer.js --adminbackend config/adminServer.dev.json --firewall config/adminfirewall.dev.json --debug true",
@@ -45,14 +46,20 @@
     "build-prod-de": "ng build frontend --base-href=/myshp/de/ --configuration=prod-de --aot true --output-path dist/static/myshp/de",
     "build-prod-en": "ng build frontend --base-href=/myshp/en/ --configuration=prod-en --aot true --output-path dist/static/myshp/en",
     "build-viewer": "npm run build-before-prepare && npm run build-viewer-de && npm run build-viewer-en && npm run build-after-copy-overrides-dist-viewer",
-    "build-viewer-de": "ng build frontend --configuration=viewer-de --aot true --output-path dist/static/myshpviewer/de && npm run build-after-copy-preinline-de && cross-var node devtools/create-allinone-html.js dist/static/myshpviewer/de/index.viewer.html dist/static/myshpviewer/de/index.viewer.full.html \"\" noexclusions $npm_package_config_viewerpassword",
-    "build-viewer-en": "ng build frontend --configuration=viewer-en --aot true --output-path dist/static/myshpviewer/en && npm run build-after-copy-preinline-en && cross-var node devtools/create-allinone-html.js dist/static/myshpviewer/en/index.viewer.html dist/static/myshpviewer/en/index.viewer.full.html \"\" noexclusions $npm_package_config_viewerpassword",
-    "build-viewer-de-stats": "ng build frontend --configuration=viewer-de --aot true --stats-json true --output-path dist/static/myshpviewer/de && npm run build-after-copy-preinline-de && node devtools/create-allinone-html.js dist/static/myshpviewer/de/index.viewer.html dist/static/myshpviewer/de/index.viewer.full.html",
+    "build-viewer-de": "ng build frontend --configuration=viewer-de --aot true --output-path dist/static/myshpviewer/de && npm run build-after-copy-preinline-viewer-de && cross-var node devtools/create-allinone-html.js dist/static/myshpviewer/de/index.viewer.html dist/static/myshpviewer/de/index.viewer.full.html \"\" noexclusions $npm_package_config_viewerpassword",
+    "build-viewer-en": "ng build frontend --configuration=viewer-en --aot true --output-path dist/static/myshpviewer/en && npm run build-after-copy-preinline-viewer- en && cross-var node devtools/create-allinone-html.js dist/static/myshpviewer/en/index.viewer.html dist/static/myshpviewer/en/index.viewer.full.html \"\" noexclusions $npm_package_config_viewerpassword",
+    "build-viewer-de-stats": "ng build frontend --configuration=viewer-de --aot true --stats-json true --output-path dist/static/myshpviewer/de && npm run build-after-copy-preinline-viewer-de && node devtools/create-allinone-html.js dist/static/myshpviewer/de/index.viewer.html dist/static/myshpviewer/de/index.viewer.full.html",
+    "build-mdpad": "npm run build-before-prepare && npm run build-mdpad-de && npm run build-mdpad-en",
+    "build-mdpad-de": "ng build frontend --configuration=mdpad-de --aot true --output-path dist/static/myshpmdpad/de && npm run build-after-copy-preinline-mdpad-de && cross-var node devtools/create-allinone-html.js dist/static/myshpmdpad/de/index.viewer.html dist/static/myshpmdpad/de/index.mdpad.full.html \"\" noexclusions $npm_package_config_mdpadpassword",
+    "build-mdpad-en": "ng build frontend --configuration=mdpad-en --aot true --output-path dist/static/myshpmdpad/en && npm run build-after-copy-preinline-mdpad-en && cross-var node devtools/create-allinone-html.js dist/static/myshpmdpad/en/index.viewer.html dist/static/myshpmdpad/en/index.mdpad.full.html \"\" noexclusions $npm_package_config_mdpadpassword",
     "build-after-copy-contrib": "cpx --include-empty-dirs \"contrib/**/*\" dist/contrib/ && cpx --include-empty-dirs --verbose \"installer/solr/**/*\" dist/contrib/solr/server/solr/",
     "build-after-copy-contrib-solrlang": "cpx --include-empty-dirs --verbose \"contrib/solr/contrib/lang/*.*\" dist/contrib/solr/server/solr/coremyshpbeta/conf/lang/ && cpx --include-empty-dirs --verbose \"contrib/solr/contrib/lang/*.*\" dist/contrib/solr/server/solr/coremyshpprod/conf/lang/",
-    "build-after-copy-preinline-de": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpviewer/de/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpviewer/de/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpviewer/de/**/*.* \" dist/static/myshpviewer/de/",
-    "build-after-copy-preinline-en": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpviewer/en/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpviewer/en/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpviewer/en/**/*.* \" dist/static/myshpviewer/en/",
+    "build-after-copy-preinline-mdpad-de": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpmdpad/de/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpmdpad/de/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpmdpad/de/**/*.* \" dist/static/myshpmdpad/de/",
+    "build-after-copy-preinline-mdpad-en": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpmdpad/en/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpmdpad/en/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpmdpad/en/**/*.* \" dist/static/myshpmdpad/en/",
+    "build-after-copy-preinline-viewer-de": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpviewer/de/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpviewer/de/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpviewer/de/**/*.* \" dist/static/myshpviewer/de/",
+    "build-after-copy-preinline-viewer-en": "cpx --include-empty-dirs --verbose \"node_modules/lz-string/libs/lz-string.min.js\" dist/static/myshpviewer/en/ && cpx --include-empty-dirs --verbose \"devtools/webloader.js\" dist/static/myshpviewer/en/ && cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpviewer/en/**/*.* \" dist/static/myshpviewer/en/",
     "build-after-copy-overrides-config": "cpx --include-empty-dirs --verbose \"overrides/after-build/config/**/*.*\" config/",
+    "build-after-copy-overrides-dist-mdpad": "cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpmdpad/**/*.*\" dist/static/myshpmdpad/",
     "build-after-copy-overrides-dist-viewer": "cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpviewer/**/*.*\" dist/static/myshpviewer/",
     "build-after-copy-overrides-dist-dev": "cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpdev/**/*.*\" dist/static/myshpdev/ && cpx --include-empty-dirs \"overrides/after-build/dist/myshpdev/**/*.*\" dist/myshpdev-server/",
     "build-after-copy-overrides-dist-beta": "cpx --include-empty-dirs --verbose \"overrides/after-build/dist/myshpbeta/**/*.*\" dist/static/myshpbeta/ && cpx --include-empty-dirs \"overrides/after-build/dist/myshpbeta**/*.*\" dist/myshpbeta-server/",
@@ -154,7 +161,6 @@
   "optionalDeps // do copy these to deps if needed": {
     "db-migrate-mysql": "2.2.0",
     "// TODO if you want pdf replace PrintDialogPdfGenerator by JsPdfGenerator and move jspdf in package.json from optional to dep": "",
-    "jspdf": "2.3.1",
     "mysql": "2.18.1"
   },
   "dependencies": {
@@ -206,6 +212,7 @@
     "inline-source": "7.2.0",
     "ip-cidr": "2.1.5",
     "jquery": "3.6.3",
+    "jspdf": "2.3.1",
     "js-data": "3.0.8",
     "js-data-http": "3.0.1",
     "knex": "0.20.10",

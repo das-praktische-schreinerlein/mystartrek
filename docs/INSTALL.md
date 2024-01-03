@@ -3,7 +3,7 @@
 ## prepare
 
 ### prepare build-scripts
-- build-dev.bash, build-beta.bash, build-prod.bash, build-viewer.bash
+- build-dev.bash, build-beta.bash, build-prod.bash, build-viewer.bash, build-mdpad.bash
 ```bash
 #!/usr/bin/env bash
 
@@ -15,13 +15,6 @@ MYCMSPROJECT="mysimplehomepage"
 ```bash
 npm prune && npm install
 ``` 
-
-## Build viewer
-Run for the viewer-versions in `dist/`.
-```bash
-bash
-./build-viewer.bash
-```
 
 ## Build dev
 Run for the dev-versions in `dist/`.
@@ -47,6 +40,13 @@ Run for the prod-versions in `dist/`.
 ```bash
 bash
 ./build-prod.bash
+```
+
+## Build mdpad
+Run for the mdpad-versions in `dist/`.
+```bash
+bash
+./build-mdpad.bash
 ```
 
 ## Build viewer
