@@ -149,7 +149,7 @@ window.importStaticConfigJsonP = `
                     ]
                 }
             ]
-        },
+        }
     },
     "services": {
         "adminJobArea": {
