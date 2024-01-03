@@ -6,16 +6,32 @@ import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {PDocAdminModule} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/pdoc-admin/pdoc-admin.module';
 import {SharedAdminPDocModule} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/shared-admin-pdoc.module';
-import {PDocAssignFormComponent} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/components/pdoc-assignform/pdoc-assignform.component';
-import {PDocReplaceFormComponent} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/components/pdoc-replaceform/pdoc-replaceform.component';
-import {PDocNameSuggesterService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-name-suggester.service';
-import {PDocDescSuggesterService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-desc-suggester.service';
-import {PDocPageDescSuggesterService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-page-desc-suggester.service';
+import {
+    PDocAssignFormComponent
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/components/pdoc-assignform/pdoc-assignform.component';
+import {
+    PDocReplaceFormComponent
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/components/pdoc-replaceform/pdoc-replaceform.component';
+import {
+    PDocNameSuggesterService
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-name-suggester.service';
+import {
+    PDocDescSuggesterService
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-desc-suggester.service';
+import {
+    PDocPageDescSuggesterService
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-page-desc-suggester.service';
 import {PDocActionTagService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/services/pdoc-actiontag.service';
-import {PDocAdminActionTagService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-admin-actiontag.service';
+import {
+    PDocAdminActionTagService
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-admin-pdoc/services/pdoc-admin-actiontag.service';
 import {PDocDataCacheService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/services/pdoc-datacache.service';
-import {PDocActionTagsComponent} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/components/pdoc-actiontags/pdoc-actiontags.component';
-import {PDocDynamicComponentService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/services/pdoc-dynamic-components.service';
+import {
+    PDocActionTagsComponent
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/components/pdoc-actiontags/pdoc-actiontags.component';
+import {
+    PDocDynamicComponentService
+} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/services/pdoc-dynamic-components.service';
 import {PDocAlbumService} from '@dps/mycms-frontend-commons/dist/frontend-pdoc-module/shared-pdoc/services/pdoc-album.service';
 import {environment} from '../environments/environment';
 import {COMMON_APP_ENVIRONMENT} from '@dps/mycms-frontend-commons/dist/frontend-section-commons/common-environment';
@@ -31,6 +47,7 @@ import {
 } from '@dps/mycms-frontend-commons/dist/angular-commons/htmlrenderer/html-toggler.renderer';
 import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {AppService} from './services/app.service';
+import {MarkdownPadModule} from './mdpad/mdpad.module';
 
 registerLocaleData(localeDe);
 
@@ -44,6 +61,7 @@ registerLocaleData(localeDe);
         AppCommonModule,
         SharedAdminPDocModule,
         PDocAdminModule,
+        MarkdownPadModule,
         AppRoutingModule
     ],
     providers: [

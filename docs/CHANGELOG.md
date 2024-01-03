@@ -5,9 +5,10 @@
 ## 5.1.0
 - use new commons
 - frontend: improved text-editor
+- frontend: added full-page mdpad-editor
 
 ### new features
-- none
+- frontend: added full-page mdpad-editor
 
 ### improvements
 - use new commons

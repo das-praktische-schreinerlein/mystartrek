@@ -16,6 +16,7 @@ import {
 } from '@dps/mycms-frontend-commons/dist/angular-commons/htmlrenderer/html-toggler.renderer';
 import {GenericAppService} from '@dps/mycms-commons/dist/commons/services/generic-app.service';
 import {AppService} from './services/app.service';
+import {MarkdownPadModule} from './mdpad/mdpad.module';
 
 registerLocaleData(localeDe);
 
@@ -24,6 +25,7 @@ registerLocaleData(localeDe);
     ],
     imports: [
         AppCommonModule,
+        MarkdownPadModule,
         AppRoutingModule
     ],
     providers: [
