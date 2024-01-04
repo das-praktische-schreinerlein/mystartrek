@@ -209,7 +209,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/frontend/environments/environment.ts",
-                                    "with": "src/frontend/environments/environment.viewer.ts"
+                                    "with": "src/frontend/environments/environment.mdpad.ts"
                                 }
                             ],
                             "optimization": true,
@@ -233,7 +233,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/frontend/environments/environment.ts",
-                                    "with": "src/frontend/environments/environment.viewer.ts"
+                                    "with": "src/frontend/environments/environment.mdpad.ts"
                                 }
                             ],
                             "optimization": true,
