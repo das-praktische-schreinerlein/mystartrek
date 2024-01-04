@@ -73,7 +73,7 @@ export class AppMdPadGlobalRoutingModule {}
         AppMdPadGlobalRoutingModule
     ],
     providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
         {provide: GenericAppService, useClass: AppService},
         {provide: PdfGenerator, useClass: EnvironmentPdfGenerator},
         {provide: AngularMarkdownService, useClass: SpecificAngularMarkdownService},
