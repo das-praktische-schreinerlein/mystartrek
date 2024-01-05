@@ -7,10 +7,12 @@
 - frontend: improved text-editor
 - frontend: added full-page mdpad-editor
 - frontend: added own app-mdpad-editor with pdf-support
+- frontend: added support for iframe-print-preview for pdf in android-apps ;-)
 
 ### new features
 - frontend: added full-page mdpad-editor
 - frontend: added own app-mdpad-editor with pdf-support
+- frontend: added support for iframe-print-preview for pdf in android-apps ;-)
 
 ### improvements
 - use new commons
