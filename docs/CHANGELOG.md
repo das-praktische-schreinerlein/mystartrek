@@ -19,7 +19,7 @@
 - frontend: improved text-editor
 
 ### bug fixes
-- none
+- frontend: fixed pdf-layout
 
 ### breaking changes
 - none
