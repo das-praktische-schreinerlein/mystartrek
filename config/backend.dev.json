@@ -4,6 +4,7 @@
     "apiRoutePdfsStaticDir": "F:/playground/myshp-test/pdfs/",
     "nodejsBinaryPath": "node",
     "inlineJsPath": "devtools/create-allinone-html.js",
+    "webshot2pdfCommandPath": "F:\\Projekte\\MatPublishingTools\\dist-js\\webshot2pdf.js",
     "startPDocApi": true,
     "pdocDataStoreAdapter": "PDocSqlAdapter",
     "pdocWritable": true,

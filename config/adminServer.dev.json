@@ -14,7 +14,7 @@
                             "sitemap": "config/pdoc-pdfgenerator-de.json",
                             "langkeys": "lang_de",
                             "profiles": "profile_dev",
-                            "subtype": "SectionOverviewPage,SectionPage",
+                            "subtype": "SectionOverviewPage,SectionPage,SimplePage",
                             "parallel": 1,
                             "queryParams": ""
                         }
