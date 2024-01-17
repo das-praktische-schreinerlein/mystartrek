@@ -9,6 +9,7 @@ import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-co
 import {PDocLoaderCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-loader.command';
 import {PDocConverterCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-converter.command';
 import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
+import {PDocPdfManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-pdf-manager.command';
 
 // tslint:disable-next-line:no-empty-interface
 export interface AdminCommandConfigType extends CommonAdminCommandConfigType {
@@ -23,6 +24,7 @@ export class AdminCommandManager extends CommonAdminCommandManager<AdminCommandC
             'initConfig': new ExtendedConfigInitializerCommand(),
             'loadPDoc': new PDocLoaderCommand(),
             'mediaManager': new MediaManagerCommand(),
+            'pdocPdfManager': new PDocPdfManagerCommand(),
             'pageManager': new PageManagerCommand()
         }, adminCommandConfig);
     }

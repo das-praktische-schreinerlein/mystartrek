@@ -1,6 +1,7 @@
 {
     "profile": "dev",
     "filePathPDocJson": "config/pdocs.json",
+    "apiRoutePdfsStaticDir": "F:/playground/myshp-test/pdfs/",
     "nodejsBinaryPath": "node",
     "inlineJsPath": "devtools/create-allinone-html.js",
     "startPDocApi": true,
