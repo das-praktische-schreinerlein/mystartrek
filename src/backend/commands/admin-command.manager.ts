@@ -12,7 +12,6 @@ import {PageManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-co
 import {PDocLoaderCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-loader.command';
 import {SiteMapGeneratorCommand} from './sitemap-generator.command';
 import {PDocConverterCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-converter.command';
-import {ExtendedConfigInitializerCommand} from './extendedconfig-initializer.command';
 import {PDocPdfManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-pdf-manager.command';
 
 // tslint:disable-next-line:no-empty-interface
