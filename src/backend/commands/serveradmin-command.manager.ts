@@ -9,6 +9,7 @@ import {MediaManagerCommand} from './media-manager.command';
 import {StarDocExporterCommand} from './sdoc-exporter.command';
 import {StarDocLoaderCommand} from './sdoc-loader.command';
 import {StarDocConverterCommand} from './sdoc-converter.command';
+import {PDocPdfManagerCommand} from '@dps/mycms-server-commons/dist/pdoc-backend-commons/commands/pdoc-pdf-manager.command';
 
 export interface ServerAdminCommandConfigType extends CommonServerAdminCommandConfigType, AdminCommandConfigType {
     outputDir: string,
@@ -25,6 +26,7 @@ export class ServerAdminCommandManager extends CommonServerAdminCommandManager<S
                 'loadStarDoc': new StarDocLoaderCommand(),
                 'exportStarDoc': new StarDocExporterCommand(),
                 'mediaManager': new MediaManagerCommand(),
+                'pdocPdfManager': new PDocPdfManagerCommand(),
                 'pageManager': new PageManagerCommand(),
             },
             adminCommandConfig,

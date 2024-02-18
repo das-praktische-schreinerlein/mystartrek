@@ -2,10 +2,12 @@
     "profile": "dev",
     "filePathPDocJson": "config/pdocs.json",
     "filePathThemeFilterJson": "config/themeFilterConfig.json",
+    "apiRoutePdfsStaticDir": "F:/playground/mystarm-test/pdfs/",
     "sdocDataStoreAdapter": "StarDocSolrAdapter",
     "sdocWritable": true,
     "nodejsBinaryPath": "node",
     "inlineJsPath": "devtools/create-allinone-html.js",
+    "webshot2pdfCommandPath": "F:\\Projekte\\MatPublishingTools\\dist-js\\webshot2pdf.js",
     "StarDocItemsJsAdapter": {
         "dataFile": "D:/tmp/test/mystartrek.json"
     },
